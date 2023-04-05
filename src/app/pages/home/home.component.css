@@ -1,0 +1,38 @@
+.my-footer {
+  padding-top: 4rem;
+}
+
+.logo-img {
+  width: 4rem;
+  margin: 0.2rem;
+  filter: drop-shadow(1px 1px 0.5rem #f8da5f);
+  position: relative;
+  top: -0.5rem;
+}
+
+.my-btn-logout {
+  border-color: #000;
+  border-radius: 2rem;
+  padding: 0.5rem 2rem;
+  background-color: transparent;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.my-btn-logout:hover {
+  background-color: var(--color-3);
+}
+
+ul#main-nav li {
+  height: 3.2rem;
+}
+
+@media screen and (max-width: 480px) {
+  .main-header-eight {
+    top: 0rem;
+  }
+
+  .appi-ei-mobile_menu_button {
+    top: -3.8rem;
+  }
+}

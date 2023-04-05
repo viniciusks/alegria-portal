@@ -1,0 +1,38 @@
+.register-content {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.register-content .register-item {
+  text-align: left;
+  margin: 2rem 6rem 2rem 6rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 480px) {
+  .register-content {
+    padding: 4rem 2rem 2rem 2rem;
+  }
+
+  .register-content .register-item {
+    margin: 0rem;
+  }
+
+  .register-content .register-item div {
+    display: block;
+  }
+
+  .margin-small-device {
+    margin: 0.5rem 0;
+  }
+
+  .text-small-device {
+    font-size: 24px;
+  }
+
+  .btn-register {
+    width: 100%;
+  }
+}

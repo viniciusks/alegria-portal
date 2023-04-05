@@ -1,0 +1,163 @@
+:root {
+  --color-background: #2f3c43;
+}
+
+body {
+  width: 100%;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.my-nav-link {
+  padding: 0;
+}
+
+/* MENU DE LINKS DO CENTRO */
+.menu-sites-federacao {
+  background: var(--color-background);
+  color: #fff;
+  vertical-align: middle;
+}
+
+.menu-sites-federacao .menu-item-1 {
+  border-style: solid;
+  border-color: #98cb02;
+  border-bottom-width: 0;
+  border-top-width: 0.2rem;
+  border-right-width: 0;
+  border-left-width: 0;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-sites-federacao .menu-item-2 {
+  border-style: solid;
+  border-color: #f7e900;
+  border-bottom-width: 0;
+  border-top-width: 0.2rem;
+  border-right-width: 0;
+  border-left-width: 0;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-sites-federacao .menu-item-3 {
+  border-style: solid;
+  border-color: #324792;
+  border-bottom-width: 0;
+  border-top-width: 0.2rem;
+  border-right-width: 0;
+  border-left-width: 0;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-sites-federacao span {
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+/* HEADER */
+.main-header-eight {
+  top: 2.5rem;
+  background-color: rgba(250, 220, 91, 0.8);
+}
+
+.site-logo {
+  margin-right: 0rem !important;
+}
+
+.eisticky-menu-bg-overlay {
+  background: #fadc5b;
+}
+
+.nav-link {
+  color: #000 !important;
+  font-weight: 700;
+  height: 4rem;
+}
+
+.my-btn-login {
+  border-color: #000;
+  border-radius: 2rem;
+  padding: 0.5rem 2rem;
+  background-color: transparent;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.my-btn-login:hover {
+  background-color: var(--color-3);
+}
+
+/* BANNER */
+.eight-banner-section {
+  /* background: linear-gradient(to right, #fadc5b, #ffe675); */
+  background: #2f3c43;
+}
+
+.waveWrapperInner {
+  /* background: linear-gradient(to right, #fadc5b, #ffe675); */
+  background: url("../assets/img/foto_1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.waveWrapperInner::before {
+  background-color: rgba(250, 220, 91, 0.8);
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.title-shadow {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* ABOUT US */
+#about-us {
+  margin-top: 18rem;
+}
+
+.feature-eight-section {
+  padding: 40px 0px 120px;
+}
+
+.feature-eight-section .eight-section-title {
+  max-width: 48rem;
+}
+
+/* CARDS */
+.feature-eight-section .eight-feature-box .feature-icon8 i {
+  padding: 1.25rem 0.5rem;
+}
+
+/* TEXTOS */
+.text-p-justify {
+  font-size: 16px;
+  text-align: justify;
+}
+
+.text-small-right {
+  font-size: 14px;
+  text-align: right;
+}
+
+/* CSS RESPONSIVO */
+@media screen and (max-width: 480px) {
+  .menu-sites-federacao {
+    display: none;
+  }
+}

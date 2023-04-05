@@ -1,0 +1,92 @@
+@keyframes changeBackgroundColor {
+  0% {
+    background-color: var(--color-1);
+  }
+  25% {
+    background-color: var(--color-2);
+  }
+  50% {
+    background-color: var(--color-3);
+  }
+  75% {
+    background-color: var(--color-1);
+  }
+  100% {
+    background-color: var(--color-1);
+  }
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+header {
+  display: none;
+}
+
+footer {
+  display: none;
+}
+
+.block-content {
+  background-color: var(--color-3);
+}
+
+.background-img-logo {
+  position: absolute;
+  left: -20%;
+  top: 20%;
+  -webkit-animation: spin 150s linear infinite;
+  -moz-animation: spin 150s linear infinite;
+  animation: spin 150s linear infinite;
+}
+
+.login-content {
+  margin: 10rem 0 20rem 0;
+  padding: 2rem 10rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+.div-login {
+  position: relative;
+  padding: 2rem 15rem;
+}
+
+.btn-login {
+  width: 8rem;
+}
+
+.link-register {
+  color: #007bff;
+}
+
+.link-register:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 480px) {
+  .div-login {
+    padding: 0rem;
+  }
+
+  .login-content {
+    margin: 0;
+    padding: 5rem 0;
+    border-radius: 0;
+  }
+}

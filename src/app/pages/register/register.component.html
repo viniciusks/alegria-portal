@@ -1,0 +1,229 @@
+<div class="block-content">
+  <div class="container register-content">
+    <h1 class="text-small-device">Realize o seu cadastro em nosso portal</h1>
+    <div class="col-12 col-md-12">
+      <div *ngIf="this.validateForm.flag" class="alert alert-danger" role="alert">
+        {{ this.validateForm.message }}
+      </div>
+    </div>
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+      <div class="form-row register-item">
+        <div class="col-12 col-md-6 margin-small-device">
+          <label for="firstName">Primeiro Nome</label>
+          <input type="text" class="form-control input-ac" placeholder="Digite seu primeiro nome..." id="firstName"
+            name="firstName" required ngModel>
+        </div>
+        <div class="col-12 col-md-6 margin-small-device">
+          <label for="lastName">Sobrenome</label>
+          <input type="text" class="form-control input-ac" placeholder="Digite seu sobrenome..." id="lastName"
+            name="lastName" required ngModel>
+        </div>
+      </div>
+      <div class="form-row register-item">
+        <div class="col-12 col-md-6 margin-small-device">
+          <label for="birthday">Nascimento</label>
+          <input type="date" class="form-control input-ac" placeholder="Data de aniversário" id="birthday"
+            name="birthday" required ngModel>
+        </div>
+        <div class="col-12 col-md-6 margin-small-device">
+          <label for="email">Email <small><b>(esse será o seu login)</b></small></label>
+          <input type="email" class="form-control input-ac input-ac-email" placeholder="Digite seu email..." id="email"
+            name="email" required ngModel>
+        </div>
+      </div>
+      <div class="form-row register-item">
+        <div class="col-12 col-md-6 margin-small-device">
+          <label for="pass">Senha</label>
+          <input type="password" class="form-control input-ac is-valid" [ngClass]="validateConditions() ? 'is-valid' : 'is-invalid'" placeholder="Digite sua senha..." id="pass"
+            name="pass" (keyup)="validationPassword(registerForm)" required ngModel>
+          <small id="passwordHelpInline" class="text-muted">
+            Precisa ter 8-12 letras, 1 letra maiúscula, 1 letra minúscula e 1 número.
+          </small>
+        </div>
+        <div class="col-12 col-md-6 margin-small-device">
+          <label for="pass_confirm">Confirme sua senha</label>
+          <input type="password" class="form-control input-ac" placeholder="Confirme sua senha..." id="pass_confirm"
+            name="pass_confirm" required ngModel>
+          <small id="passwordHelpInline" class="text-muted">
+            Suas senhas precisam ser iguais.
+          </small>
+        </div>
+      </div>
+      <div class="form-row register-item">
+        <div class="col-12 col-md-6 margin-small-device">
+          <label for="whatsapp">Celular (com whatsapp)</label>
+          <input type="text" class="form-control input-ac" placeholder="Ex: (00) 98888-7777" id="whatsapp"
+            name="whatsapp" required ngModel>
+        </div>
+        <div class="col-12 col-md-6 margin-small-device">
+          <label for="country">País</label>
+          <input type="text" class="form-control input-ac" placeholder="Digite seu país..." id="country" name="country"
+            (blur)="validateCountry(registerForm.value.country)" required ngModel>
+        </div>
+      </div>
+      <div class="form-row register-item">
+        <div *ngIf="this.isBR != false" class="col-12 col-md-6 margin-small-device">
+          <label for="state">Estado</label>
+          <select class="form-control input-ac" name="state" id="state" (change)="onChange($event.target)" ngModel>
+            <option value="" disabled>- Escolha seu estado -</option>
+            <option *ngFor="let state of infos.states" [value]="state">{{ state }}</option>
+          </select>
+        </div>
+        <div *ngIf="this.isBR != false" class="col-12 col-md-6 margin-small-device">
+          <label for="city">Cidade</label>
+          <select class="form-control input-ac" name="city" id="city" ngModel>
+            <option value="" disabled>- Escolha sua cidade -</option>
+            <option *ngFor="let city of infos.cities" [value]="city">{{ city }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row register-item">
+        <div class="col-12 col-md-6 margin-small-device">
+          <label for="spiritCenter">Centro Espírita</label>
+          <input type="text" class="form-control input-ac" placeholder="Digite seu centro espírita..." id="spiritCenter"
+            name="spiritCenter" required ngModel>
+        </div>
+        <div class="col-12 col-md-6 margin-small-device">
+          <label for="action">Toca violão e canta?</label>
+          <select class="form-control input-ac" name="action" id="action" required ngModel>
+            <option value="" disabled>- Escolha sua opção -</option>
+            <option value="toco">Só toco violão</option>
+            <option value="canto">Só canto</option>
+            <option value="toco_e_canto">Toco e canto</option>
+            <option value="not">Não, desenvolvo outras atividades dentro da comissão</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row register-item">
+        <div class="col-12 col-md-12 margin-small-device">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="isWorker" name="isWorker" ngModel>
+            <label class="form-check-label" for="isWorker">É trabalhador da <b>Alegria Cristã</b> na Casa
+              Espírita?</label>
+          </div>
+        </div>
+      </div>
+      <!-- WORKER SPACE FORM -->
+      <div *ngIf="registerForm.value.isWorker">
+        <hr>
+        <div class="form-row register-item">
+          <div class="col-12 col-md-6 margin-small-device align-center-vertical">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="isPlayer" name="isPlayer" ngModel>
+              <label class="form-check-label" for="isPlayer">Toca algum instrumento musical?</label>
+            </div>
+          </div>
+          <div *ngIf="registerForm.value.isPlayer" class="col-12 col-md-6 margin-small-device">
+            <label for="instruments">Quais são os instrumentos?</label>
+            <input type="text" class="form-control input-ac"
+              placeholder="Digite separando por vírgula... Ex: Violão, Ukulele" id="instruments" name="instruments"
+              ngModel>
+          </div>
+        </div>
+        <hr>
+        <div class="form-row register-item">
+          <div class="col-12 col-md-6 margin-small-device align-center-vertical">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="isTheater" name="isTheater" ngModel>
+              <label class="form-check-label" for="isTheater">Desenvolve atividades relacionadas à teatro?</label>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 margin-small-device align-center-vertical">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="isDancer" name="isDancer" ngModel>
+              <label class="form-check-label" for="isDancer">Desenvolve atividades relacionadas à dança?</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-row register-item">
+          <div class="col-12 col-md-6 margin-small-device align-center-vertical">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="isLiterature" name="isLiterature" ngModel>
+              <label class="form-check-label" for="isLiterature">Desenvolve atividades relacionadas à
+                literatura?</label>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 margin-small-device align-center-vertical">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="isVisualArt" name="isVisualArt" ngModel>
+              <label class="form-check-label" for="isVisualArt">Desenvolve atividades relacionadas às Artes visuais?
+                (desenho, pintura, escultura, fotografia, arte urbana, produção audiovisual, etc)</label>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="form-row register-item">
+          <div class="col-12 col-md-6 margin-small-device">
+            <label for="english">Inglês</label>
+            <select class="form-control input-ac" name="english" id="english" ngModel>
+              <option value="" disabled>- Escolha sua opção -</option>
+              <option value="iniciante">Iniciante</option>
+              <option value="basico">Básico</option>
+              <option value="fluente">Fluente</option>
+              <option value="not_english">Não falo inglês</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-6 margin-small-device">
+            <label for="spanish">Espanhol</label>
+            <select class="form-control input-ac" name="spanish" id="spanish" ngModel>
+              <option value="" disabled>- Escolha sua opção -</option>
+              <option value="iniciante">Iniciante</option>
+              <option value="basico">Básico</option>
+              <option value="fluente">Fluente</option>
+              <option value="not_spanish">Não falo espanhol</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row register-item">
+          <div class="col-12 col-md-12 margin-small-device">
+            <label for="otherLanguage">Fala algum outro idioma? Se sim, qual?</label>
+            <input type="text" class="form-control input-ac" placeholder="Digite aqui a sua resposta..."
+              id="otherLanguage" name="otherLanguage" ngModel>
+          </div>
+        </div>
+        <hr>
+        <div class="form-row register-item">
+          <div class="col-12 col-md-6 margin-small-device">
+            <label for="artisticFormation">Tem alguma formação artística? Se sim, qual?</label>
+            <input type="text" class="form-control input-ac" placeholder="Digite aqui a sua resposta..."
+              id="artisticFormation" name="artisticFormation" ngModel>
+          </div>
+          <div class="col-12 col-md-6 margin-small-device">
+            <label for="professionalArt">Trabalha com arte profissionalmente? Se sim, com qual linguagem?</label>
+            <input type="text" class="form-control input-ac" placeholder="Digite aqui a sua resposta..."
+              id="professionalArt" name="professionalArt" ngModel>
+          </div>
+        </div>
+        <hr>
+        <div class="form-row register-item">
+          <div class="col-12 col-md-6 margin-small-device align-center-vertical">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="isEFASCoordinator" name="isEFASCoordinator" ngModel>
+              <label class="form-check-label" for="isEFASCoordinator">Já coordenou a Alegria em EFAS?</label>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 margin-small-device align-center-vertical">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="isCONCAFRASCoordinator" name="isCONCAFRASCoordinator"
+                ngModel>
+              <label class="form-check-label" for="isCONCAFRASCoordinator">Já coordenou a Alegria em CONCAFRAS?</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row register-item">
+        <div class="col-12 col-md-12 margin-small-device" style="text-align: center; margin-top: 1rem;">
+          <button type="submit" class="btn btn-lg btn-primary btn-register" value="Cadastrar">Cadastrar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

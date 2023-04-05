@@ -1,0 +1,36 @@
+<div class="block-content">
+  <img class="background-img-logo" src="../../../../assets/img/logo/logo.svg" alt="Logo Alegria" srcset="">
+  <div class="container div-login">
+    <div class="login-content">
+      <h1>Login</h1>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="col-12 col-md-12 mt-5 mb-3 text-left">
+          <!-- <div *ngIf="!this.validateForm" class="alert alert-danger" role="alert">
+            Preencha todas as informações corretamente!
+          </div>
+          <div *ngIf="this.errorFlag" class="alert alert-danger" role="alert">
+            Erro de comunicação com o servidor!
+          </div> -->
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email..." ngModel>
+        </div>
+        <div class="col-12 col-md-12 mt-3 mb-5 text-left">
+          <label for="pass" class="form-label">Senha</label>
+          <input type="password" class="form-control" id="pass" name="pass" placeholder="Digite sua senha..." ngModel>
+        </div>
+        <div class="col-12 col-md-12 mt-3 mb-3">
+          <div class="mt-2 mb-2">
+            <button type="submit" class="btn btn-lg btn-primary btn-login">Entrar</button>
+          </div>
+          <div class="mt-2 mb-2">
+            <a class="link-register" [routerLink]="'/register'">Não tem um perfil? Crie ele aqui!</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

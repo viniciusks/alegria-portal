@@ -1,0 +1,22 @@
+<div class="space-joy-content">
+  <span class="title-text">O <b>espaço da Alegria</b> ainda está em construção.</span>
+  <p>Mas você já pode acessar o <b>kit treinamento da CONCAFRAS</b>!!!</p>
+  <div id="kits">
+    <button class="btn-kit" disabled>2022</button>
+    <button class="btn-kit" (click)="this.chooseKit('2023')">2023</button>
+  </div>
+  <div id="content-kits" *ngIf="this.flagContentView">
+    <div class="row-content-kits">
+      <span>Hinário em PDF</span>
+      <a [(href)]="this.currentContent.pdf" target="_blank" class="btn btn-content">Acessar</a>
+    </div>
+    <div class="row-content-kits">
+      <span>Hinário em Word</span>
+      <a [(href)]="this.currentContent.word" target="_blank" class="btn btn-content">Acessar</a>
+    </div>
+    <div class="row-content-kits">
+      <span>Hinário em áudio (MP3)</span>
+      <a [(href)]="this.currentContent.audios" target="_blank" class="btn btn-content">Acessar</a>
+    </div>
+  </div>
+</div>
