@@ -7,19 +7,19 @@
       </div>
     </div>
     <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
-      <div class="form-row register-item">
-        <div class="col-12 col-md-6 margin-small-device">
+      <div class="row register-item">
+        <div class="col-12 col-md-6">
           <label for="firstName">Primeiro Nome</label>
           <input type="text" class="form-control input-ac" placeholder="Digite seu primeiro nome..." id="firstName"
             name="firstName" required ngModel>
         </div>
-        <div class="col-12 col-md-6 margin-small-device">
+        <div class="col-12 col-md-6">
           <label for="lastName">Sobrenome</label>
           <input type="text" class="form-control input-ac" placeholder="Digite seu sobrenome..." id="lastName"
             name="lastName" required ngModel>
         </div>
       </div>
-      <div class="form-row register-item">
+      <div class="row register-item">
         <div class="col-12 col-md-6 margin-small-device">
           <label for="birthday">Nascimento</label>
           <input type="date" class="form-control input-ac" placeholder="Data de aniversário" id="birthday"
@@ -31,7 +31,7 @@
             name="email" required ngModel>
         </div>
       </div>
-      <div class="form-row register-item">
+      <div class="row register-item">
         <div class="col-12 col-md-6 margin-small-device">
           <label for="pass">Senha</label>
           <input type="password" class="form-control input-ac is-valid" [ngClass]="validateConditions() ? 'is-valid' : 'is-invalid'" placeholder="Digite sua senha..." id="pass"
@@ -49,7 +49,7 @@
           </small>
         </div>
       </div>
-      <div class="form-row register-item">
+      <div class="row register-item">
         <div class="col-12 col-md-6 margin-small-device">
           <label for="whatsapp">Celular (com whatsapp)</label>
           <input type="text" class="form-control input-ac" placeholder="Ex: (00) 98888-7777" id="whatsapp"
@@ -61,7 +61,7 @@
             (blur)="validateCountry(registerForm.value.country)" required ngModel>
         </div>
       </div>
-      <div class="form-row register-item">
+      <div class="row register-item">
         <div *ngIf="this.isBR != false" class="col-12 col-md-6 margin-small-device">
           <label for="state">Estado</label>
           <select class="form-control input-ac" name="state" id="state" (change)="onChange($event.target)" ngModel>
@@ -77,7 +77,7 @@
           </select>
         </div>
       </div>
-      <div class="form-row register-item">
+      <div class="row register-item">
         <div class="col-12 col-md-6 margin-small-device">
           <label for="spiritCenter">Centro Espírita</label>
           <input type="text" class="form-control input-ac" placeholder="Digite seu centro espírita..." id="spiritCenter"
@@ -94,7 +94,7 @@
           </select>
         </div>
       </div>
-      <div class="form-row register-item">
+      <div class="row register-item">
         <div class="col-12 col-md-12 margin-small-device">
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="isWorker" name="isWorker" ngModel>
@@ -106,7 +106,7 @@
       <!-- WORKER SPACE FORM -->
       <div *ngIf="registerForm.value.isWorker">
         <hr>
-        <div class="form-row register-item">
+        <div class="row register-item">
           <div class="col-12 col-md-6 margin-small-device align-center-vertical">
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="isPlayer" name="isPlayer" ngModel>
@@ -121,7 +121,7 @@
           </div>
         </div>
         <hr>
-        <div class="form-row register-item">
+        <div class="row register-item">
           <div class="col-12 col-md-6 margin-small-device align-center-vertical">
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="isTheater" name="isTheater" ngModel>
@@ -135,7 +135,7 @@
             </div>
           </div>
         </div>
-        <div class="form-row register-item">
+        <div class="row register-item">
           <div class="col-12 col-md-6 margin-small-device align-center-vertical">
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="isLiterature" name="isLiterature" ngModel>
@@ -152,7 +152,7 @@
           </div>
         </div>
         <hr>
-        <div class="form-row register-item">
+        <div class="row register-item">
           <div class="col-12 col-md-6 margin-small-device">
             <label for="english">Inglês</label>
             <select class="form-control input-ac" name="english" id="english" ngModel>
@@ -174,7 +174,7 @@
             </select>
           </div>
         </div>
-        <div class="form-row register-item">
+        <div class="row register-item">
           <div class="col-12 col-md-12 margin-small-device">
             <label for="otherLanguage">Fala algum outro idioma? Se sim, qual?</label>
             <input type="text" class="form-control input-ac" placeholder="Digite aqui a sua resposta..."
@@ -182,7 +182,7 @@
           </div>
         </div>
         <hr>
-        <div class="form-row register-item">
+        <div class="row register-item">
           <div class="col-12 col-md-6 margin-small-device">
             <label for="artisticFormation">Tem alguma formação artística? Se sim, qual?</label>
             <input type="text" class="form-control input-ac" placeholder="Digite aqui a sua resposta..."
@@ -195,7 +195,7 @@
           </div>
         </div>
         <hr>
-        <div class="form-row register-item">
+        <div class="row register-item">
           <div class="col-12 col-md-6 margin-small-device align-center-vertical">
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="isEFASCoordinator" name="isEFASCoordinator" ngModel>
@@ -211,7 +211,7 @@
           </div>
         </div>
       </div>
-      <div class="form-row register-item">
+      <div class="row register-item">
         <div class="col-12 col-md-12 margin-small-device" style="text-align: center; margin-top: 1rem;">
           <button type="submit" class="btn btn-lg btn-primary btn-register" value="Cadastrar">Cadastrar</button>
         </div>
