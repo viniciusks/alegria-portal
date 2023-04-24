@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8081',
+  apiUrl: 'https://alegriacrista-tech.com.br',
   authToken: 'Basic Y2xpZW50LWlkOnNlY3JldC1pZA==',
 };
