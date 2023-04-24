@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "alegria-prtl",
     "public": "dist/alegria-portal",
     "ignore": [
       "firebase.json",
