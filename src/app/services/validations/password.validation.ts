@@ -7,7 +7,7 @@ export class PasswordValidation {
     let hasNumber = /\d/.test(password);
     let hasUpper = /[A-Z]/.test(password);
     let hasLower = /[a-z]/.test(password);
-    let hasLenght = /.{8,12}/.test(password);
+    let hasLenght = /.{6,12}/.test(password);
 
     return {
       number: hasNumber,

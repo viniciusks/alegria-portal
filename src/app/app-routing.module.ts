@@ -4,6 +4,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SpaceJoyComponent } from './pages/space-joy/space-joy.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { UserGuard } from './services/user.guard';
+import { UserService } from './services/user.service';
 
 const routes: Routes = [
   {
@@ -20,6 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'space-joy',
+        canActivate: [UserGuard],
         component: SpaceJoyComponent,
       },
     ],
@@ -29,5 +32,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [UserGuard, UserService],
 })
 export class AppRoutingModule {}

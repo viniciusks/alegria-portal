@@ -35,16 +35,16 @@ export class LoginComponent implements OnInit {
 
       let info = {
         email: form.value.email,
-        password: shajs('sha256').update(form.value.pass).digest('hex'),
+        password: form.value.pass,
+        // password: shajs('sha256').update(form.value.pass).digest('hex'),
       };
 
-      this._userService.login(info).subscribe({
+      this._userService.loginFirebase(info).subscribe({
         next: (res) => {
           this.errorFlag = false;
 
           let info = {
-            email: res.email,
-            accessToken: res.accessToken,
+            uid: res.data.uid,
           };
 
           localStorage.setItem('identity', JSON.stringify(info));
@@ -59,6 +59,28 @@ export class LoginComponent implements OnInit {
           this._spinner.hide();
         },
       });
+
+      // this._userService.login(info).subscribe({
+      //   next: (res) => {
+      //     this.errorFlag = false;
+
+      //     let info = {
+      //       email: res.email,
+      //       accessToken: res.accessToken,
+      //     };
+
+      //     localStorage.setItem('identity', JSON.stringify(info));
+      //     this._spinner.hide();
+      //     this._router.navigate(['/space-joy']);
+      //   },
+      //   error: (error) => {
+      //     console.log('Error msg: ', error);
+
+      //     this.errorFlag = true;
+
+      //     this._spinner.hide();
+      //   },
+      // });
     } else {
       this.validateForm = false;
     }

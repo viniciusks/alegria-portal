@@ -45,15 +45,13 @@ export class RegisterComponent implements OnInit {
     this.user = new User(
       '',
       '',
-      '',
-      '',
       new Date(),
       '',
       '',
       '',
       '',
       '',
-      'ROLE_USER',
+      ['ALEGRIA_USER'],
       '',
       '',
       '',
@@ -140,14 +138,13 @@ export class RegisterComponent implements OnInit {
       }
 
       // Atribuição de valores ao objeto User
-      this.user.name = form.value.firstName;
-      this.user.lastname = form.value.lastName;
-      this.user.fullname = this.user.name + ' ' + this.user.lastname;
+      this.user.name = form.value.name;
       this.user.birthday = new Date(form.value.birthday);
       this.user.email = form.value.email;
-      this.user.password = shajs('sha256')
-        .update(form.value.pass)
-        .digest('hex');
+      this.user.password = form.value.pass;
+      // this.user.password = shajs('sha256')
+      //   .update(form.value.pass)
+      //   .digest('hex');
       this.user.country = form.value.country;
       this.user.state = form.value.state;
       this.user.city = form.value.city;
@@ -182,8 +179,8 @@ export class RegisterComponent implements OnInit {
 
       this.validateForm.flag = false;
 
-      this._userService.register(this.user).subscribe({
-        next: (res) => {
+      this._userService.registerFirestore(this.user).subscribe({
+        next: () => {
           this._spinner.hide();
           window.scroll(0, 0);
           this._router.navigate(['/']);
@@ -196,6 +193,21 @@ export class RegisterComponent implements OnInit {
           alert('Erro: ' + msg);
         },
       });
+
+      // this._userService.register(this.user).subscribe({
+      //   next: (res) => {
+      //     this._spinner.hide();
+      //     window.scroll(0, 0);
+      //     this._router.navigate(['/']);
+      //   },
+      //   error: (res) => {
+      //     this._spinner.hide();
+      //     let msg = res.error.errorMessages[0].erros[0];
+      //     this.validateForm.flag = true;
+      //     this.validateForm.message = msg;
+      //     alert('Erro: ' + msg);
+      //   },
+      // });
     } else {
       this.validateForm.flag = true;
       this.validateForm.message = 'Preencha corretamente o formulário!';

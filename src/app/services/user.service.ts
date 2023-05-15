@@ -7,10 +7,12 @@ import { GLOBAL } from './global';
 @Injectable()
 export class UserService {
   public url: string;
+  public apiPlayer: string;
   public identity: any;
 
   constructor(private _http: HttpClient) {
     this.url = GLOBAL.url;
+    this.apiPlayer = GLOBAL.apiPlayer;
   }
 
   register(user: User): Observable<any> {
@@ -18,6 +20,29 @@ export class UserService {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this._http.post(this.url + '/oauth/register', params, {
+      headers: headers,
+    });
+  }
+
+  registerFirestore(user: User): Observable<any> {
+    let params = JSON.stringify(user);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this._http.post(this.apiPlayer + '/users', params, {
+      headers: headers,
+    });
+  }
+
+  loginFirebase(info: any): Observable<any> {
+    let headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json');
+
+    let body = {
+      email: info.email,
+      password: info.password,
+    };
+
+    return this._http.post(this.apiPlayer + '/users/login', body, {
       headers: headers,
     });
   }
