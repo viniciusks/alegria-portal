@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
 
           let info = {
             uid: res.data.uid,
+            email: res.data.email,
           };
 
           localStorage.setItem('identity', JSON.stringify(info));
