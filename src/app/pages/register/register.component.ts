@@ -5,7 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { PasswordValidation } from 'src/app/services/validations/password.validation';
 import { NgxSpinnerService } from 'ngx-spinner';
-import * as shajs from 'sha.js';
+import firebase from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-register',
@@ -43,7 +43,6 @@ export class RegisterComponent implements OnInit {
       cities: [],
     };
     this.user = new User(
-      '',
       '',
       new Date(),
       '',
@@ -137,27 +136,24 @@ export class RegisterComponent implements OnInit {
         return;
       }
 
-      // Atribuição de valores ao objeto User
+      // Valores obrigatórios
       this.user.name = form.value.name;
       this.user.birthday = new Date(form.value.birthday);
       this.user.email = form.value.email;
       this.user.password = form.value.pass;
-      // this.user.password = shajs('sha256')
-      //   .update(form.value.pass)
-      //   .digest('hex');
       this.user.country = form.value.country;
-      this.user.state = form.value.state;
-      this.user.city = form.value.city;
       this.user.action = form.value.action;
-      this.user.artisticFormation = form.value.artisticFormation;
-      this.user.professionalArt = form.value.professionalArt;
-      this.user.englishLevel = form.value.english;
-      this.user.spanishLevel = form.value.spanish;
       this.user.spiritCenter = form.value.spiritCenter;
-      this.user.otherLanguages = form.value.otherLanguage;
       this.user.whatsapp = form.value.whatsapp;
 
-      // Booleans
+      // Valores opcionais
+      this.user.state = form.value.state || '';
+      this.user.city = form.value.city || '';
+      this.user.artisticFormation = form.value.artisticFormation || '';
+      this.user.professionalArt = form.value.professionalArt || '';
+      this.user.englishLevel = form.value.english || '';
+      this.user.spanishLevel = form.value.spanish || '';
+      this.user.otherLanguages = form.value.otherLanguage || '';
       this.user.isActive = true;
       this.user.isWorker = this.checkTernary(form.value.isWorker);
       this.user.isPlayer = this.checkTernary(form.value.isPlayer);
@@ -177,37 +173,23 @@ export class RegisterComponent implements OnInit {
         this.user.instruments = this.getInstruments(form.value.instruments);
       }
 
+      // Image
+      this.user.image = new Document();
+
       this.validateForm.flag = false;
 
-      this._userService.registerFirestore(this.user).subscribe({
+      this._userService.register(this.user).subscribe({
         next: () => {
-          this._spinner.hide();
-          window.scroll(0, 0);
-          this._router.navigate(['/']);
-        },
-        error: (res) => {
-          this._spinner.hide();
-          let msg = res.error.errorMessages[0].erros[0];
-          this.validateForm.flag = true;
-          this.validateForm.message = msg;
-          alert('Erro: ' + msg);
+          firebase
+            .auth()
+            .createUserWithEmailAndPassword(this.user.email, this.user.password)
+            .then(() => {
+              this._spinner.hide();
+              window.scroll(0, 0);
+              this._router.navigate(['/']);
+            });
         },
       });
-
-      // this._userService.register(this.user).subscribe({
-      //   next: (res) => {
-      //     this._spinner.hide();
-      //     window.scroll(0, 0);
-      //     this._router.navigate(['/']);
-      //   },
-      //   error: (res) => {
-      //     this._spinner.hide();
-      //     let msg = res.error.errorMessages[0].erros[0];
-      //     this.validateForm.flag = true;
-      //     this.validateForm.message = msg;
-      //     alert('Erro: ' + msg);
-      //   },
-      // });
     } else {
       this.validateForm.flag = true;
       this.validateForm.message = 'Preencha corretamente o formulário!';

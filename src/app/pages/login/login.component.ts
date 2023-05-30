@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserService } from 'src/app/services/user.service';
-import * as shajs from 'sha.js';
 import { Router } from '@angular/router';
+import firebase from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-login',
@@ -36,52 +36,20 @@ export class LoginComponent implements OnInit {
       let info = {
         email: form.value.email,
         password: form.value.pass,
-        // password: shajs('sha256').update(form.value.pass).digest('hex'),
       };
 
-      this._userService.loginFirebase(info).subscribe({
-        next: (res) => {
-          this.errorFlag = false;
-
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(info.email, info.password)
+        .then((response: any) => {
           let info = {
-            uid: res.data.uid,
-            email: res.data.email,
+            uid: response.user.uid,
+            email: response.user.email,
           };
-
           localStorage.setItem('identity', JSON.stringify(info));
           this._spinner.hide();
           this._router.navigate(['/space-joy']);
-        },
-        error: (error) => {
-          console.log('Error msg: ', error);
-
-          this.errorFlag = true;
-
-          this._spinner.hide();
-        },
-      });
-
-      // this._userService.login(info).subscribe({
-      //   next: (res) => {
-      //     this.errorFlag = false;
-
-      //     let info = {
-      //       email: res.email,
-      //       accessToken: res.accessToken,
-      //     };
-
-      //     localStorage.setItem('identity', JSON.stringify(info));
-      //     this._spinner.hide();
-      //     this._router.navigate(['/space-joy']);
-      //   },
-      //   error: (error) => {
-      //     console.log('Error msg: ', error);
-
-      //     this.errorFlag = true;
-
-      //     this._spinner.hide();
-      //   },
-      // });
+        });
     } else {
       this.validateForm = false;
     }

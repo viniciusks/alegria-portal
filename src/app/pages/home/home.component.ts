@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import firebase from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,12 @@ export class HomeComponent implements OnInit {
   }
 
   logout() {
-    localStorage.clear();
-    this._router.navigate(['/']);
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        localStorage.clear();
+        this._router.navigate(['/']);
+      });
   }
 }
