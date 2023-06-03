@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
     };
     this.user = new User(
       '',
+      '',
       new Date(),
       '',
       '',
@@ -83,8 +84,12 @@ export class RegisterComponent implements OnInit {
 
   getStates() {
     // Requisita todos os estados da API
-    this._utilsService.getStates().subscribe((res) => {
-      this.infos.states = res.estados;
+    this._utilsService.getStates().subscribe((res: any) => {
+      let states: any[] = [];
+      res.forEach((state: any) => {
+        states.push(state.sigla);
+      });
+      this.infos.states = states;
       // Esconde o spinner
       this._spinner.hide();
     });
@@ -95,7 +100,11 @@ export class RegisterComponent implements OnInit {
     this._spinner.show();
     // Toda vez que muda o valor do select, o valor do array cities atualiza
     this._utilsService.getCities(event.value).subscribe((res) => {
-      this.infos.cities = res;
+      let cities: any[] = [];
+      res.forEach((city: any) => {
+        cities.push(city.nome);
+      });
+      this.infos.cities = cities;
       this._spinner.hide();
     });
   }
@@ -178,18 +187,20 @@ export class RegisterComponent implements OnInit {
 
       this.validateForm.flag = false;
 
-      this._userService.register(this.user).subscribe({
-        next: () => {
-          firebase
-            .auth()
-            .createUserWithEmailAndPassword(this.user.email, this.user.password)
-            .then(() => {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.user.email, this.user.password)
+        .then((response: any) => {
+          let uid = response.user.uid;
+          this.user.uid = uid;
+          this._userService.register(this.user).subscribe({
+            next: () => {
               this._spinner.hide();
               window.scroll(0, 0);
               this._router.navigate(['/']);
-            });
-        },
-      });
+            },
+          });
+        });
     } else {
       this.validateForm.flag = true;
       this.validateForm.message = 'Preencha corretamente o formulário!';

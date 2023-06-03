@@ -6,13 +6,11 @@ import { GLOBAL } from './global';
 
 @Injectable()
 export class UserService {
-  public url: string;
   public apiPlayer: string;
   public apiFunction: string;
   public identity: any;
 
   constructor(private _http: HttpClient) {
-    this.url = GLOBAL.url;
     this.apiPlayer = GLOBAL.apiPlayer;
     this.apiFunction = GLOBAL.apiFunction;
   }

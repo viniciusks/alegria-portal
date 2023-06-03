@@ -5,25 +5,24 @@ import { GLOBAL } from './global';
 
 @Injectable()
 export class UtilsService {
-  public url: string;
+  public apiIbge: string;
 
   constructor(private _http: HttpClient) {
-    this.url = GLOBAL.url;
+    this.apiIbge = GLOBAL.apiIbge;
   }
 
   getStates(): Observable<any> {
     let headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
-    // headers.set('Authorization', 'Basic Y2xpZW50LWlkOnNlY3JldC1pZA==');
 
-    return this._http.get(this.url + '/oauth/ufs', { headers: headers });
+    return this._http.get(`${this.apiIbge}/estados`, { headers: headers });
   }
 
   getCities(uf: string): Observable<any> {
     let headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
 
-    return this._http.get(this.url + '/oauth/ufs/' + uf + '/municipios', {
+    return this._http.get(`${this.apiIbge}/estados/${uf}/municipios`, {
       headers: headers,
     });
   }
