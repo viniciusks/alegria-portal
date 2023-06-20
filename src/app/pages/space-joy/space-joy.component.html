@@ -19,4 +19,11 @@
       <a [(href)]="this.currentContent.audios" target="_blank" class="btn btn-content">Acessar</a>
     </div>
   </div>
+  <section *ngIf="this.user.roles.includes('ALEGRIA_ADMIN')" class="mt-4">
+    <hr>
+    <div class="mt-2">
+      <h4>Painel Administrativo</h4>
+      <a class="mt-2 btn btn-joy btn-admin" href="https://alegria-adm.web.app/">Acessar</a>
+    </div>
+  </section>
 </div>
