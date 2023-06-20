@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/User';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-space-joy',
   templateUrl: './space-joy.component.html',
   styleUrls: ['./space-joy.component.css'],
+  providers: [UserService],
 })
 export class SpaceJoyComponent implements OnInit {
   currentContent: any;
   contentsKit: any;
   flagContentView: boolean;
+  user: User;
 
-  constructor() {
+  constructor(private _userService: UserService) {
     this.currentContent = {};
     this.flagContentView = false;
     this.contentsKit = {
@@ -22,10 +26,47 @@ export class SpaceJoyComponent implements OnInit {
           'https://www.ocentroespirita.com/alegriacrista/download/kit-treinamento/2023/audios.zip',
       },
     };
+    this.user = new User(
+      '',
+      new Date(),
+      '',
+      '',
+      '',
+      '',
+      '',
+      ['ALEGRIA_USER'],
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      []
+    );
   }
 
   ngOnInit(): void {
     console.log('[OK] Component: space-joy.');
+    this._userService.getUser().subscribe({
+      next: (response: any) => {
+        let data = response.body.data;
+        this.user = data;
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
   }
 
   chooseKit(year: string) {

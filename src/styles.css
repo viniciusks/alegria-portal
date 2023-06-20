@@ -18,3 +18,16 @@ span.eg-title-tag {
   display: flex;
   align-items: center;
 }
+
+.btn-joy {
+  border-color: #000;
+  border-radius: 2rem;
+  padding: 0.5rem 2rem;
+  background-color: transparent;
+  width: 10rem;
+  transition: 0.2s;
+}
+
+.btn-joy:hover {
+  background-color: var(--color-3);
+}

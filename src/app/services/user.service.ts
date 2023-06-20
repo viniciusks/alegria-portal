@@ -21,7 +21,7 @@ export class UserService {
     let params = JSON.stringify(user);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this._http.post(this.apiFunction + '/users', params, {
+    return this._http.post(`${this.apiFunction}/users`, params, {
       headers: headers,
     });
   }
@@ -36,5 +36,15 @@ export class UserService {
     }
 
     return this.identity;
+  }
+
+  getUser(): Observable<any> {
+    let identity = this.getIdentity();
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this._http.get(`${this.apiFunction}/users/${identity.uid}`, {
+      headers: headers,
+      observe: 'response',
+    });
   }
 }

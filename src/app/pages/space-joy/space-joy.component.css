@@ -61,6 +61,11 @@ button[disabled] {
   background-color: var(--color-3);
 }
 
+.btn-admin {
+  width: 12.5rem;
+  font-weight: 700;
+}
+
 @media screen and (max-width: 480px) {
   #content-kits .row-content-kits {
     gap: 2rem;
