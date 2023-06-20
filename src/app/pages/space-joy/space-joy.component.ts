@@ -28,6 +28,7 @@ export class SpaceJoyComponent implements OnInit {
     };
     this.user = new User(
       '',
+      '',
       new Date(),
       '',
       '',
