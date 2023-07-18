@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/user.service';
 
@@ -13,8 +14,12 @@ export class SpaceJoyComponent implements OnInit {
   contentsKit: any;
   flagContentView: boolean;
   user: User;
+  urlAdmin: String;
 
-  constructor(private _userService: UserService) {
+  constructor(
+    private _userService: UserService,
+    private _spinner: NgxSpinnerService
+  ) {
     this.currentContent = {};
     this.flagContentView = false;
     this.contentsKit = {
@@ -55,14 +60,20 @@ export class SpaceJoyComponent implements OnInit {
       false,
       []
     );
+    this.urlAdmin = '';
   }
 
   ngOnInit(): void {
+    this._spinner.show();
     console.log('[OK] Component: space-joy.');
     this._userService.getUser().subscribe({
       next: (response: any) => {
         let data = response.body.data;
         this.user = data;
+        this.urlAdmin = `https://alegria-adm.web.app/?uid=${
+          this._userService.getIdentity().uid
+        }`;
+        this._spinner.hide();
       },
       error: (error: any) => {
         console.log(error);
