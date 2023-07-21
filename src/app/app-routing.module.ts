@@ -6,6 +6,7 @@ import { SpaceJoyComponent } from './pages/space-joy/space-joy.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UserGuard } from './services/user.guard';
 import { UserService } from './services/user.service';
+import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'admin',
+    component: HomeAdminComponent
+  }
 ];
 
 @NgModule({

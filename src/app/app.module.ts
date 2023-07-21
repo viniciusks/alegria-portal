@@ -11,9 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SpaceJoyComponent } from './pages/space-joy/space-joy.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, SpaceJoyComponent, RegisterComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, SpaceJoyComponent, RegisterComponent, HomeAdminComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

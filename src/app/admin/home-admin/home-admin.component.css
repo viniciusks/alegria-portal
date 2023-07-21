@@ -1,0 +1,8 @@
+nav {
+  /* background-color: var(--brown) !important; */
+  color: var(--light-yellow);
+}
+
+.nav-link:hover {
+  color: var(--light-yellow) !important;
+}
