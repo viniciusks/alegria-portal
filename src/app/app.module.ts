@@ -13,15 +13,35 @@ import { SpaceJoyComponent } from './pages/space-joy/space-joy.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 
+// PrimeNG
+import { MenuModule } from 'primeng/menu';
+import { DashHomeAdminComponent } from './admin/home-admin/dash-home-admin/dash-home-admin.component';
+import { PlayerComponent } from './admin/player/player.component';
+import { MessagesModule } from 'primeng/messages';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, SpaceJoyComponent, RegisterComponent, HomeAdminComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    SpaceJoyComponent,
+    RegisterComponent,
+    HomeAdminComponent,
+    DashHomeAdminComponent,
+    PlayerComponent,
+  ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgxSpinnerModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MenuModule,
+    MessagesModule,
+    ConfirmDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

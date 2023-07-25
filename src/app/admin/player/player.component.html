@@ -1,0 +1,48 @@
+<p-messages></p-messages>
+<div class="mb-1 header">
+  <a class="waves-effect waves-light btn btn-color-default-success" [routerLink]="['/player/add-player']">
+    <i class="material-icons left">add</i>Novo álbum
+  </a>
+</div>
+<hr class="mb-1" />
+<div class="mb-1">
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Autor</th>
+        <th>Link | Download</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let body of albums">
+        <td>{{ body.album.name }}</td>
+        <td>{{ body.album.owner }}</td>
+        <td>
+          <a class="waves-effect waves-light btn btn-color-default-secondary" target="_blank" [href]="body.album.link">
+            Acessar
+          </a>
+        </td>
+        <td>
+          <a class="mr-05 waves-effect waves-light btn btn-small btn-color-default-warning"
+            (click)="goToEditAlbum(body.id)" target="_blank">
+            <i class="material-icons">edit</i>
+          </a>
+          <a class="waves-effect waves-light btn btn-small btn-color-default-danger" (click)="confirmDelete(body.id)"
+            target="_blank">
+            <i class="material-icons">delete</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Spinner -->
+<ngx-spinner type="ball-scale-multiple">
+  <span class="white-font">Carregando...</span>
+</ngx-spinner>
+
+<!-- Dialog delete album-->
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
