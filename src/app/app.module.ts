@@ -25,6 +25,7 @@ import { DashHomeAdminComponent } from './admin/home-admin/dash-home-admin/dash-
 import { PlayerComponent } from './admin/player/player.component';
 import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
 import { EditPlayerComponent } from './admin/player/edit-player/edit-player.component';
+import { AdminGuard } from './services/guards/admin.guard';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { EditPlayerComponent } from './admin/player/edit-player/edit-player.comp
     ButtonModule,
     InputTextModule,
   ],
-  providers: [],
+  providers: [AdminGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
