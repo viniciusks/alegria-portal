@@ -8,6 +8,7 @@ import { MessagesModule } from 'primeng/messages';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 import { DashHomeAdminComponent } from './admin/home-admin/dash-home-admin/dash-home-admin.component';
 import { PlayerComponent } from './admin/player/player.component';
+import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { PlayerComponent } from './admin/player/player.component';
     HomeAdminComponent,
     DashHomeAdminComponent,
     PlayerComponent,
+    AddPlayerComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { PlayerComponent } from './admin/player/player.component';
     ConfirmDialogModule,
     TableModule,
     ButtonModule,
+    InputTextModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

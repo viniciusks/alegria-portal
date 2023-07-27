@@ -43,3 +43,12 @@ span.eg-title-tag {
 .btn-joy:hover {
   background-color: var(--color-3);
 }
+
+/* FONT SIZE */
+.title-font {
+  font-size: 30px;
+}
+
+.sub-title-font {
+  font-size: 20px;
+}

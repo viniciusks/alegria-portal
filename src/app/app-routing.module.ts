@@ -9,6 +9,7 @@ import { UserService } from './services/user.service';
 import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 import { DashHomeAdminComponent } from './admin/home-admin/dash-home-admin/dash-home-admin.component';
 import { PlayerComponent } from './admin/player/player.component';
+import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
           {
             path: '',
             component: PlayerComponent,
+          },
+          {
+            path: 'add-player',
+            component: AddPlayerComponent,
           },
         ],
       },
