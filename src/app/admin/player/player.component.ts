@@ -27,7 +27,36 @@ export class PlayerComponent implements OnInit {
     this.albums = [];
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('[OK] PlayerComponent');
+    this._spinner.show();
+    this.getAlbums();
+  }
+
+  getAlbums() {
+    this._albumService.getAlbums().subscribe({
+      next: (albums: any) => {
+        this._spinner.hide();
+        this.albums = albums.data;
+      },
+      error: (error) => {
+        this._spinner.hide();
+        console.log(`[ERROR] ${error}`);
+      },
+    });
+  }
+
+  goTo(route: string) {
+    window.open(route, '_blank');
+  }
+
+  goToInside(route: string, id: string = '') {
+    if (id != '') {
+      this._router.navigate([`${route}/${id}`]);
+    } else {
+      this._router.navigate([route]);
+    }
+  }
 
   goToEditAlbum(id: string) {
     this._router.navigate([`/player/edit-player/${id}`]);
