@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
       .signOut()
       .then(() => {
         localStorage.clear();
-        this._router.navigate(['/']);
+        this._router.navigate(['/login']);
       });
   }
 }
