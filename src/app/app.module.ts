@@ -24,6 +24,7 @@ import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 import { DashHomeAdminComponent } from './admin/home-admin/dash-home-admin/dash-home-admin.component';
 import { PlayerComponent } from './admin/player/player.component';
 import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
+import { EditPlayerComponent } from './admin/player/edit-player/edit-player.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AddPlayerComponent } from './admin/player/add-player/add-player.compone
     DashHomeAdminComponent,
     PlayerComponent,
     AddPlayerComponent,
+    EditPlayerComponent,
   ],
   imports: [
     BrowserModule,
