@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { User } from 'src/app/models/User';
+import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -69,10 +69,10 @@ export class SpaceJoyComponent implements OnInit {
     this._userService.getUser().subscribe({
       next: (response: any) => {
         let data = response.body.data;
+        let identity = this._userService.getIdentity();
         this.user = data;
-        this.urlAdmin = `https://alegria-adm.web.app/?uid=${
-          this._userService.getIdentity().uid
-        }`;
+        identity.roles = this.user.roles;
+        localStorage.setItem('identity', JSON.stringify(identity));
         this._spinner.hide();
       },
       error: (error: any) => {

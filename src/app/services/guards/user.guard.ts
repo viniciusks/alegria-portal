@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { UserService } from './user.service';
+import { UserService } from '../user.service';
 
 @Injectable()
 export class UserGuard implements CanActivate {
@@ -12,7 +12,7 @@ export class UserGuard implements CanActivate {
     if (identity != null) {
       return true;
     } else {
-      this._router.navigate(['/']);
+      this._router.navigate(['/login']);
       return false;
     }
   }

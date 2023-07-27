@@ -2,6 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// PrimeNG
+import { MenuModule } from 'primeng/menu';
+import { MessagesModule } from 'primeng/messages';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+
+// Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -11,18 +20,42 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SpaceJoyComponent } from './pages/space-joy/space-joy.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
+import { DashHomeAdminComponent } from './admin/home-admin/dash-home-admin/dash-home-admin.component';
+import { PlayerComponent } from './admin/player/player.component';
+import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
+import { EditPlayerComponent } from './admin/player/edit-player/edit-player.component';
+import { AdminGuard } from './services/guards/admin.guard';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, SpaceJoyComponent, RegisterComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    SpaceJoyComponent,
+    RegisterComponent,
+    HomeAdminComponent,
+    DashHomeAdminComponent,
+    PlayerComponent,
+    AddPlayerComponent,
+    EditPlayerComponent,
+  ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgxSpinnerModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MenuModule,
+    MessagesModule,
+    ConfirmDialogModule,
+    TableModule,
+    ButtonModule,
+    InputTextModule,
   ],
-  providers: [],
+  providers: [AdminGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

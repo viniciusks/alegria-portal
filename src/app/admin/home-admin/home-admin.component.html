@@ -1,0 +1,32 @@
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/admin">
+      <img src="../../../assets/img/logo/logo.svg" alt="Bootstrap" width="30" height="24">
+      Alegria Cristã Admin
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/space-joy">Acessar Alegria Cristã Portal</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- layout -->
+<div class="row">
+  <div class="col-3 h-auto">
+    <div class="d-grid gap-2 mt-2">
+      <p-menu styleClass="w-100" [model]="items"></p-menu>
+    </div>
+  </div>
+  <div class="col-9 pt-2">
+    <router-outlet></router-outlet>
+  </div>
+</div>
