@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           };
           localStorage.setItem('identity', JSON.stringify(info));
           this._spinner.hide();
-          this._router.navigate(['/space-joy']);
+          this._router.navigate(['/']);
         });
     } else {
       this.validateForm = false;
