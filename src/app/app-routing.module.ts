@@ -12,6 +12,7 @@ import { PlayerComponent } from './admin/player/player.component';
 import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
 import { EditPlayerComponent } from './admin/player/edit-player/edit-player.component';
 import { AdminGuard } from './services/guards/admin.guard';
+import { MchGeralComponent } from './admin/upload-files-pages/mch-geral/mch-geral.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,15 @@ const routes: Routes = [
           {
             path: 'edit-player/:id',
             component: EditPlayerComponent,
+          },
+        ],
+      },
+      {
+        path: 'upload-files',
+        children: [
+          {
+            path: 'mch-geral',
+            component: MchGeralComponent,
           },
         ],
       },

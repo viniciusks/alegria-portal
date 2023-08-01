@@ -9,6 +9,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { FileUploadModule } from 'primeng/fileupload';
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,7 @@ import { PlayerComponent } from './admin/player/player.component';
 import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
 import { EditPlayerComponent } from './admin/player/edit-player/edit-player.component';
 import { AdminGuard } from './services/guards/admin.guard';
+import { MchGeralComponent } from './admin/upload-files-pages/mch-geral/mch-geral.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { AdminGuard } from './services/guards/admin.guard';
     PlayerComponent,
     AddPlayerComponent,
     EditPlayerComponent,
+    MchGeralComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { AdminGuard } from './services/guards/admin.guard';
     TableModule,
     ButtonModule,
     InputTextModule,
+    FileUploadModule,
   ],
   providers: [AdminGuard],
   bootstrap: [AppComponent],
