@@ -3696,10 +3696,10 @@ Sticky Menu
   max-width: 1200px;
 }
 
-.appseo-preloader {
+/* .appseo-preloader {
   background-color: #fff;
   background: #fff url("../img/seo/pre.svg") no-repeat center center;
-}
+} */
 
 .appseo-headline h1,
 .appseo-headline h2,
@@ -3733,7 +3733,7 @@ Sticky Menu
   padding-bottom: 35px;
 }
 
-.appseo-section-title:after {
+/* .appseo-section-title:after {
   left: 0;
   right: 0;
   bottom: 0;
@@ -3744,7 +3744,7 @@ Sticky Menu
   position: absolute;
   background-repeat: no-repeat;
   background-image: url(../img/seo/shape/ts1.png);
-}
+} */
 
 .appseo-section-title p {
   color: #415e8d;
@@ -4584,7 +4584,7 @@ Sticky Menu
   fill: #fff;
 }
 
-.appseo-service-content .appseo-service-icon-text .appseo-service-icon:before,
+/* .appseo-service-content .appseo-service-icon-text .appseo-service-icon:before,
 .appseo-service-content .appseo-service-icon-text .appseo-service-icon:after {
   top: 15px;
   left: -25px;
@@ -4595,14 +4595,14 @@ Sticky Menu
   position: absolute;
   background-repeat: no-repeat;
   background-image: url(../img/seo/shape/sericon2.png);
-}
+} */
 
-.appseo-service-content .appseo-service-icon-text .appseo-service-icon:after {
+/* .appseo-service-content .appseo-service-icon-text .appseo-service-icon:after {
   top: 0;
   left: auto;
   right: -45px;
   background-image: url(../img/seo/shape/sericon1.png);
-}
+} */
 
 .appseo-service-content .appseo-service-icon-text .appseo-service-text h3 {
   color: #213e6e;
@@ -4616,7 +4616,7 @@ Sticky Menu
   line-height: 1.75;
 }
 
-.appseo-service-content .appseo-service-icon-text:before {
+/* .appseo-service-content .appseo-service-icon-text:before {
   top: -135px;
   right: -120px;
   z-index: -1;
@@ -4627,7 +4627,7 @@ Sticky Menu
   background-repeat: no-repeat;
   transition: 0.3s all ease-in-out;
   background-image: url(../img/seo/shape/s-shape1.png);
-}
+} */
 
 .appseo-service-content .appseo-service-box {
   transition: 0.3s all ease-in-out;
@@ -4692,7 +4692,7 @@ Sticky Menu
   padding: 260px 0px 105px;
 }
 
-.appseo-about-section:before {
+/* .appseo-about-section:before {
   top: 0;
   left: 0;
   content: "";
@@ -4702,7 +4702,7 @@ Sticky Menu
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url(../img/seo/shape/abbg.png);
-}
+} */
 
 .appseo-about-section .partner-slide-area {
   padding-top: 110px;
@@ -4799,7 +4799,7 @@ Sticky Menu
   background-color: #00183e;
 }
 
-.ready-to-grow-section:before {
+/* .ready-to-grow-section:before {
   left: 0;
   bottom: 0;
   content: "";
@@ -4809,7 +4809,7 @@ Sticky Menu
   position: absolute;
   background-size: cover;
   background-image: url(../img/seo/shape/r-shape.png);
-}
+} */
 
 .ready-to-grow-section .ready-vector {
   top: -20px;
@@ -4892,7 +4892,7 @@ Sticky Menu
   z-index: 1;
 }
 
-.appseo-mission-area-section:after {
+/* .appseo-mission-area-section:after {
   top: -30%;
   right: -55%;
   content: "";
@@ -4902,7 +4902,7 @@ Sticky Menu
   position: absolute;
   background-repeat: no-repeat;
   background-image: url(../img/seo/shape/rg-shape1.png);
-}
+} */
 
 .appseo-mission-area-section .appseo-mission-vector {
   right: 0;
@@ -4948,7 +4948,7 @@ Sticky Menu
   fill: #fff;
 }
 
-.appseo-mission-area-text
+/* .appseo-mission-area-text
   .appseo-mission-area-item
   .appseo-mission-item-content
   .appseo-mission-item-icon:before {
@@ -4961,21 +4961,21 @@ Sticky Menu
   position: absolute;
   background-repeat: no-repeat;
   background-image: url(../img/seo/shape/ms1.png);
-}
+} */
 
-.appseo-mission-area-text
+/* .appseo-mission-area-text
   .appseo-mission-area-item
   .appseo-mission-item-content:nth-child(2)
   .appseo-mission-item-icon:before {
   background-image: url(../img/seo/shape/ms2.png);
-}
+} */
 
-.appseo-mission-area-text
+/* .appseo-mission-area-text
   .appseo-mission-area-item
   .appseo-mission-item-content:nth-child(3)
   .appseo-mission-item-icon:before {
   background-image: url(../img/seo/shape/ms3.png);
-}
+} */
 
 .appseo-mission-area-text
   .appseo-mission-area-item
@@ -4995,7 +4995,7 @@ Sticky Menu
   position: relative;
 }
 
-.appseo-pricing-section:after {
+/* .appseo-pricing-section:after {
   top: 35%;
   left: 0;
   content: "";
@@ -5005,7 +5005,7 @@ Sticky Menu
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url(../img/seo/shape/abbg.png);
-}
+} */
 
 .appseo-pricing-section .appseo-pricing-title {
   margin: 0 auto;
@@ -5025,7 +5025,7 @@ Sticky Menu
   z-index: 1;
 }
 
-.appseo-pricing-section .appseo-pricing-item:after {
+/* .appseo-pricing-section .appseo-pricing-item:after {
   content: "";
   height: 275px;
   width: 275px;
@@ -5034,7 +5034,7 @@ Sticky Menu
   z-index: -1;
   background-image: url(../img/seo/shape/pr-shape.png);
   position: absolute;
-}
+} */
 
 .appseo-pricing-section .appseo-pricing-inner-box {
   z-index: 1;
@@ -5047,7 +5047,7 @@ Sticky Menu
   box-shadow: 0px 0px 35px 0px rgba(164, 177, 235, 0.13);
 }
 
-.appseo-pricing-section .appseo-pricing-inner-box:after {
+/* .appseo-pricing-section .appseo-pricing-inner-box:after {
   right: 0;
   bottom: 0;
   z-index: -1;
@@ -5056,7 +5056,7 @@ Sticky Menu
   height: 125px;
   position: absolute;
   background-image: url(../img/seo/shape/prs.png);
-}
+} */
 
 .appseo-pricing-section .appseo-pricing-inner-box .appseo-pricing-img {
   top: -90px;
@@ -5404,7 +5404,7 @@ Sticky Menu
   animation: flying 1.5s linear infinite;
 }
 
-.appseo-cta-section:before {
+/* .appseo-cta-section:before {
   top: 0;
   left: 0;
   content: "";
@@ -5412,7 +5412,7 @@ Sticky Menu
   height: 100%;
   position: absolute;
   background-image: url(../img/seo/banner/ctabg.jpg);
-}
+} */
 
 .appseo-cta-section .overlay-bg {
   top: 0;
@@ -6721,10 +6721,10 @@ Sticky Menu
   background-color: #6e3ebf;
 }
 
-.saas-modern-preloader {
+/* .saas-modern-preloader {
   background-color: #fff;
   background: #fff url("../img/saas-m/pre.svg") no-repeat center center;
-}
+} */
 
 .decoration-wrapper {
   overflow: hidden;
@@ -7801,7 +7801,7 @@ Sticky Menu
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.partner_section .mem_img_text .mem_pic:after {
+/* .partner_section .mem_img_text .mem_pic:after {
   content: "";
   height: 100%;
   width: 100%;
@@ -7813,7 +7813,7 @@ Sticky Menu
   background-image: url(../img/saas-m/partner/pbg.png);
   background-repeat: no-repeat;
   position: absolute;
-}
+} */
 
 .partner_section .mem_img_text .member_social {
   bottom: 20px;
@@ -7944,7 +7944,7 @@ Sticky Menu
   line-height: 1.875;
 }
 
-.testimonial_content .testimonial_text:before {
+/* .testimonial_content .testimonial_text:before {
   content: "";
   height: 100%;
   width: 40%;
@@ -7957,7 +7957,7 @@ Sticky Menu
   transition: 0.3s all ease-in-out;
   background-image: url(../img/saas-m/testimonial/tshape1.png);
   background-repeat: no-repeat;
-}
+} */
 
 .testimonial_content .testimonial_text:hover:before {
   bottom: -85px;
@@ -8063,7 +8063,7 @@ Sticky Menu
   position: static;
 }
 
-.testimonial_indicator {
+/* .testimonial_indicator {
   margin: 20px 20px 0 0;
   display: block;
   height: 510px;
@@ -8071,7 +8071,7 @@ Sticky Menu
   position: relative;
   background-repeat: no-repeat;
   background-image: url(../img/saas-m/testimonial/in-bg.png);
-}
+} */
 
 .testimonial_indicator .carousel-indicators li {
   position: absolute;
@@ -8931,10 +8931,10 @@ Sticky Menu
   background-color: #6e3ebf;
 }
 
-.saas-classic-preloader {
+/* .saas-classic-preloader {
   background-color: #fff;
   background: #fff url("../img/saas-c/pre.svg") no-repeat center center;
-}
+} */
 
 .saas2-headline h1,
 .saas2-headline h2,
@@ -9441,7 +9441,7 @@ Sticky Menu
   padding: 235px 0px 140px 0px;
 }
 
-.saas_two_banner_section:before {
+/* .saas_two_banner_section:before {
   right: 0;
   width: 80%;
   content: "";
@@ -9450,7 +9450,7 @@ Sticky Menu
   position: absolute;
   background-repeat: no-repeat;
   background-image: url(../img/saas-c/banner/b-shape1.png);
-}
+} */
 
 .saas_two_banner_section .s2-banner_content {
   position: relative;
@@ -9632,7 +9632,7 @@ Sticky Menu
   background-color: #ebedf2;
 }
 
-.saas_two_about_section:before {
+/* .saas_two_about_section:before {
   content: "";
   position: absolute;
   top: 0;
@@ -9642,9 +9642,9 @@ Sticky Menu
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(../img/saas-c/banner/abshape.png);
-}
+} */
 
-.saas_two_about_section:after {
+/* .saas_two_about_section:after {
   content: "";
   height: 600px;
   width: 600px;
@@ -9654,7 +9654,7 @@ Sticky Menu
   position: absolute;
   background-repeat: no-repeat;
   background-image: url(../img/saas-c/banner/abshape2.png);
-}
+} */
 
 .saas_two_about_section .about_content_s2 {
   padding: 50px 70px 50px 110px;
@@ -10113,7 +10113,7 @@ Sticky Menu
   background-color: #ebedf2;
 }
 
-.s2-faq_section:after {
+/* .s2-faq_section:after {
   top: 0;
   width: 100%;
   content: "";
@@ -10121,7 +10121,7 @@ Sticky Menu
   z-index: -1;
   position: absolute;
   background-image: url(../img/saas-c/banner/fbg.png);
-}
+} */
 
 .s2-faq_section .s2_faq_content {
   padding-top: 80px;
@@ -10389,7 +10389,7 @@ Sticky Menu
   padding: 0px 0px 65px;
 }
 
-.saas_two_footer_section:before {
+/* .saas_two_footer_section:before {
   top: 0;
   left: 0;
   width: 100%;
@@ -10399,7 +10399,7 @@ Sticky Menu
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url(../img/saas-c/banner/fobg.png);
-}
+} */
 
 .saas_two_footer_section .s2-newslatter_section {
   top: -90px;
@@ -11364,10 +11364,10 @@ Sticky Menu
   -webkit-font-smoothing: antialiased;
 }
 
-.str-preloader {
+/* .str-preloader {
   background-color: #fff;
   background: #fff url("../img/startup/pre.svg") no-repeat center center;
-}
+} */
 
 .decoration-wrapper {
   overflow: hidden;
@@ -12009,20 +12009,20 @@ Sticky Menu
   transition: 0.5s all ease-in-out;
 }
 
-.str-feature-section .str-feature-icon-text:after {
+/* .str-feature-section .str-feature-icon-text:after {
   bottom: 0;
   left: -130px;
   z-index: -1;
   background-image: url(../img/startup/shape/fs1.png);
   transition-delay: 0.3s;
-}
+} */
 
-.str-feature-section .str-feature-icon-text:before {
+/* .str-feature-section .str-feature-icon-text:before {
   z-index: -2;
   bottom: -70px;
   left: -120px;
   background-image: url(../img/startup/shape/fs2.png);
-}
+} */
 
 .str-feature-section .str-feature-icon-text:hover {
   background-color: #010004;
@@ -12552,7 +12552,7 @@ Sticky Menu
   position: relative;
 }
 
-.str-work-process-section
+/* .str-work-process-section
   .str-work-process-content
   .col-lg-4:nth-child(2)
   .str-work-icon-text:before {
@@ -12564,7 +12564,7 @@ Sticky Menu
   position: absolute;
   background-repeat: no-repeat;
   background-image: url(../img/startup/shape/rv1.png);
-}
+} */
 
 .str-work-process-section
   .str-work-process-content
@@ -12599,7 +12599,7 @@ Sticky Menu
   position: relative;
 }
 
-.str-work-process-section
+/* .str-work-process-section
   .str-work-process-content
   .col-lg-4:nth-child(3)
   .str-work-icon-text:before {
@@ -12611,7 +12611,7 @@ Sticky Menu
   position: absolute;
   background-repeat: no-repeat;
   background-image: url(../img/startup/shape/rv2.png);
-}
+} */
 
 .str-work-process-section
   .str-work-process-content
@@ -12862,7 +12862,7 @@ Sticky Menu
   position: static;
 }
 
-.str-testimonial_indicator {
+/* .str-testimonial_indicator {
   margin: 60px 20px 0 0;
   display: block;
   height: 510px;
@@ -12870,7 +12870,7 @@ Sticky Menu
   position: relative;
   background-repeat: no-repeat;
   background-image: url(../img/startup/testimonial/in-bg.png);
-}
+} */
 
 .str-testimonial_indicator .carousel-indicators li {
   position: absolute;
@@ -17559,7 +17559,7 @@ SaaSio - HR Management
   right: -85px;
   box-shadow: 0px 30px 60px 0px rgba(0, 51, 120, 0.04);
 }
-.pm-feature-section-2 .pm-feature-content-2 .pm-feature-process:after {
+/* .pm-feature-section-2 .pm-feature-content-2 .pm-feature-process:after {
   z-index: -1;
   content: "";
   left: -140px;
@@ -17568,7 +17568,7 @@ SaaSio - HR Management
   bottom: -400px;
   position: absolute;
   background-image: url(../img/hrm/shape/dot-s.png);
-}
+} */
 .pm-feature-section-2 .pm-feature-content-2 .pm-feature-item-details {
   padding: 15px 0px 40px;
 }

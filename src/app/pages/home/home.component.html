@@ -31,13 +31,13 @@
   <div class="appheader-content">
     <div class="site-logo float-left">
       <a class="nav-link my-nav-link" [routerLink]="'/'">
-        <img class="logo-img" src="assets/img/logo/logo_com_escrita.svg" alt="">
+        <img id="logo" class="logo-img" src="assets/img/logo/logo_com_escrita.svg" alt="">
       </a>
     </div>
     <nav class="navigation-eight ul-li">
       <ul>
         <li>
-          <a class="nav-link" href="https://ocentroespirita.com/alegriacrista">Início</a>
+          <a class="nav-link" routerLink="/">Início</a>
         </li>
         <li>
           <a class="nav-link" href="https://ocentroespirita.com/alegriacrista/player">Audio player</a>
@@ -59,7 +59,7 @@
         </li>
         <!-- TODO: Retirar o hidden - Login -->
         <li hidden="true">
-          <a class="nav-link" [routerLink]="'login'">
+          <a class="nav-link" [routerLink]="'/login'">
             <button id="btn-login" class="my-btn-login">Acesse seu perfil!</button>
           </a>
         </li>
@@ -84,7 +84,7 @@
         </div>
         <nav class="appi-ei-mobile-main-navigation  clearfix ul-li">
           <ul id="main-nav" class="navbar-nav text-capitalize clearfix">
-            <li><a class="nav-link" href="https://ocentroespirita.com/alegriacrista">Início</a></li>
+            <li><a class="nav-link"routerLink="/">Início</a></li>
             <li><a class="nav-link" href="https://www.ocentroespirita.com/centroespirita/" target="_blank"
                 rel="noopener noreferrer">O Centro
                 Espírita</a></li>
@@ -93,10 +93,10 @@
             <li><a class="nav-link" href="https://www.concafras.com/site/concafras/" target="_blank"
                 rel="noopener noreferrer">CONCAFRAS</a></li>
             <li *ngIf="verifyIdentity() == false">
-              <a class="nav-link my-nav-mobile" [routerLink]="'/'">Login</a>
+              <a class="nav-link my-nav-mobile" [routerLink]="'/login'">Login</a>
             </li>
             <li *ngIf="verifyIdentity() == false">
-              <a class="nav-link my-nav-mobile" [routerLink]="'register'">Registro</a>
+              <a class="nav-link my-nav-mobile" [routerLink]="'/register'">Registro</a>
             </li>
             <li *ngIf="verifyIdentity() == true">
               <a class="nav-link my-nav-mobile" [routerLink]="'/space-joy'">Espaço Alegria</a>
@@ -138,7 +138,7 @@
         <div class="ei-footer-widget appeight-headline ul-li-block">
           <h3 class="ei-widget-title">Links rápidos:</h3>
           <ul>
-            <li><a href="https://ocentroespirita.com/alegriacrista">Início</a></li>
+            <li><a routerLink="/">Início</a></li>
             <li><a href="https://ocentroespirita.com/alegriacrista#about-us">Sobre nós</a></li>
             <!-- <li><a href="#">Nosso Blog</a></li> -->
             <!-- <li><a href="#">Rádio</a></li> -->
@@ -196,9 +196,9 @@
       </div>
     </div>
   </div>
-  <div class="ei-footer-shape1 position-absolute" data-parallax='{"x" : 60}'><img
+  <div class="position-absolute" data-parallax='{"x" : 60}'><img
       src="assets/img/app-landing/shape/fo-shape1.png" alt=""></div>
-  <div class="ei-footer-shape2 position-absolute" data-parallax='{"y" : 60}'><img
+  <div class="position-absolute" data-parallax='{"y" : 60}'><img
       src="assets/img/app-landing/shape/fo-shape2.png" alt=""></div>
   <div class="ei-footer-shape3 position-absolute"><img src="assets/img/app-landing/shape/eimap.png" alt=""></div>
 </section>
