@@ -1,0 +1,68 @@
+@import url("../utils.css");
+@import url("../colors.css");
+
+section {
+  margin-top: 2rem;
+}
+
+div.row:first-child {
+  margin-top: 0;
+}
+
+div.row {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 500px;
+}
+
+.wrapper > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 1 500px;
+  margin: 1rem 0;
+}
+
+.btn-hymns {
+  border: 1px solid;
+  border-color: var(--black);
+  color: var(--black);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  background-color: var(--yellow);
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-hymns:hover {
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+.btn-default {
+  border: 1px solid;
+  border-color: var(--black);
+  color: var(--black);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  background-color: transparent;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-default:hover {
+  background-color: var(--yellow);
+  color: var(--black);
+}

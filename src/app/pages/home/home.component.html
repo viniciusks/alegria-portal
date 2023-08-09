@@ -8,20 +8,20 @@
     <span class="material-icons material-icons-outlined">
       public
     </span>
-    <a href="https://www.ocentroespirita.com/centroespirita/" target="_blank" rel="noopener noreferrer">O Centro
+    <a class="ancor-template" href="http://www.ocentroespirita.com/centroespirita/" target="_blank" rel="noopener noreferrer">O Centro
       Espírita</a>
   </div>
   <div class="col-md-4 menu-item-2">
     <span class="material-icons material-icons-outlined">
       menu_book
     </span>
-    <a href="https://www.revistaautadesouza.com/" target="_blank" rel="noopener noreferrer">Revista Auta de Souza</a>
+    <a class="ancor-template" href="https://www.revistaautadesouza.com/" target="_blank" rel="noopener noreferrer">Revista Auta de Souza</a>
   </div>
   <div class="col-md-4 menu-item-3">
     <span class="material-icons material-icons-outlined">
       stars
     </span>
-    <a href="https://www.concafras.com/site/concafras/" target="_blank" rel="noopener noreferrer">CONCAFRAS</a>
+    <a class="ancor-template" href="https://www.concafras.com/site/concafras/" target="_blank" rel="noopener noreferrer">CONCAFRAS</a>
   </div>
 </div>
 <!-- END -->
@@ -30,7 +30,7 @@
   <!-- MENU DESKTOP -->
   <div class="appheader-content">
     <div class="site-logo float-left">
-      <a class="nav-link my-nav-link" [routerLink]="'/'">
+      <a class="nav-link my-nav-link" routerLink="/">
         <img id="logo" class="logo-img" src="assets/img/logo/logo_com_escrita.svg" alt="">
       </a>
     </div>
@@ -42,26 +42,20 @@
         <li>
           <a class="nav-link" href="https://ocentroespirita.com/alegriacrista/player">Audio player</a>
         </li>
-        <li *ngIf="verifyIdentity() == false">
-          <a class="nav-link" [routerLink]="'/'">Login</a>
+        <li *ngIf="!verifyIdentity()">
+          <a class="nav-link" routerLink="/login">Login</a>
         </li>
-        <li *ngIf="verifyIdentity() == false">
-          <a class="nav-link" [routerLink]="'register'">
+        <li *ngIf="!verifyIdentity()">
+          <a class="nav-link" routerLink="/register">
             <!-- <button id="btn-login" class="my-btn-login">Trabalhador? Faça seu registro aqui!</button> -->
             <button id="btn-login" class="my-btn-login">Registro</button>
           </a>
         </li>
-        <li *ngIf="verifyIdentity() == true">
+        <li *ngIf="verifyIdentity()">
           <a class="nav-link" [routerLink]="'/space-joy'">Espaço Alegria</a>
         </li>
-        <li *ngIf="verifyIdentity() == true">
+        <li *ngIf="verifyIdentity()">
           <button id="btn-sair" class="my-btn-logout" (click)="logout()">Sair</button>
-        </li>
-        <!-- TODO: Retirar o hidden - Login -->
-        <li hidden="true">
-          <a class="nav-link" [routerLink]="'/login'">
-            <button id="btn-login" class="my-btn-login">Acesse seu perfil!</button>
-          </a>
         </li>
       </ul>
     </nav>
@@ -84,7 +78,7 @@
         </div>
         <nav class="appi-ei-mobile-main-navigation  clearfix ul-li">
           <ul id="main-nav" class="navbar-nav text-capitalize clearfix">
-            <li><a class="nav-link"routerLink="/">Início</a></li>
+            <li><a class="nav-link" routerLink="/">Início</a></li>
             <li><a class="nav-link" href="https://www.ocentroespirita.com/centroespirita/" target="_blank"
                 rel="noopener noreferrer">O Centro
                 Espírita</a></li>
@@ -92,16 +86,16 @@
                 rel="noopener noreferrer">Revista Auta de Souza</a></li>
             <li><a class="nav-link" href="https://www.concafras.com/site/concafras/" target="_blank"
                 rel="noopener noreferrer">CONCAFRAS</a></li>
-            <li *ngIf="verifyIdentity() == false">
-              <a class="nav-link my-nav-mobile" [routerLink]="'/login'">Login</a>
+            <li *ngIf="!verifyIdentity()">
+              <a class="nav-link my-nav-mobile" routerLink="/login">Login</a>
             </li>
-            <li *ngIf="verifyIdentity() == false">
-              <a class="nav-link my-nav-mobile" [routerLink]="'/register'">Registro</a>
+            <li *ngIf="!verifyIdentity()">
+              <a class="nav-link my-nav-mobile" routerLink="/register">Registro</a>
             </li>
-            <li *ngIf="verifyIdentity() == true">
-              <a class="nav-link my-nav-mobile" [routerLink]="'/space-joy'">Espaço Alegria</a>
+            <li *ngIf="verifyIdentity()">
+              <a class="nav-link my-nav-mobile" routerLink="/space-joy">Espaço Alegria</a>
             </li>
-            <li *ngIf="verifyIdentity() == true">
+            <li *ngIf="verifyIdentity()">
               <a class="nav-link">
                 <button id="btn-sair" class="my-btn-logout" (click)="logout()">Sair</button>
               </a>
@@ -124,14 +118,11 @@
       <div class="col-lg-4">
         <div class="ei-footer-widget pera-content appeight-headline">
           <div class="ei-footer-logo">
-            <img src="assets/img/logo/logo_com_escrita.svg" width="120px" alt="">
+            <img src="assets/img/logo/logo_com_escrita.png" width="120px" alt="">
           </div>
           <p>
             O Site da comissão mais alegre do mundo!!!
           </p>
-          <div class="ei-payment-mathod" style="display: none">
-            <img src="assets/img/app-landing/logo/paypal.png" alt="">
-          </div>
         </div>
       </div>
       <div class="col-lg-4">
@@ -139,9 +130,9 @@
           <h3 class="ei-widget-title">Links rápidos:</h3>
           <ul>
             <li><a routerLink="/">Início</a></li>
-            <li><a href="https://ocentroespirita.com/alegriacrista#about-us">Sobre nós</a></li>
-            <!-- <li><a href="#">Nosso Blog</a></li> -->
-            <!-- <li><a href="#">Rádio</a></li> -->
+            <li><a routerLink="/">Sobre nós</a></li>
+            <li><a routerLink="/register">Faça sua inscrição</a></li>
+            <li><a routerLink="/login">Faça seu login</a></li>
             <!-- <li><a [routerLink]="'/songs'">Músicas</a></li> -->
             <!-- <li><a href="#">Galeria</a></li> -->
             <!-- <li><a href="#">Depoimentos</a></li> -->
@@ -156,7 +147,7 @@
           <h3 class="ei-widget-title">Contato:</h3>
           <h4>
             <i class="fas fa-envelope"></i>
-            E-mail: <br />alegriacristacentral@gmail.com
+            E-mail: <br /><a href="mailto:alegriacristacentral@gmail.com">alegriacristacentral@gmail.com</a>
             <span>(Todos os dias)</span>
           </h4>
           <!-- <h4>
@@ -165,13 +156,13 @@
             <span>Goiânia, GO, Brasil</span>
           </h4> -->
           <div class="download-btn" style="display: none">
-            <a href="#"><img src="assets/img/app-landing/logo/app1.png" alt=""></a>
-            <a href="#"><img src="assets/img/app-landing/logo/gp1.png" alt=""></a>
+            <a href="#"><img src="assets/template/img/app-landing/logo/app1.png" alt=""></a>
+            <a href="#"><img src="assets/template/img/app-landing/logo/gp1.png" alt=""></a>
           </div>
-          <div class="ei-footer-social my-footer">
+          <!-- <div class="ei-footer-social my-footer">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -187,18 +178,20 @@
           </div>
           <div class="col-md-8">
             <div class="ei-copyright-menu">
+              <!-- <p>Last updated: 15/02/2023</p> -->
               <!-- <a href="#">Ajuda</a>
-              <a href="#">Termos & Condições </a>
-              <a href="#">Privacidade </a> -->
+            <a href="#">Termos & Condições </a>
+            <a href="#">Privacidade </a> -->
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="position-absolute" data-parallax='{"x" : 60}'><img
-      src="assets/img/app-landing/shape/fo-shape1.png" alt=""></div>
-  <div class="position-absolute" data-parallax='{"y" : 60}'><img
-      src="assets/img/app-landing/shape/fo-shape2.png" alt=""></div>
-  <div class="ei-footer-shape3 position-absolute"><img src="assets/img/app-landing/shape/eimap.png" alt=""></div>
+  <div class="ei-footer-shape1 position-absolute" data-parallax='{"x" : 60}'><img
+      src="assets/template/img/app-landing/shape/fo-shape1.png" alt=""></div>
+  <div class="ei-footer-shape2 position-absolute" data-parallax='{"y" : 60}'><img
+      src="assets/template/img/app-landing/shape/fo-shape2.png" alt=""></div>
+  <div class="ei-footer-shape3 position-absolute"><img src="assets/template/img/app-landing/shape/eimap.png" alt="">
+  </div>
 </section>
