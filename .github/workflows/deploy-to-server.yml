@@ -1,4 +1,4 @@
-name: 🚀 Deploy website to prd server
+name: 🚀 Deploy website to PRD server
 'on':
   push:
     branches:

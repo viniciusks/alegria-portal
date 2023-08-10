@@ -1,4 +1,4 @@
-name: 🚀 Deploy website to dev server
+name: 🚀 Deploy website to DEV server
 on:
   push:
     branches:
@@ -19,6 +19,6 @@ jobs:
         username: concafras1
         password: ${{ secrets.FTP_PASSWORD }}
         port: 22
-        protocol: sftp
+        protocol: ftps
         local-dir: ./dist/alegria-portal/
         server-dir: /home/storage/c/93/dd/concafras1/public_html/alegriacrista/dev/
