@@ -1,11 +1,11 @@
-name: 🚀 Deploy website on push
+name: 🚀 Deploy website to dev server
 on:
   push:
     branches:
-      - feature/AD-22
+      - feature/*
 jobs:
   web-deploy:
-    name: 🎉 Deploy
+    name: 🎉 Deploy Angular App
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
@@ -19,7 +19,7 @@ jobs:
         username: concafras1
         password: ${{ secrets.FTP_PASSWORD }}
         port: 22
-        local-dir: ./dist/alegria-portal
+        local-dir: ./dist/alegria-portal/
         server-dir: /home/storage/c/93/dd/concafras1/public_html/alegriacrista/dev
 
 
