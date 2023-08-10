@@ -20,7 +20,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         port: 22
         local-dir: ./dist/alegria-portal/
-        server-dir: /home/storage/c/93/dd/concafras1/public_html/alegriacrista/dev
+        server-dir: /home/storage/c/93/dd/concafras1/public_html/alegriacrista/dev/
 
 
 # name: Deploy to server

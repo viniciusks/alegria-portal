@@ -1,8 +1,8 @@
-name: Deploy to server
+name: 🚀 Deploy website to prd server
 'on':
   push:
     branches:
-      - feature/AD-22
+      - main
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
