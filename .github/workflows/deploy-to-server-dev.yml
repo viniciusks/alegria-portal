@@ -15,34 +15,9 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ftp.concafras.com
+        server: sftp.concafras.com
         username: concafras1
         password: ${{ secrets.FTP_PASSWORD }}
         port: 22
         local-dir: ./dist/alegria-portal/
         server-dir: /home/storage/c/93/dd/concafras1/public_html/alegriacrista/dev/
-
-
-# name: Deploy to server
-# 'on':
-#   push:
-#     branches:
-#       - feature/AD-22
-# jobs:
-#   build_and_deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - run: npm ci --legacy-peer-deps && npm run build
-#       - name: List output files
-#         run: ls dist/alegria-portal
-#       - name: FTP-Deploy-Action
-#         uses: SamKirkland/FTP-Deploy-Action@2.0.0
-#         env:
-#           FTP_SERVER: ${{ secrets.FTP_SERVER }}
-#           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-#           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-#           LOCAL_DIR: dist/alegria-portal
-#           METHOD: sftp
-#           PORT: 22
-#           ARGS: --delete
