@@ -26,6 +26,7 @@ import { PlayerComponent } from './admin/player/player.component';
 import { AddPlayerComponent } from './admin/player/add-player/add-player.component';
 import { EditPlayerComponent } from './admin/player/edit-player/edit-player.component';
 import { AdminGuard } from './services/guards/admin.guard';
+import { InitialComponent } from './pages/home/initial/initial.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AdminGuard } from './services/guards/admin.guard';
     PlayerComponent,
     AddPlayerComponent,
     EditPlayerComponent,
+    InitialComponent,
   ],
   imports: [
     BrowserModule,
