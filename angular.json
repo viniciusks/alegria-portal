@@ -29,12 +29,11 @@
             ],
             "styles": [
               "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
-              "src/styles.css",
-              "src/assets/css/fontawesome-all.css",
-              "src/assets/css/style.css",
-              "src/assets/styles_geral.css"
+              "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/geral.js"
+            ]
           },
           "configurations": {
             "production": {

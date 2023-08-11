@@ -2,12 +2,20 @@
   padding-top: 4rem;
 }
 
-.logo-img {
-  width: 4rem;
+/* .logo-img {
+  width: 9.8rem;
   margin: 0.2rem;
   filter: drop-shadow(1px 1px 0.5rem #f8da5f);
   position: relative;
-  top: -0.5rem;
+  top: 3rem;
+} */
+
+.new-logo-width {
+  width: 4rem !important;
+}
+
+.appheader-content.eisticky-menu-content-overlay {
+  margin-top: -0.2rem !important;
 }
 
 .my-btn-logout {

@@ -13,6 +13,7 @@ import { AddPlayerComponent } from './admin/player/add-player/add-player.compone
 import { EditPlayerComponent } from './admin/player/edit-player/edit-player.component';
 import { AdminGuard } from './services/guards/admin.guard';
 import { MchGeralComponent } from './admin/upload-files-pages/mch-geral/mch-geral.component';
+import { InitialComponent } from './pages/home/initial/initial.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        component: InitialComponent,
+      },
+      {
+        path: 'space-joy',
         canActivate: [UserGuard],
         component: SpaceJoyComponent,
       },
