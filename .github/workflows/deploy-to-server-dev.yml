@@ -14,8 +14,10 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.11.3'
-    - name: Display Python version
-      run: python -c "import sys; print(sys.version)"
+    - name: Install dependencies from sftp script
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r .github/scripts/send_sftp/requirements.txt
     - name: Build Angular app
       run: npm ci --legacy-peer-deps && npm run build
     - name: list
