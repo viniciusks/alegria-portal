@@ -10,15 +10,22 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
+    - name: 🚚 Get python scripts
+      uses: actions/checkout@v3
+      with:
+        repository: viniciusks/alegria-scripts
+        ref: main
     - name: 🎶 Build App
       run: npm ci --legacy-peer-deps && npm run build
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ftp.concafras.com
-        username: concafras1
-        password: ${{ secrets.FTP_PASSWORD }}
-        port: 22
-        protocol: ftps
-        local-dir: ./dist/alegria-portal/
-        server-dir: /home/storage/c/93/dd/concafras1/public_html/alegriacrista/dev/
+    - name: list
+      run: ls -lah
+    # - name: 📂 Sync files
+    #   uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    #   with:
+    #     server: ftp.concafras.com
+    #     username: concafras1
+    #     password: ${{ secrets.FTP_PASSWORD }}
+    #     port: 22
+    #     protocol: ftps
+    #     local-dir: ./dist/alegria-portal/
+    #     server-dir: /home/storage/c/93/dd/concafras1/public_html/alegriacrista/dev/
