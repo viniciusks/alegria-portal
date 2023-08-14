@@ -17,6 +17,8 @@ def main(params):
     absolute_path = f"{ALEGRIA_PATH_FOLDER}{env_path}"
     with sftp.cd(absolute_path):
       print(f"Entrou dentro do {absolute_path}")
+      sftp.put_r("dist/alegria-portal/", absolute_path)
+    sftp.close()
 
 
 if __name__ == "__main__":
