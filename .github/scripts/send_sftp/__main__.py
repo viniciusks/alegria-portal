@@ -13,9 +13,10 @@ def main(params):
 
   # Início da conexão com o servidor da CONCAFRAS
   with pysftp.Connection(host=params['host'], username=params['user'], password=params['pass'], port=HOST_PORT, cnopts=cnopts, log="./log_script.log") as sftp:
-    print(params)
-    with sftp.cd(f"{ALEGRIA_PATH_FOLDER}"):
-      print("Entrou")
+    env_path = "/" if params['env'] == 'prd' else "/dev"
+    absolute_path = f"{ALEGRIA_PATH_FOLDER}{env_path}"
+    with sftp.cd(absolute_path):
+      print(f"Entrou dentro do {absolute_path}")
 
 
 if __name__ == "__main__":
@@ -23,7 +24,7 @@ if __name__ == "__main__":
   parser.add_argument('host', help='Host para realizar a conexão.')
   parser.add_argument('user', help='Usuário para realizar a conexão.')
   parser.add_argument('pass', help='Senha para realizar a conexão.')
-  parser.add_argument('file_path', help='Arquivo que deve ser transferido.')
+  parser.add_argument('env', help='Ambiente do deploy.')
   params = vars(parser.parse_args())
 
   main(params)
