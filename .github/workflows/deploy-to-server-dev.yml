@@ -14,21 +14,13 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.11.3'
-    - name: Install dependencies from sftp script
+    - name: Install dependencies from SFTP script
       run: |
         python -m pip install --upgrade pip
         pip install -r .github/scripts/send_sftp/requirements.txt
+    - name: Run SFTP script
+      run: python ./.github/scripts/send_sftp "host" "user" "pass" "file_path"
     - name: Build Angular app
       run: npm ci --legacy-peer-deps && npm run build
     - name: list
       run: ls -lah
-    # - name: 📂 Sync files
-    #   uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-    #   with:
-    #     server: ftp.concafras.com
-    #     username: concafras1
-    #     password: ${{ secrets.FTP_PASSWORD }}
-    #     port: 22
-    #     protocol: ftps
-    #     local-dir: ./dist/alegria-portal/
-    #     server-dir: /home/storage/c/93/dd/concafras1/public_html/alegriacrista/dev/
