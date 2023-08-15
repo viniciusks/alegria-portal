@@ -20,8 +20,6 @@ jobs:
         pip install -r .github/scripts/send_sftp/requirements.txt
     - name: Build Angular app
       run: |
-        node -v
-        node .github/scripts/update_version/main.js
         npm ci --legacy-peer-deps
         npm run build
     - name: Replace base href
