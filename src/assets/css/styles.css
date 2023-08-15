@@ -9,6 +9,7 @@ ul#main-nav li {
 
 .my-nav-link {
   padding: 0;
+  height: 5rem;
 }
 
 /* MENU DE LINKS DO CENTRO */
@@ -75,7 +76,7 @@ ul#main-nav li {
 .nav-link {
   color: #000 !important;
   font-weight: 700;
-  height: 5rem;
+  /* height: 5rem; */
 }
 
 .my-btn-login {
