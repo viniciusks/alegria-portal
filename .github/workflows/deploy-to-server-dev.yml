@@ -20,5 +20,7 @@ jobs:
         pip install -r .github/scripts/send_sftp/requirements.txt
     - name: Build Angular app
       run: npm ci --legacy-peer-deps && npm run build
+    - name: Replace base href
+      run: sed 's/\/alegriacrista/\/alegriacrista\/dev/' dist/alegria-portal/index.html
     - name: Run SFTP script
       run: python ./.github/scripts/send_sftp '${{ vars.HOST_URL }}' '${{ secrets.FTP_USERNAME }}' '${{ secrets.FTP_PASSWORD }}' "dev"
