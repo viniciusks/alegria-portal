@@ -1,4 +1,4 @@
-name: Deploy website to DEV server
+name: Deploy website to PRD server
 on:
   push:
     branches:
