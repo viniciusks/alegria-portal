@@ -62,12 +62,12 @@ export class HomeAdminComponent implements OnInit {
         ],
       },
       {
-        label: 'Subir arquivos',
+        label: 'Utilitários',
         items: [
           {
-            label: 'MC Geral (Power Point)',
+            label: 'Subir arquivos',
             icon: 'pi pi-fw pi-upload',
-            routerLink: '/admin/upload-files/mch-geral',
+            routerLink: '/admin/upload-files',
           },
         ],
       },
