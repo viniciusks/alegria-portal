@@ -24,24 +24,23 @@ export class UploadFilesComponent implements OnInit {
   ngOnInit(): void {}
 
   uploadFiles(event: any): void {
+    let files: File[] = event.files;
     let body: MyType = {
       path: `${this.baseUrl}/${this.typeContent}`,
       files: [],
     };
-    let files: File[] = event.files;
-    let reader = new FileReader();
 
     files.forEach((file) => {
-      let result = reader.readAsText(file);
       let info = {
         name: file.name,
         size: file.size,
         type: file.type,
       };
       body.files.push(info);
-      console.log(result);
       // https://www.youtube.com/watch?v=SWTJxnms_YA&ab_channel=DouglasHorstmann
     });
+
+    console.log(body);
 
     this._utilsService.uploadFiles(body).subscribe((response) => {
       console.log(response);
