@@ -44,3 +44,6 @@ Thumbs.db
 
 # Firebase file
 .firebase/
+
+# Service account GCP
+service-account/

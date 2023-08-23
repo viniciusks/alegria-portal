@@ -3,6 +3,7 @@
     <span class="title-font">Subir arquivo para o <strong>Cloud Storage</strong></span>
   </div>
   <hr class="mb-3" />
+  <!-- <p-progressBar [value]="uploadProgress"></p-progressBar> -->
   <div>
     <div class="row align-items-center mb-2">
       <select [(ngModel)]="baseUrl" class="form-select col me-2" aria-label="Disabled select example" disabled>
@@ -15,4 +16,12 @@
     </div>
     <p-fileUpload name="myfile[]" [customUpload]="true" (uploadHandler)="uploadFiles($event)"></p-fileUpload>
   </div>
+  <div *ngIf="this.downloadUrl != ''" class="mt-2 alert alert-light" role="alert">
+    URL de Download: <a [href]="this.downloadUrl" target="_blank" rel="noopener noreferrer">{{ this.downloadUrl }}</a>
+  </div>
 </div>
+
+<!-- Spinner -->
+<ngx-spinner type="ball-scale-multiple">
+  <span class="white-font">Carregando...</span>
+</ngx-spinner>

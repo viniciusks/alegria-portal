@@ -13,6 +13,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -64,6 +65,7 @@ import { UploadFilesComponent } from './admin/upload-files/upload-files.componen
     ButtonModule,
     InputTextModule,
     FileUploadModule,
+    ProgressBarModule,
   ],
   providers: [AdminGuard],
   bootstrap: [AppComponent],
