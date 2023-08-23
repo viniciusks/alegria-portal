@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { UtilsService } from 'src/app/services/utils.service';
-import firebase from 'src/app/services/firebase.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { MessageService } from 'primeng/api';
+import firebase from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-upload-files',
   templateUrl: './upload-files.component.html',
   styleUrls: ['./upload-files.component.css'],
-  providers: [UtilsService, NgxSpinnerService],
+  providers: [NgxSpinnerService, MessageService],
 })
 export class UploadFilesComponent implements OnInit {
   baseUrl: string;
@@ -15,8 +15,8 @@ export class UploadFilesComponent implements OnInit {
   downloadUrl: string;
 
   constructor(
-    private _utilsService: UtilsService,
-    private _spinner: NgxSpinnerService
+    private _spinner: NgxSpinnerService,
+    private _messageService: MessageService
   ) {
     this.baseUrl = 'downloads';
     this.typeContent = 'Escolha o tipo do conteúdo';
@@ -26,28 +26,42 @@ export class UploadFilesComponent implements OnInit {
   ngOnInit(): void {}
 
   uploadFiles(event: any): void {
-    this._spinner.show();
-    let file: File = event.files[0];
+    this._messageService.clear();
+    if (this.typeContent != 'Escolha o tipo do conteúdo') {
+      let file: File = event.files[0];
+      if (file) {
+        this._spinner.show();
+        let path = `${this.baseUrl}/${this.typeContent}`;
+        let fileName = file.name.replace(/ /g, '_');
 
-    if (file) {
-      let path = `${this.baseUrl}/${this.typeContent}`;
-
-      firebase
-        .storage()
-        .ref()
-        .child(`${path}/${file.name}`)
-        .put(file)
-        .then(() => {
-          firebase
-            .storage()
-            .ref()
-            .child(`${path}/${file.name}`)
-            .getDownloadURL()
-            .then((url) => {
-              this.downloadUrl = url;
-              this._spinner.hide();
-            });
-        });
+        firebase
+          .storage()
+          .ref()
+          .child(`${path}/${fileName}`)
+          .put(file)
+          .then(() => {
+            firebase
+              .storage()
+              .ref()
+              .child(`${path}/${fileName}`)
+              .getDownloadURL()
+              .then((url) => {
+                this.downloadUrl = url;
+                this._messageService.add({
+                  severity: 'success',
+                  summary: 'Upload finalizado',
+                  detail: `O arquivo ${fileName} subiu com sucesso.`,
+                });
+                this._spinner.hide();
+              });
+          });
+      }
+    } else {
+      this._messageService.add({
+        severity: 'error',
+        summary: 'Caminho inválido',
+        detail: 'Selecione o caminho principal corretamente.',
+      });
     }
   }
 }
