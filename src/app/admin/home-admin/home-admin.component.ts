@@ -61,6 +61,16 @@ export class HomeAdminComponent implements OnInit {
           },
         ],
       },
+      {
+        label: 'Utilitários',
+        items: [
+          {
+            label: 'Subir arquivos',
+            icon: 'pi pi-fw pi-upload',
+            routerLink: '/admin/upload-files',
+          },
+        ],
+      },
     ];
   }
 }

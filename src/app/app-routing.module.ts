@@ -13,6 +13,7 @@ import { AddPlayerComponent } from './admin/player/add-player/add-player.compone
 import { EditPlayerComponent } from './admin/player/edit-player/edit-player.component';
 import { AdminGuard } from './services/guards/admin.guard';
 import { InitialComponent } from './pages/home/initial/initial.component';
+import { UploadFilesComponent } from './admin/upload-files/upload-files.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
             component: EditPlayerComponent,
           },
         ],
+      },
+      {
+        path: 'upload-files',
+        component: UploadFilesComponent,
       },
     ],
   },
