@@ -29,13 +29,4 @@ export class UtilsService {
       headers: headers,
     });
   }
-
-  uploadFiles(body: any): Observable<any> {
-    let headers = new HttpHeaders();
-    headers.set('Content-Type', 'application/json');
-
-    return this._http.post(`${this.urlFunction}/files`, body, {
-      headers
-    })
-  }
 }

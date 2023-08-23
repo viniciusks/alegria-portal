@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilsService } from 'src/app/services/utils.service';
+import firebase from 'src/app/services/firebase.service';
 
 type MyType = {
   path: string;
@@ -24,26 +25,34 @@ export class UploadFilesComponent implements OnInit {
   ngOnInit(): void {}
 
   uploadFiles(event: any): void {
-    let files: File[] = event.files;
-    let body: MyType = {
-      path: `${this.baseUrl}/${this.typeContent}`,
-      files: [],
-    };
+    let file: File = event.files[0];
 
-    files.forEach((file) => {
-      let info = {
-        name: file.name,
-        size: file.size,
-        type: file.type,
+    if (file) {
+      let body = {
+        path: `${this.baseUrl}/${this.typeContent}`,
+        file,
       };
-      body.files.push(info);
-      // https://www.youtube.com/watch?v=SWTJxnms_YA&ab_channel=DouglasHorstmann
-    });
 
-    console.log(body);
+      console.log(body);
 
-    this._utilsService.uploadFiles(body).subscribe((response) => {
-      console.log(response);
-    });
+      firebase
+        .storage()
+        .ref()
+        .child(`${body.path}/${body.file.name}`)
+        .put(body.file)
+        .then((result) => {
+          console.log(result);
+        });
+
+      // files.forEach((file) => {
+      //   let info = {
+      //     name: file.name,
+      //     size: file.size,
+      //     type: file.type,
+      //   };
+      //   body.files.push(info);
+      //   // https://www.youtube.com/watch?v=SWTJxnms_YA&ab_channel=DouglasHorstmann
+      // });
+    }
   }
 }
