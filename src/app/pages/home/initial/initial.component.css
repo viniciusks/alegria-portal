@@ -1,3 +1,27 @@
+a:link {
+  color: #0000ff;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #0000ff;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ff0000;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:active {
+  color: #ffff00;
+  background-color: transparent;
+  text-decoration: none;
+}
+
 #carousel-alegria-initial > img {
   filter: rgba(250, 220, 91, 0.8);
 }
