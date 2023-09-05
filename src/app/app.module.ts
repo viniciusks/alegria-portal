@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { DialogModule } from 'primeng/dialog';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -66,6 +67,7 @@ import { UploadFilesComponent } from './admin/upload-files/upload-files.componen
     InputTextModule,
     FileUploadModule,
     ProgressBarModule,
+    DialogModule,
   ],
   providers: [AdminGuard],
   bootstrap: [AppComponent],

@@ -2,9 +2,9 @@
   <img class="background-img-logo" src="assets/img/logo/logo.svg" alt="Logo Alegria" srcset="">
   <div class="container div-login">
     <div class="login-content">
-      <h1>Login</h1>
+      <p-messages></p-messages>
       <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-        <div class="col-12 col-md-12 mt-5 mb-3 text-left">
+        <div class="col-12 col-md-12 mt-2 mb-3 text-left">
           <div *ngIf="!this.validateForm" class="alert alert-danger" role="alert">
             Preencha todas as informações corretamente!
           </div>
@@ -14,22 +14,39 @@
           <label for="email" class="form-label">Email</label>
           <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email..." ngModel>
         </div>
-        <div class="col-12 col-md-12 mt-3 mb-5 text-left">
+        <div class="col-12 col-md-12 mt-3 mb-4 text-left">
           <label for="pass" class="form-label">Senha</label>
           <input type="password" class="form-control" id="pass" name="pass" placeholder="Digite sua senha..." ngModel>
         </div>
-        <div class="col-12 col-md-12 mt-3 mb-3">
-          <div class="mt-2 mb-2">
-            <button type="submit" class="btn btn-lg btn-primary btn-login">Entrar</button>
+        <div class="col-12 col-md-12 mt-3">
+          <div>
+            <p-button type="submit" label="Entrar" styleClass="font-default p-button-lg"></p-button>
+            <!-- <button type="submit" class="btn btn-lg btn-primary btn-login">Entrar</button> -->
           </div>
-          <div class="mt-2 mb-2">
-            <a class="link-register" [routerLink]="'/register'">Não tem um perfil? Crie ele aqui!</a>
+          <div class="mt-2">
+            <p-button [routerLink]="'/register'" styleClass="font-default p-button-link p-button-sm"
+              label="Não tem um perfil? Crie ele aqui!"></p-button>
+            <!-- <a class="link-register" [routerLink]="'/register'">Não tem um perfil? Crie ele aqui!</a> -->
+          </div>
+          <div>
+            <p-button (click)="showModalDialog()" styleClass="font-default p-button-link p-button-sm"
+              label="Esqueceu sua senha?"></p-button>
           </div>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+<p-dialog header="Esqueceu sua senha?" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+  [draggable]="false" [resizable]="false" styleClass="font-default">
+  <p class="m-0">Informa seu e-mail cadastrado:</p>
+  <input type="email" pInputText [(ngModel)]="recoverEmail" class="w-100" placeholder="Digite seu e-mail...">
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="sendEmailRecoverPassword()" label="Enviar"
+      styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>
 
 <ngx-spinner bdColor="rgba(51,51,51,0.8)" color="#fff" type="ball-scale-multiple">
   <p style="font-size: 20px; color: white">Carregando...</p>
