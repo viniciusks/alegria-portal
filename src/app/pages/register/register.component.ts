@@ -5,7 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { PasswordValidation } from 'src/app/services/validations/password.validation';
 import { NgxSpinnerService } from 'ngx-spinner';
-import firebase from 'src/app/services/firebase.service';
+import firebase from 'src/app/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-register',

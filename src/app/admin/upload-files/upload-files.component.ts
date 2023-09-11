@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MessageService } from 'primeng/api';
-import firebase from 'src/app/services/firebase.service';
+import firebase from 'src/app/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-upload-files',
