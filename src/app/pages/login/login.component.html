@@ -4,17 +4,19 @@
     <div class="login-content">
       <p-messages></p-messages>
       <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-        <div class="col-12 col-md-12 mt-2 mb-3 text-left">
-          <label for="email" class="form-label">Email</label>
-          <!-- <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email..." ngModel> -->
-          <input type="email" class="form-control font-default" id="email" name="email"
-            placeholder="Digite seu email..." pInputText [(ngModel)]="email" [ngModelOptions]="{standalone: true}" />
+        <div class="col-12 col-md-12 mt-5 mb-5 text-left">
+          <span class="p-float-label">
+            <input id="email" type="email" class="form-control font-default" id="email" name="email"
+            placeholder="Digite seu email..." pInputText [(ngModel)]="email" [ngModelOptions]="{standalone: true}" >
+            <label for="email">E-mail</label>
+          </span>
         </div>
-        <div class="col-12 col-md-12 mt-3 mb-4 text-left">
-          <label for="pass" class="form-label">Senha</label>
-          <!-- <input type="password" class="form-control" id="pass" name="pass" placeholder="Digite sua senha..." ngModel> -->
-          <p-password id="pass" [(ngModel)]="password" [feedback]="false" [toggleMask]="true" placeholder="Digite sua senha..."
-            [ngModelOptions]="{standalone: true}"></p-password>
+        <div class="col-12 col-md-12 mt-5 mb-5 text-left">
+          <span class="p-float-label">
+            <p-password inputId="pass" [(ngModel)]="password" [feedback]="false" [toggleMask]="true"
+            placeholder="Digite sua senha..." [ngModelOptions]="{standalone: true}"></p-password>
+            <label for="pass">Senha</label>
+          </span>
         </div>
         <div class="col-12 col-md-12 mt-3">
           <div>
