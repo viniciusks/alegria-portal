@@ -90,3 +90,9 @@ footer {
     border-radius: 0;
   }
 }
+
+/* PRIMENG */
+:host ::ng-deep .p-password input {
+  width: 25rem;
+  font-family: "Poppins", sans-serif !important;
+}

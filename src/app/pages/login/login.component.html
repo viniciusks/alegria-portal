@@ -5,18 +5,16 @@
       <p-messages></p-messages>
       <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
         <div class="col-12 col-md-12 mt-2 mb-3 text-left">
-          <div *ngIf="!this.validateForm" class="alert alert-danger" role="alert">
-            Preencha todas as informações corretamente!
-          </div>
-          <div *ngIf="this.errorFlag" class="alert alert-danger" role="alert">
-            Erro de comunicação com o servidor!
-          </div>
           <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email..." ngModel>
+          <!-- <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email..." ngModel> -->
+          <input type="email" class="form-control font-default" id="email" name="email"
+            placeholder="Digite seu email..." pInputText [(ngModel)]="email" [ngModelOptions]="{standalone: true}" />
         </div>
         <div class="col-12 col-md-12 mt-3 mb-4 text-left">
           <label for="pass" class="form-label">Senha</label>
-          <input type="password" class="form-control" id="pass" name="pass" placeholder="Digite sua senha..." ngModel>
+          <!-- <input type="password" class="form-control" id="pass" name="pass" placeholder="Digite sua senha..." ngModel> -->
+          <p-password [(ngModel)]="password" [feedback]="false" [toggleMask]="true" placeholder="Digite sua senha..."
+            [ngModelOptions]="{standalone: true}"></p-password>
         </div>
         <div class="col-12 col-md-12 mt-3">
           <div>
