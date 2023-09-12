@@ -93,6 +93,6 @@ footer {
 
 /* PRIMENG */
 :host ::ng-deep .p-password input {
-  width: 25rem;
+  width: 100%;
   font-family: "Poppins", sans-serif !important;
 }

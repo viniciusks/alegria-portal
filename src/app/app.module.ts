@@ -16,6 +16,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { DialogModule } from 'primeng/dialog';
 import { PasswordModule } from 'primeng/password';
+import { CardModule } from 'primeng/card';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -70,6 +71,7 @@ import { UploadFilesComponent } from './admin/upload-files/upload-files.componen
     ProgressBarModule,
     DialogModule,
     PasswordModule,
+    CardModule,
   ],
   providers: [AdminGuard],
   bootstrap: [AppComponent],
