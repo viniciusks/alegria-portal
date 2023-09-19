@@ -14,6 +14,7 @@ import { EditPlayerComponent } from './admin/player/edit-player/edit-player.comp
 import { AdminGuard } from './services/guards/admin.guard';
 import { InitialComponent } from './pages/home/initial/initial.component';
 import { UploadFilesComponent } from './admin/upload-files/upload-files.component';
+import { CoursesComponent } from './pages/courses/courses.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterComponent,
+      },
+      {
+        path: 'courses',
+        component: CoursesComponent,
       },
     ],
   },
