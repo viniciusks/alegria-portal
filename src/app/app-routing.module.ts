@@ -16,6 +16,7 @@ import { InitialComponent } from './pages/home/initial/initial.component';
 import { UploadFilesComponent } from './admin/upload-files/upload-files.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { CoursesAdminComponent } from './admin/courses-admin/courses-admin.component';
+import { AddCourseComponent } from './admin/courses-admin/add-course/add-course.component';
 
 const routes: Routes = [
   {
@@ -77,7 +78,16 @@ const routes: Routes = [
       },
       {
         path: 'courses',
-        component: CoursesAdminComponent,
+        children: [
+          {
+            path: '',
+            component: CoursesAdminComponent,
+          },
+          {
+            path: 'add-course',
+            component: AddCourseComponent,
+          },
+        ],
       },
     ],
   },

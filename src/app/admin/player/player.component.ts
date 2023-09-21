@@ -58,10 +58,6 @@ export class PlayerComponent implements OnInit {
     }
   }
 
-  goToEditAlbum(id: string) {
-    this._router.navigate([`/player/edit-player/${id}`]);
-  }
-
   confirmDelete(id: string) {
     this._confirmationService.confirm({
       message: 'Tem certeza que deseja excluir esse álbum?',

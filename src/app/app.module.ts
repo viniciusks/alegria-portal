@@ -39,6 +39,7 @@ import { InitialComponent } from './pages/home/initial/initial.component';
 import { UploadFilesComponent } from './admin/upload-files/upload-files.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { CoursesAdminComponent } from './admin/courses-admin/courses-admin.component';
+import { AddCourseComponent } from './admin/courses-admin/add-course/add-course.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { CoursesAdminComponent } from './admin/courses-admin/courses-admin.compo
     UploadFilesComponent,
     CoursesComponent,
     CoursesAdminComponent,
+    AddCourseComponent,
   ],
   imports: [
     BrowserModule,
