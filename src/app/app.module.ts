@@ -38,6 +38,7 @@ import { EditPlayerComponent } from './admin/player/edit-player/edit-player.comp
 import { InitialComponent } from './pages/home/initial/initial.component';
 import { UploadFilesComponent } from './admin/upload-files/upload-files.component';
 import { CoursesComponent } from './pages/courses/courses.component';
+import { CoursesAdminComponent } from './admin/courses-admin/courses-admin.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CoursesComponent } from './pages/courses/courses.component';
     InitialComponent,
     UploadFilesComponent,
     CoursesComponent,
+    CoursesAdminComponent,
   ],
   imports: [
     BrowserModule,
