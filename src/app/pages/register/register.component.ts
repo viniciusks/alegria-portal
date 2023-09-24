@@ -5,7 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { PasswordValidation } from 'src/app/services/validations/password.validation';
 import { NgxSpinnerService } from 'ngx-spinner';
-import firebase from 'src/app/services/firebase/firebase.service';
+import auth from 'src/app/services/firebase/firebase-auth.service';
 
 @Component({
   selector: 'app-register',
@@ -136,6 +136,11 @@ export class RegisterComponent implements OnInit {
           this._spinner.hide();
           return;
         }
+        this.user.state = form.value.state;
+        this.user.city = form.value.city;
+      } else {
+        this.user.state = '';
+        this.user.city = '';
       }
 
       if (form.value.pass != form.value.pass_confirm) {
@@ -156,8 +161,6 @@ export class RegisterComponent implements OnInit {
       this.user.whatsapp = form.value.whatsapp;
 
       // Valores opcionais
-      this.user.state = form.value.state || '';
-      this.user.city = form.value.city || '';
       this.user.artisticFormation = form.value.artisticFormation || '';
       this.user.professionalArt = form.value.professionalArt || '';
       this.user.englishLevel = form.value.english || '';
@@ -187,8 +190,7 @@ export class RegisterComponent implements OnInit {
 
       this.validateForm.flag = false;
 
-      firebase
-        .auth()
+      auth
         .createUserWithEmailAndPassword(this.user.email, this.user.password)
         .then((response: any) => {
           let uid = response.user.uid;
@@ -225,9 +227,9 @@ export class RegisterComponent implements OnInit {
   }
 
   validateCountry(country: string) {
-    let countryLow = country.toLowerCase();
+    let countryLow = country.toLowerCase().trim();
 
-    if (countryLow == 'brasil') {
+    if (countryLow == 'brasil' || countryLow == 'brazil') {
       this.isBR = true;
       return;
     }
