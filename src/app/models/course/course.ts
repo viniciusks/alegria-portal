@@ -3,6 +3,6 @@ import { CourseCategory } from './course-category';
 export interface Course {
   name: string;
   description: string;
-  category: CourseCategory[];
+  category: CourseCategory;
   archives: Object[];
 }

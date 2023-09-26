@@ -17,6 +17,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { DialogModule } from 'primeng/dialog';
 import { PasswordModule } from 'primeng/password';
 import { CardModule } from 'primeng/card';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -78,6 +80,8 @@ import { AddCourseComponent } from './admin/courses-admin/add-course/add-course.
     DialogModule,
     PasswordModule,
     CardModule,
+    InputTextareaModule,
+    DropdownModule,
   ],
   providers: [AdminGuard],
   bootstrap: [AppComponent],
