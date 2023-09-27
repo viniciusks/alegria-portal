@@ -42,12 +42,20 @@ export class AddCourseComponent implements OnInit {
 
   onChangeCategory(event: any) {
     this.course.category.name = event.target.value;
-    console.log(this.course);
+
+    if (
+      this.course.category.name == this.categories[2].code ||
+      this.course.category.name == this.categories[3].code
+    ) {
+      this.course.category.subcategories.splice(
+        0,
+        this.course.category.subcategories.length
+      );
+    }
   }
 
   onChangeSubcategory(event: any) {
     this.course.category.subcategories.push(event.target.value);
-    console.log(this.course);
   }
 
   goToInside(route: string, id: string = '') {
