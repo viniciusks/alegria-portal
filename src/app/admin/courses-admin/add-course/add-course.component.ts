@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from 'src/app/models/course/course';
+import storage from 'src/app/services/firebase/firebase-storage.service';
 
 @Component({
   selector: 'app-add-course',
@@ -38,6 +39,13 @@ export class AddCourseComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('[OK] AddCourseComponent');
+    storage
+      .ref()
+      .child('downloads/musicas')
+      .listAll()
+      .then((result) => {
+        console.log(result);
+      });
   }
 
   onChangeCategory(event: any) {
