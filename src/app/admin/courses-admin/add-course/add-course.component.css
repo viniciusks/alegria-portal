@@ -8,3 +8,7 @@
   display: flex;
   align-items: center;
 }
+
+.form-label {
+  font-size: 20px;
+}
