@@ -11,17 +11,16 @@
         this.EiStickyMenu();
       },
       animeScroll: function () {
-        var $target = $(".appheader-content"),
+        var $target = $(".navbar"),
           animationClass = "eisticky-menu-content-overlay",
           widthClassLogo = "new-logo-width",
           documentTop = $(document).scrollTop();
         $target.each(function () {
+          console.log(documentTop);
           if (documentTop <= 100) {
-            $(this).removeClass(animationClass);
-            $("#logo").removeClass(widthClassLogo);
+            $target.removeClass("fixed-top");
           } else {
-            $(this).addClass(animationClass);
-            $("#logo").addClass(widthClassLogo);
+            $target.addClass("fixed-top");
           }
         });
       },

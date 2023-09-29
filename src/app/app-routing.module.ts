@@ -17,6 +17,7 @@ import { CoursesComponent } from './pages/courses/courses.component';
 import { CoursesAdminComponent } from './admin/courses-admin/courses-admin.component';
 import { AddCourseComponent } from './admin/courses-admin/add-course/add-course.component';
 import { HeaderUploadFilesComponent } from './admin/upload-files/header-upload-files/header-upload-files.component';
+import { EditCourseComponent } from './admin/courses-admin/edit-course/edit-course.component';
 
 const routes: Routes = [
   {
@@ -86,6 +87,10 @@ const routes: Routes = [
           {
             path: 'add-course',
             component: AddCourseComponent,
+          },
+          {
+            path: 'edit-course/:id',
+            component: EditCourseComponent,
           },
         ],
       },

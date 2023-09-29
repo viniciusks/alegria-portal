@@ -43,7 +43,6 @@ export class CoursesAdminComponent implements OnInit {
       next: (courses: any) => {
         this._spinner.hide();
         this.courses = courses.data;
-        console.log(this.courses);
       },
       error: (error) => {
         this._spinner.hide();

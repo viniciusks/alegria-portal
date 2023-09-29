@@ -21,7 +21,7 @@
         <td>{{ body.course.category.name }}</td>
         <td>
           <button pButton class="me-1 p-button-warning" icon="pi pi-pencil"
-            (click)="goToInside('/admin/player/edit-player', body.id)"></button>
+            (click)="goToInside('/admin/courses/edit-course', body.id)"></button>
           <button pButton class="p-button-danger" icon="pi pi-trash" (click)="confirmDelete(body.id)"></button>
         </td>
       </tr>
