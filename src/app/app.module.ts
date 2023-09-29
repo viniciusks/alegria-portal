@@ -17,6 +17,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { DialogModule } from 'primeng/dialog';
 import { PasswordModule } from 'primeng/password';
 import { CardModule } from 'primeng/card';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +39,11 @@ import { AddPlayerComponent } from './admin/player/add-player/add-player.compone
 import { EditPlayerComponent } from './admin/player/edit-player/edit-player.component';
 import { InitialComponent } from './pages/home/initial/initial.component';
 import { UploadFilesComponent } from './admin/upload-files/upload-files.component';
+import { CoursesComponent } from './pages/courses/courses.component';
+import { CoursesAdminComponent } from './admin/courses-admin/courses-admin.component';
+import { AddCourseComponent } from './admin/courses-admin/add-course/add-course.component';
+import { HeaderUploadFilesComponent } from './admin/upload-files/header-upload-files/header-upload-files.component';
+import { EditCourseComponent } from './admin/courses-admin/edit-course/edit-course.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +59,11 @@ import { UploadFilesComponent } from './admin/upload-files/upload-files.componen
     EditPlayerComponent,
     InitialComponent,
     UploadFilesComponent,
+    CoursesComponent,
+    CoursesAdminComponent,
+    AddCourseComponent,
+    HeaderUploadFilesComponent,
+    EditCourseComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +84,8 @@ import { UploadFilesComponent } from './admin/upload-files/upload-files.componen
     DialogModule,
     PasswordModule,
     CardModule,
+    InputTextareaModule,
+    DropdownModule,
   ],
   providers: [AdminGuard],
   bootstrap: [AppComponent],

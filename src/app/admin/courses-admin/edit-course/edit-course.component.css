@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dflex {
+  display: flex;
+  align-items: center;
+}
+
+.form-label {
+  font-size: 20px;
+}

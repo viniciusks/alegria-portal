@@ -13,7 +13,11 @@ import { AddPlayerComponent } from './admin/player/add-player/add-player.compone
 import { EditPlayerComponent } from './admin/player/edit-player/edit-player.component';
 import { AdminGuard } from './services/guards/admin.guard';
 import { InitialComponent } from './pages/home/initial/initial.component';
-import { UploadFilesComponent } from './admin/upload-files/upload-files.component';
+import { CoursesComponent } from './pages/courses/courses.component';
+import { CoursesAdminComponent } from './admin/courses-admin/courses-admin.component';
+import { AddCourseComponent } from './admin/courses-admin/add-course/add-course.component';
+import { HeaderUploadFilesComponent } from './admin/upload-files/header-upload-files/header-upload-files.component';
+import { EditCourseComponent } from './admin/courses-admin/edit-course/edit-course.component';
 
 const routes: Routes = [
   {
@@ -36,6 +40,10 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterComponent,
+      },
+      {
+        path: 'courses',
+        component: CoursesComponent,
       },
     ],
   },
@@ -67,7 +75,24 @@ const routes: Routes = [
       },
       {
         path: 'upload-files',
-        component: UploadFilesComponent,
+        component: HeaderUploadFilesComponent,
+      },
+      {
+        path: 'courses',
+        children: [
+          {
+            path: '',
+            component: CoursesAdminComponent,
+          },
+          {
+            path: 'add-course',
+            component: AddCourseComponent,
+          },
+          {
+            path: 'edit-course/:id',
+            component: EditCourseComponent,
+          },
+        ],
       },
     ],
   },

@@ -73,11 +73,10 @@ ul#main-nav li {
   background: #fadc5b;
 }
 
-.nav-link {
+/* .nav-link {
   color: #000 !important;
   font-weight: 700;
-  /* height: 5rem; */
-}
+} */
 
 .my-btn-login {
   border-color: #000;
@@ -150,13 +149,6 @@ ul#main-nav li {
 
 .my-footer {
   padding-top: 4rem;
-}
-
-.logo-img {
-  width: 9.8rem;
-  margin: 0.2rem;
-  filter: drop-shadow(1px 1px 0.5rem #f8da5f);
-  position: relative;
 }
 
 .assinatura-logo {

@@ -6,48 +6,49 @@ import {
   ConfirmationService,
   MessageService,
 } from 'primeng/api';
-import { AlbumService } from 'src/app/services/album.service';
+import { Course } from 'src/app/models/course/course';
+import { CourseService } from 'src/app/services/course.service';
 
 @Component({
-  selector: 'app-player',
-  templateUrl: './player.component.html',
-  styleUrls: ['./player.component.css'],
-  providers: [AlbumService, ConfirmationService, MessageService],
+  selector: 'app-courses-admin',
+  templateUrl: './courses-admin.component.html',
+  styleUrls: ['./courses-admin.component.css'],
+  providers: [CourseService, ConfirmationService, MessageService],
 })
-export class PlayerComponent implements OnInit {
-  albums: any[];
+export class CoursesAdminComponent implements OnInit {
+  private courses: Course[];
 
   constructor(
     private _spinner: NgxSpinnerService,
-    private _albumService: AlbumService,
+    private _courseService: CourseService,
     private _confirmationService: ConfirmationService,
     private _messageService: MessageService,
     private _router: Router
   ) {
-    this.albums = [];
+    this.courses = [];
   }
 
   ngOnInit(): void {
-    console.log('[OK] PlayerComponent');
+    console.log('[OK] CoursesComponent');
     this._spinner.show();
-    this.getAlbums();
+    this.getCourses();
   }
 
-  getAlbums() {
-    this._albumService.getAlbums().subscribe({
-      next: (albums: any) => {
+  getCourse() {
+    return this.courses;
+  }
+
+  getCourses() {
+    this._courseService.getCourses().subscribe({
+      next: (courses: any) => {
         this._spinner.hide();
-        this.albums = albums.data;
+        this.courses = courses.data;
       },
       error: (error) => {
         this._spinner.hide();
         console.log(`[ERROR] ${error}`);
       },
     });
-  }
-
-  goTo(route: string) {
-    window.open(route, '_blank');
   }
 
   goToInside(route: string, id: string = '') {
@@ -60,18 +61,18 @@ export class PlayerComponent implements OnInit {
 
   confirmDelete(id: string) {
     this._confirmationService.confirm({
-      message: 'Tem certeza que deseja excluir esse álbum?',
+      message: 'Tem certeza que deseja excluir esse curso?',
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this._albumService.deleteAlbum(id).subscribe((response) => {
+        this._courseService.deleteCourse(id).subscribe((response) => {
           let status = response.status;
           if (status == 200) {
             this._messageService.clear();
             this._messageService.add({
               severity: 'info',
               summary: 'Deletado',
-              detail: 'Você aceitou deletar este álbum.',
+              detail: 'Você aceitou deletar este curso.',
             });
             setTimeout(() => {
               location.reload();
@@ -82,7 +83,7 @@ export class PlayerComponent implements OnInit {
         this._messageService.add({
           severity: 'info',
           summary: 'Deletado',
-          detail: 'Você aceitou deletar este álbum.',
+          detail: 'Você aceitou deletar este curso.',
         });
       },
       reject: (type: any) => {
@@ -92,7 +93,7 @@ export class PlayerComponent implements OnInit {
             this._messageService.add({
               severity: 'error',
               summary: 'Rejeitado',
-              detail: 'Você não aceitou deletar este álbum.',
+              detail: 'Você não aceitou deletar este curso.',
             });
             break;
           case ConfirmEventType.CANCEL:
@@ -100,7 +101,7 @@ export class PlayerComponent implements OnInit {
             this._messageService.add({
               severity: 'warn',
               summary: 'Cancelado',
-              detail: 'Você desistiu de deletar este álbum.',
+              detail: 'Você desistiu de deletar este curso.',
             });
             break;
         }
