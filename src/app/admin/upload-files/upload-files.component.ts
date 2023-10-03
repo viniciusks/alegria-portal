@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MessageService } from 'primeng/api';
-import firebase from 'src/app/services/firebase/firebase.service';
+import storage from 'src/app/services/firebase/firebase-storage.service';
 
 @Component({
   selector: 'app-upload-files',
@@ -34,14 +34,12 @@ export class UploadFilesComponent implements OnInit {
         let path = `${this.baseUrl}/${this.typeContent}`;
         let fileName = file.name.replace(/ /g, '_');
 
-        firebase
-          .storage()
+        storage
           .ref()
           .child(`${path}/${fileName}`)
           .put(file)
           .then(() => {
-            firebase
-              .storage()
+            storage
               .ref()
               .child(`${path}/${fileName}`)
               .getDownloadURL()

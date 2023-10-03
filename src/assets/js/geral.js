@@ -16,7 +16,6 @@
           widthClassLogo = "new-logo-width",
           documentTop = $(document).scrollTop();
         $target.each(function () {
-          console.log(documentTop);
           if (documentTop <= 100) {
             $target.removeClass("fixed-top");
           } else {

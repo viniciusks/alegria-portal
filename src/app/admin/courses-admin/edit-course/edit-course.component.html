@@ -26,22 +26,25 @@
   </div>
   <div class="row mb-4">
     <div class="col-12">
-      <label class="form-label">Categoria</label>
-      <select class="form-select" [(ngModel)]="course.category.name" aria-label="Selecione a categoria">
+      <label class="form-label">Categoria</label><br>
+      <small>Categoria selecionada: {{ course.category.name }}</small>
+      <select class="form-select" (change)="onChangeCategory($event)" aria-label="Selecione a categoria">
         <option selected>Selecione a categoria</option>
         <option *ngFor="let category of categories" value="{{category.code}}">{{category.name}}</option>
       </select>
     </div>
   </div>
-  <div *ngIf="course.category.name == 'concafras' || course.category.name == 'efas'" class="row mb-4">
+  <div *ngIf="course.category.code == 'concafras' || course.category.code == 'efas'" class="row mb-4">
     <div class="col-12">
-      <label class="form-label">Subcategoria</label>
-      <select class="form-select" multiple (change)="onChangeSubcategory($event)" aria-label="Selecione a categoria">
-        <option selected>Selecione a categoria</option>
-        <ng-container *ngFor="let subcategory of subcategories">
+      <label class="form-label">Subcategoria</label><br>
+      <small>Subcategoria selecionada: {{ course.category.subcategory.name }}</small>
+      <select class="form-select" (change)="onChangeSubcategory($event)" aria-label="Selecione a categoria">
+        <option selected>Selecione a subcategoria</option>
+        <option *ngFor="let subcategory of subcategories" value="{{subcategory.code}}">{{subcategory.name}}</option>
+        <!-- <ng-container *ngFor="let subcategory of subcategories">
           <option *ngIf="!course.category.subcategories.includes(subcategory.code)" value="{{subcategory.code}}">
             {{subcategory.name}}</option>
-        </ng-container>
+        </ng-container> -->
       </select>
     </div>
   </div>

@@ -28,15 +28,19 @@ export class AddCourseComponent implements OnInit {
       description: '',
       category: {
         name: '',
-        subcategories: [],
+        code: '',
+        subcategory: {
+          name: '',
+          code: '',
+        },
       },
       archives: [],
     };
     this.categories = [
       { name: 'CONCAFRAS', code: 'concafras' },
       { name: 'Encontro Fraterno Auta de Souza', code: 'efas' },
-      { name: 'Noções Fundamentais Teóricas', code: 'nfed' },
-      { name: 'Noções Fundamentais Oficinas', code: 'nfofiq' },
+      { name: 'Núcleo de Formação - Estudo Doutrinário', code: 'nfed' },
+      { name: 'Núcleo de Formação - Oficinas', code: 'nfofiq' },
     ];
     this.subcategories = [
       { name: 'Tema específico', code: 'especifico' },
@@ -95,21 +99,25 @@ export class AddCourseComponent implements OnInit {
   }
 
   onChangeCategory(event: any) {
-    this.course.category.name = event.target.value;
+    let select = event.target;
+    let option = select.children[select.selectedIndex];
+    this.course.category.name = option.textContent;
+    this.course.category.code = option.value;
 
     if (
       this.course.category.name == this.categories[2].code ||
       this.course.category.name == this.categories[3].code
     ) {
-      this.course.category.subcategories.splice(
-        0,
-        this.course.category.subcategories.length
-      );
+      this.course.category.subcategory.name = '';
+      this.course.category.subcategory.code = '';
     }
   }
 
   onChangeSubcategory(event: any) {
-    this.course.category.subcategories.push(event.target.value);
+    let select = event.target;
+    let option = select.children[select.selectedIndex];
+    this.course.category.subcategory.name = option.textContent;
+    this.course.category.subcategory.code = option.value;
   }
 
   goToInside(route: string, id: string = '') {
