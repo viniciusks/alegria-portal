@@ -1,6 +1,7 @@
-import { CourseSubcategories } from './course-subcategories';
+import { CourseSubcategory } from './course-subcategory';
 
 export interface CourseCategory {
   name: string;
-  subcategories: CourseSubcategories[];
+  code: string;
+  subcategory: CourseSubcategory;
 }
