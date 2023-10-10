@@ -1,4 +1,7 @@
 <div class="container pt-5">
+  <div *ngIf="coursesConcafras == [] && coursesEfas == [] && coursesNfed == [] && coursesNfofiq == []">
+    <h1 class="display-3">Sem cursos cadastrados ainda.</h1>
+  </div>
   <div class="mb-5" *ngIf="coursesConcafras != []">
     <h1 class="display-3">CONCAFRAS</h1>
     <ul style="list-style: none;">
