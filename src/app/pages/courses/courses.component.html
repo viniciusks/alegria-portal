@@ -1,3 +1,69 @@
 <div class="container pt-5">
-  <p>courses works!</p>
+  <div *ngIf="coursesConcafras == [] && coursesEfas == [] && coursesNfed == [] && coursesNfofiq == []">
+    <h1 class="display-3">Sem cursos cadastrados ainda.</h1>
+  </div>
+  <div class="mb-5" *ngIf="coursesConcafras != []">
+    <h1 class="display-3">CONCAFRAS</h1>
+    <ul style="list-style: none;">
+      <li *ngFor="let course of coursesConcafras">
+        <h1 class="display-6">{{course.name}}</h1>
+        <span class="lead">{{course.description}}</span>
+        <div class="archives-content" *ngFor="let archive of course.archives">
+          <span class="lead">{{archive.name}}</span>
+          <button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
+            class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <hr>
+  <div class="mb-5" *ngIf="coursesEfas != []">
+    <h1 class="display-3">Encontro Fraterno Auta de Souza</h1>
+    <ul style="list-style: none;">
+      <li *ngFor="let course of coursesEfas">
+        <h1 class="display-6">{{course.name}}</h1>
+        <span class="lead">{{course.description}}</span>
+        <div class="archives-content" *ngFor="let archive of course.archives">
+          <span class="lead">{{archive.name}}</span>
+          <button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
+            class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <hr>
+  <div class="mb-5" *ngIf="coursesNfed != []">
+    <h1 class="display-3">Núcleo de Formação - Teórico</h1>
+    <ul style="list-style: none;">
+      <li *ngFor="let course of coursesNfed">
+        <h1 class="display-6">{{course.name}}</h1>
+        <span class="lead">{{course.description}}</span>
+        <div class="archives-content" *ngFor="let archive of course.archives">
+          <span class="lead">{{archive.name}}</span>
+          <button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
+            class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <hr>
+  <div class="mb-5" *ngIf="coursesNfofiq != []">
+    <h1 class="display-3">Núcleo de Formação - Oficinas</h1>
+    <ul style="list-style: none;">
+      <li *ngFor="let course of coursesNfofiq">
+        <h1 class="display-6">{{course.name}}</h1>
+        <span class="lead">{{course.description}}</span>
+        <div class="archives-content" *ngFor="let archive of course.archives">
+          <span class="lead">{{archive.name}}</span>
+          <button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
+            class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
+
+<!-- Spinner -->
+<ngx-spinner type="ball-scale-multiple">
+  <span class="white-font">Carregando...</span>
+</ngx-spinner>

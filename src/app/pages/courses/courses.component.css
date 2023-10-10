@@ -1,0 +1,9 @@
+li + li {
+  margin: 1.5rem 0;
+}
+
+.archives-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
