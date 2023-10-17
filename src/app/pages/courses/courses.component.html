@@ -1,65 +1,226 @@
 <div class="container pt-5">
-  <div *ngIf="coursesConcafras == [] && coursesEfas == [] && coursesNfed == [] && coursesNfofiq == []">
+  <div
+    *ngIf="coursesConcafras.length <= 0 && coursesEfas.length <= 0 && coursesNfed.length <= 0 && coursesNfofiq.length <= 0">
     <h1 class="display-3">Sem cursos cadastrados ainda.</h1>
   </div>
-  <div class="mb-5" *ngIf="coursesConcafras != []">
+  <div class="mb-5" *ngIf="coursesConcafras.length > 0">
     <h1 class="display-3">CONCAFRAS</h1>
-    <ul style="list-style: none;">
-      <li *ngFor="let course of coursesConcafras">
-        <h1 class="display-6">{{course.name}}</h1>
-        <span class="lead">{{course.description}}</span>
-        <div class="archives-content" *ngFor="let archive of course.archives">
-          <span class="lead">{{archive.name}}</span>
-          <button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
-            class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button>
-        </div>
-      </li>
-    </ul>
+    <p-table [value]="coursesConcafras" dataKey="name" [tableStyle]="{'min-width': '60rem'}">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 5rem"></th>
+          <th pSortableColumn="name">Nome <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="description">Descrição <p-sortIcon field="description"></p-sortIcon></th>
+          <th pSortableColumn="subcategory">SubCategoria <p-sortIcon field="subcategory"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-course let-expanded="expanded">
+        <tr>
+          <td>
+            <button type="button" pButton pRipple [pRowToggler]="course"
+              class="p-button-text p-button-rounded p-button-plain"
+              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+          </td>
+          <td>{{course.name}}</td>
+          <td>{{course.description}}</td>
+          <td>{{course.category.subcategory.name}}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="rowexpansion" let-course>
+        <tr>
+          <td colspan="7">
+            <div class="p-3">
+              <p-table [value]="course.archives" dataKey="id">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="nameFile">Nome Arquivo <p-sortIcon field="nameFile"></p-sortIcon></th>
+                    <th>Ação</th>
+                    <th style="width: 4rem"></th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-archive>
+                  <tr>
+                    <td>{{archive.name}}</td>
+                    <td><button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
+                        class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button></td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="6">There are no order for this product yet.</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
-  <hr>
-  <div class="mb-5" *ngIf="coursesEfas != []">
+  <div class="mb-5" *ngIf="coursesEfas.length > 0">
+    <hr>
     <h1 class="display-3">Encontro Fraterno Auta de Souza</h1>
-    <ul style="list-style: none;">
-      <li *ngFor="let course of coursesEfas">
-        <h1 class="display-6">{{course.name}}</h1>
-        <span class="lead">{{course.description}}</span>
-        <div class="archives-content" *ngFor="let archive of course.archives">
-          <span class="lead">{{archive.name}}</span>
-          <button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
-            class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button>
-        </div>
-      </li>
-    </ul>
+    <p-table [value]="coursesEfas" dataKey="name" [tableStyle]="{'min-width': '60rem'}">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 5rem"></th>
+          <th pSortableColumn="name">Nome <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="description">Descrição <p-sortIcon field="description"></p-sortIcon></th>
+          <th pSortableColumn="subcategory">SubCategoria <p-sortIcon field="subcategory"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-course let-expanded="expanded">
+        <tr>
+          <td>
+            <button type="button" pButton pRipple [pRowToggler]="course"
+              class="p-button-text p-button-rounded p-button-plain"
+              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+          </td>
+          <td>{{course.name}}</td>
+          <td>{{course.description}}</td>
+          <td>{{course.category.subcategory.name}}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="rowexpansion" let-course>
+        <tr>
+          <td colspan="7">
+            <div class="p-3">
+              <p-table [value]="course.archives" dataKey="id">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="nameFile">Nome Arquivo <p-sortIcon field="nameFile"></p-sortIcon></th>
+                    <th>Ação</th>
+                    <th style="width: 4rem"></th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-archive>
+                  <tr>
+                    <td>{{archive.name}}</td>
+                    <td><button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
+                        class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button></td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="6">There are no order for this product yet.</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
-  <hr>
-  <div class="mb-5" *ngIf="coursesNfed != []">
+  <div class="mb-5" *ngIf="coursesNfed.length > 0">
+    <hr>
     <h1 class="display-3">Núcleo de Formação - Teórico</h1>
-    <ul style="list-style: none;">
-      <li *ngFor="let course of coursesNfed">
-        <h1 class="display-6">{{course.name}}</h1>
-        <span class="lead">{{course.description}}</span>
-        <div class="archives-content" *ngFor="let archive of course.archives">
-          <span class="lead">{{archive.name}}</span>
-          <button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
-            class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button>
-        </div>
-      </li>
-    </ul>
+    <p-table [value]="coursesNfed" dataKey="name" [tableStyle]="{'min-width': '60rem'}">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 5rem"></th>
+          <th pSortableColumn="name">Nome <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="description">Descrição <p-sortIcon field="description"></p-sortIcon></th>
+          <th pSortableColumn="subcategory">SubCategoria <p-sortIcon field="subcategory"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-course let-expanded="expanded">
+        <tr>
+          <td>
+            <button type="button" pButton pRipple [pRowToggler]="course"
+              class="p-button-text p-button-rounded p-button-plain"
+              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+          </td>
+          <td>{{course.name}}</td>
+          <td>{{course.description}}</td>
+          <td>{{course.category.subcategory.name}}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="rowexpansion" let-course>
+        <tr>
+          <td colspan="7">
+            <div class="p-3">
+              <p-table [value]="course.archives" dataKey="id">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="nameFile">Nome Arquivo <p-sortIcon field="nameFile"></p-sortIcon></th>
+                    <th>Ação</th>
+                    <th style="width: 4rem"></th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-archive>
+                  <tr>
+                    <td>{{archive.name}}</td>
+                    <td><button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
+                        class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button></td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="6">There are no order for this product yet.</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
-  <hr>
-  <div class="mb-5" *ngIf="coursesNfofiq != []">
+  <div class="mb-5" *ngIf="coursesNfofiq.length > 0">
+    <hr>
     <h1 class="display-3">Núcleo de Formação - Oficinas</h1>
-    <ul style="list-style: none;">
-      <li *ngFor="let course of coursesNfofiq">
-        <h1 class="display-6">{{course.name}}</h1>
-        <span class="lead">{{course.description}}</span>
-        <div class="archives-content" *ngFor="let archive of course.archives">
-          <span class="lead">{{archive.name}}</span>
-          <button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
-            class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button>
-        </div>
-      </li>
-    </ul>
+    <p-table [value]="coursesNfofiq" dataKey="name" [tableStyle]="{'min-width': '60rem'}">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 5rem"></th>
+          <th pSortableColumn="name">Nome <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="description">Descrição <p-sortIcon field="description"></p-sortIcon></th>
+          <th pSortableColumn="subcategory">SubCategoria <p-sortIcon field="subcategory"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-course let-expanded="expanded">
+        <tr>
+          <td>
+            <button type="button" pButton pRipple [pRowToggler]="course"
+              class="p-button-text p-button-rounded p-button-plain"
+              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+          </td>
+          <td>{{course.name}}</td>
+          <td>{{course.description}}</td>
+          <td>{{course.category.subcategory.name}}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="rowexpansion" let-course>
+        <tr>
+          <td colspan="7">
+            <div class="p-3">
+              <p-table [value]="course.archives" dataKey="id">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="nameFile">Nome Arquivo <p-sortIcon field="nameFile"></p-sortIcon></th>
+                    <th>Ação</th>
+                    <th style="width: 4rem"></th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-archive>
+                  <tr>
+                    <td>{{archive.name}}</td>
+                    <td><button pButton pRipple type="button" icon="pi pi-download" label="Baixar"
+                        class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button></td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="6">There are no order for this product yet.</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </div>
 
