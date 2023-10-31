@@ -32,7 +32,7 @@
             <div class="p-3">
               <div class="row container" *ngFor="let archive of course.archives">
                 <button pButton pRipple type="button" icon="pi pi-download" label="{{archive.name}}"
-                  class="p-button-raised p-button-success" (click)="downloadArchive(archive.url)"></button>
+                  class="p-button-raised p-button-success m-2" (click)="downloadArchive(archive.url)"></button>
               </div>
             </div>
           </td>
