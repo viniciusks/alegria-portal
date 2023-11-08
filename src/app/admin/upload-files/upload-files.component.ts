@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { MessageService } from 'primeng/api';
+import { MessageService, TreeNode } from 'primeng/api';
 import storage from 'src/app/services/firebase/firebase-storage.service';
 
 @Component({
@@ -13,6 +13,8 @@ export class UploadFilesComponent implements OnInit {
   baseUrl: string;
   typeContent: string;
   downloadUrl: string;
+  enableUploadArchives: boolean;
+  files: TreeNode[];
 
   constructor(
     private _spinner: NgxSpinnerService,
@@ -21,9 +23,14 @@ export class UploadFilesComponent implements OnInit {
     this.baseUrl = 'downloads';
     this.typeContent = 'Escolha o tipo do conteúdo';
     this.downloadUrl = '';
+    this.enableUploadArchives = false;
+    this.files = [];
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._spinner.show();
+    this.getAllFiles();
+  }
 
   uploadFiles(event: any): void {
     this._messageService.clear();
@@ -61,5 +68,44 @@ export class UploadFilesComponent implements OnInit {
         detail: 'Selecione o caminho principal corretamente.',
       });
     }
+  }
+
+  getAllFiles(): void {
+    // Todos os arquivos
+    storage
+      .ref()
+      .child('downloads')
+      .listAll()
+      .then((downloadRef) => {
+        let schema = {
+          label: undefined,
+          data: undefined,
+          expandedIcon: 'pi pi-folder-open',
+          collapsedIcon: 'pi pi-folder',
+          children: [],
+        };
+
+        // Referência das pastas dentro de downloads
+        downloadRef.prefixes.forEach((responseFolder) => {
+          let folderSchema = schema;
+
+          // Passando por cada pasta
+          responseFolder.listAll().then((folderRef) => {
+            let nameFolder;
+
+            // Passando por cada item
+            folderRef.items.forEach((item) => {
+              console.log(item.parent?.name);
+              nameFolder = item.parent?.name;
+            });
+
+            folderSchema.label = nameFolder;
+            folderSchema.data = nameFolder;
+          });
+
+          this.files.push(folderSchema);
+        });
+        this._spinner.hide();
+      });
   }
 }

@@ -15,7 +15,6 @@ export class AddCourseComponent implements OnInit {
   course: Course;
   categories: any[];
   subcategories: any[];
-  enableUploadArchives: boolean;
 
   constructor(
     private _router: Router,
@@ -48,7 +47,6 @@ export class AddCourseComponent implements OnInit {
       { name: 'Tema livre', code: 'livre' },
       { name: 'Tema especial', code: 'especial' },
     ];
-    this.enableUploadArchives = false;
   }
 
   ngOnInit(): void {

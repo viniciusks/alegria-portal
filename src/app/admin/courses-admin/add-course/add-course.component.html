@@ -49,14 +49,7 @@
   </div>
   <div class="row mb-4">
     <div class="col-12">
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="enableUploadArchives"
-          [(ngModel)]="enableUploadArchives">
-        <label class="form-check-label" for="enableUploadArchives">Deseja subir seus arquivos?</label>
-      </div>
-      <div *ngIf="enableUploadArchives">
-        <app-upload-files></app-upload-files>
-      </div>
+      <app-upload-files></app-upload-files>
     </div>
   </div>
   <div class="row mb-4">

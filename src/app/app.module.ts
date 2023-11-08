@@ -20,6 +20,7 @@ import { CardModule } from 'primeng/card';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { TreeTableModule } from 'primeng/treetable';
+import { TreeModule } from 'primeng/tree';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -88,6 +89,7 @@ import { EditCourseComponent } from './admin/courses-admin/edit-course/edit-cour
     InputTextareaModule,
     DropdownModule,
     TreeTableModule,
+    TreeModule,
   ],
   providers: [AdminGuard],
   bootstrap: [AppComponent],
