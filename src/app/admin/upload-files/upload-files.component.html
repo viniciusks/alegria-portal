@@ -38,7 +38,8 @@
 
 <ng-template #list_files_content>
   <div class="mt-2">
-    <p-tree [value]="files"></p-tree>
+    <p-tree [value]="files" scrollHeight="400px" selectionMode="single" [(selection)]="selectedFile"
+    (onNodeSelect)="nodeSelect($event)"></p-tree>
   </div>
 </ng-template>
 

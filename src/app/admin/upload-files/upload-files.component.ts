@@ -15,6 +15,7 @@ export class UploadFilesComponent implements OnInit {
   downloadUrl: string;
   enableUploadArchives: boolean;
   files: TreeNode[];
+  selectedFile: TreeNode;
 
   constructor(
     private _spinner: NgxSpinnerService,
@@ -25,6 +26,7 @@ export class UploadFilesComponent implements OnInit {
     this.downloadUrl = '';
     this.enableUploadArchives = false;
     this.files = [];
+    this.selectedFile = {};
   }
 
   ngOnInit(): void {
@@ -76,36 +78,36 @@ export class UploadFilesComponent implements OnInit {
       .ref()
       .child('downloads')
       .listAll()
-      .then((downloadRef) => {
-        let schema = {
-          label: undefined,
-          data: undefined,
-          expandedIcon: 'pi pi-folder-open',
-          collapsedIcon: 'pi pi-folder',
-          children: [],
-        };
-
+      .then((rootRef) => {
         // Referência das pastas dentro de downloads
-        downloadRef.prefixes.forEach((responseFolder) => {
-          let folderSchema = schema;
-
+        rootRef.prefixes.forEach((prefix) => {
+          let folder = {
+            data: prefix.name,
+            label: prefix.name,
+            expandedIcon: 'pi pi-folder-open',
+            collapsedIcon: 'pi pi-folder',
+            children: [],
+          };
           // Passando por cada pasta
-          responseFolder.listAll().then((folderRef) => {
-            let nameFolder;
-
+          prefix.listAll().then((folderRef) => {
             // Passando por cada item
             folderRef.items.forEach((item) => {
-              console.log(item.parent?.name);
-              nameFolder = item.parent?.name;
+              let file = {
+                data: item.name,
+                label: item.name,
+                icon: 'pi pi-file',
+                children: [],
+              };
+              folder.children.push(file as never);
             });
-
-            folderSchema.label = nameFolder;
-            folderSchema.data = nameFolder;
           });
-
-          this.files.push(folderSchema);
+          this.files.push(folder);
         });
         this._spinner.hide();
       });
+  }
+
+  nodeSelect(event: any): void {
+    console.log(event);
   }
 }
