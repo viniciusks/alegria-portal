@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MessageService, TreeNode } from 'primeng/api';
 import storage from 'src/app/services/firebase/firebase-storage.service';
@@ -10,6 +10,7 @@ import storage from 'src/app/services/firebase/firebase-storage.service';
   providers: [NgxSpinnerService, MessageService],
 })
 export class UploadFilesComponent implements OnInit {
+  @Output() onDownloadUrlEmitter = new EventEmitter();
   baseUrl: string;
   typeContent: string;
   downloadUrl: string;
@@ -108,6 +109,26 @@ export class UploadFilesComponent implements OnInit {
   }
 
   nodeSelect(event: any): void {
-    console.log(event);
+    if (!this.hasChildren(event)) {
+      let itemName = event.node.data;
+      let folderName = event.node.parent.data;
+      let path = `downloads/${folderName}/${itemName}`;
+
+      storage
+        .ref()
+        .child(path)
+        .getDownloadURL()
+        .then((response) => {
+          let info = {
+            name: itemName,
+            url: response
+          }
+          this.onDownloadUrlEmitter.emit(info);
+        });
+    }
+  }
+
+  hasChildren(event: any) {
+    return event.node.children.length > 0 ? true : false;
   }
 }

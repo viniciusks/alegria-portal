@@ -18,6 +18,7 @@ import { CoursesAdminComponent } from './admin/courses-admin/courses-admin.compo
 import { AddCourseComponent } from './admin/courses-admin/add-course/add-course.component';
 import { HeaderUploadFilesComponent } from './admin/upload-files/header-upload-files/header-upload-files.component';
 import { EditCourseComponent } from './admin/courses-admin/edit-course/edit-course.component';
+import { KitAdminComponent } from './admin/kit-admin/kit-admin.component';
 
 const routes: Routes = [
   {
@@ -91,6 +92,15 @@ const routes: Routes = [
           {
             path: 'edit-course/:id',
             component: EditCourseComponent,
+          },
+        ],
+      },
+      {
+        path: 'kit',
+        children: [
+          {
+            path: '',
+            component: KitAdminComponent,
           },
         ],
       },

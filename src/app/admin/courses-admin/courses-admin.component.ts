@@ -29,7 +29,7 @@ export class CoursesAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('[OK] CoursesComponent');
+    console.log('[OK] CoursesAdminComponent');
     this._spinner.show();
     this.getCourses();
   }

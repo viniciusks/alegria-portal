@@ -34,6 +34,11 @@ export class HomeAdminComponent implements OnInit {
             routerLink: '/admin/courses',
           },
           {
+            label: 'Kit Treinamento',
+            icon: 'pi pi-fw pi-briefcase',
+            routerLink: '/admin/kit',
+          },
+          {
             label: 'Audio Player',
             icon: 'pi pi-fw pi-volume-up',
             routerLink: '/admin/player',

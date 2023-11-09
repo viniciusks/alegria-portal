@@ -144,4 +144,9 @@ export class EditCourseComponent implements OnInit {
       this._router.navigate([route]);
     }
   }
+
+  setFileDownloadUrl(info: any, index: any) {
+    this.course.archives[index].name = info.name;
+    this.course.archives[index].url = info.url;
+  }
 }
