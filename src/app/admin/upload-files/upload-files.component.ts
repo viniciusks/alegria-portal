@@ -13,7 +13,6 @@ export class UploadFilesComponent implements OnInit {
   @Output() onDownloadUrlEmitter = new EventEmitter();
   baseUrl: string;
   typeContent: string;
-  downloadUrl: string;
   enableUploadArchives: boolean;
   files: TreeNode[];
   selectedFile: TreeNode;
@@ -24,7 +23,6 @@ export class UploadFilesComponent implements OnInit {
   ) {
     this.baseUrl = 'downloads';
     this.typeContent = 'Escolha o tipo do conteúdo';
-    this.downloadUrl = '';
     this.enableUploadArchives = false;
     this.files = [];
     this.selectedFile = {};
@@ -54,12 +52,17 @@ export class UploadFilesComponent implements OnInit {
               .child(`${path}/${fileName}`)
               .getDownloadURL()
               .then((url) => {
-                this.downloadUrl = url;
+                let info = {
+                  name: fileName,
+                  url: url,
+                };
                 this._messageService.add({
                   severity: 'success',
                   summary: 'Upload finalizado',
                   detail: `O arquivo ${fileName} subiu com sucesso.`,
                 });
+                this.onDownloadUrlEmitter.emit(info);
+                this.enableUploadArchives = true;
                 this._spinner.hide();
               });
           });
@@ -85,8 +88,8 @@ export class UploadFilesComponent implements OnInit {
           let folder = {
             data: prefix.name,
             label: prefix.name,
-            expandedIcon: 'pi pi-folder-open',
-            collapsedIcon: 'pi pi-folder',
+            expandedIcon: 'bi bi-folder2-open',
+            collapsedIcon: 'bi bi-folder2',
             children: [],
           };
           // Passando por cada pasta
@@ -96,9 +99,24 @@ export class UploadFilesComponent implements OnInit {
               let file = {
                 data: item.name,
                 label: item.name,
-                icon: 'pi pi-file',
+                icon: '',
                 children: [],
               };
+
+              if (file.data.endsWith('.pdf')) {
+                file.icon = 'bi bi-file-earmark-pdf';
+              } else if (file.data.endsWith('.docx')) {
+                file.icon = 'bi bi-file-earmark-word';
+              } else if (file.data.endsWith('.zip')) {
+                file.icon = 'bi bi-file-earmark-zip';
+              } else if (file.data.endsWith('.mp3')) {
+                file.icon = 'bi bi-file-earmark-music';
+              } else if (file.data.endsWith('.ppsm')) {
+                file.icon = 'bi bi-file-earmark-ppt';
+              } else {
+                file.icon = 'bi bi-file-earmark-text';
+              }
+
               folder.children.push(file as never);
             });
           });
@@ -121,8 +139,8 @@ export class UploadFilesComponent implements OnInit {
         .then((response) => {
           let info = {
             name: itemName,
-            url: response
-          }
+            url: response,
+          };
           this.onDownloadUrlEmitter.emit(info);
         });
     }

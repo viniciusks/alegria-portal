@@ -6,29 +6,21 @@
     <div class="form-check form-switch">
       <input class="form-check-input" type="checkbox" role="switch" id="enableUploadArchives"
         [(ngModel)]="enableUploadArchives">
-      <label class="form-check-label" for="enableUploadArchives">Deseja subir seus arquivos?</label>
+      <label class="form-check-label" for="enableUploadArchives">Já subiu o arquivo?</label>
     </div>
-    <div *ngIf="enableUploadArchives;then upload_content else list_files_content"></div>
-  </div>
-  <div *ngIf="this.downloadUrl != ''" class="mt-2 alert alert-light" role="alert">
-    URL de Download: <a [href]="this.downloadUrl" target="_blank" rel="noopener noreferrer">{{ this.downloadUrl }}</a>
+    <div *ngIf="enableUploadArchives;then list_files_content else upload_content"></div>
   </div>
 </div>
 
 <ng-template #upload_content>
   <div class="align-items-center mt-2">
-    <label for="baseUrl"><strong>Base do caminho</strong></label>
-    <select id="baseUrl" [(ngModel)]="baseUrl" class="form-select col" aria-label="Disabled select example" disabled>
-      <option [ngValue]="baseUrl" selected>Downloads</option>
-    </select>
-  </div>
-  <div class="align-items-center mt-2">
-    <label for="typeContent"><strong>Caminho principal</strong></label>
+    <label for="typeContent"><strong>Onde deseja subir?</strong></label>
     <select id="typeContent" [(ngModel)]="typeContent" class="form-select col">
       <option selected disabled>Escolha o tipo do conteúdo</option>
       <option value="mcgeral">Músicas da CONCAFRAS Geral (Power Point)</option>
       <option value="musicas">Músicas (Word e MP3)</option>
       <option value="producao_doutrinaria">Produção Doutrinária</option>
+      <option value="alegria_digital">Alegria Digital</option>
     </select>
   </div>
   <div class="mt-4">

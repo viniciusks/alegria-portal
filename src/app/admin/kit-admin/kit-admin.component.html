@@ -6,23 +6,29 @@
 </div>
 <hr class="mb-1" />
 <div class="mb-1">
-  <p-table [value]="getKits()">
+  <p-table [value]="getKit()">
     <ng-template pTemplate="header">
       <tr>
         <th>Nome</th>
+        <th>Ano</th>
         <th>Descrição</th>
-        <th>Categoria</th>
+        <th>Download</th>
         <th>Ações</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-body>
       <tr>
-        <td>{{ body.course.name }}</td>
-        <td>{{ body.course.description }}</td>
-        <td>{{ body.course.category.name }}</td>
+        <td>{{ body.kit.name }}</td>
+        <td>{{ body.kit.year }}</td>
+        <td>{{ body.kit.description }}</td>
+        <td>
+          <button pButton type="button" class="p-button-secondary" (click)="goTo(body.kit.archive)">
+            Acessar
+          </button>
+        </td>
         <td>
           <button pButton class="me-1 p-button-warning" icon="pi pi-pencil"
-            (click)="goToInside('/admin/courses/edit-course', body.id)"></button>
+            (click)="goToInside('/admin/kits/edit-kit', body.id)"></button>
           <button pButton class="p-button-danger" icon="pi pi-trash" (click)="confirmDelete(body.id)"></button>
         </td>
       </tr>
