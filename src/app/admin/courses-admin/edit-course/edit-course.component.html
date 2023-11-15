@@ -80,7 +80,7 @@
             <label for="nameArchive{{ i }}">Nome do arquivo</label>
           </div>
           <div class="form-floating mb-3">
-            <app-upload-files (onDownloadUrlEmitter)="setFileDownloadUrl($event, i)"></app-upload-files>
+            <app-upload-files [enableUploadArchives]="true" (onDownloadUrlEmitter)="setFileDownloadUrl($event, i)"></app-upload-files>
             <!-- <input type="text" id="urlArchive{{i}}" name="urlArchive{{i}}" class="form-control"
               placeholder="Digite a url de download do arquivo..." [(ngModel)]="archive.url">
             <label for="urlArchive{{i}}">Url de download do arquivo</label> -->
