@@ -27,9 +27,9 @@
           </button>
         </td>
         <td>
-          <button pButton class="me-1 p-button-warning" icon="pi pi-pencil"
-            (click)="goToInside('/admin/kits/edit-kit', body.id)"></button>
-          <button pButton class="p-button-danger" icon="pi pi-trash" (click)="confirmDelete(body.id)"></button>
+          <button pButton class="m-1 p-button-warning" icon="pi pi-pencil"
+            (click)="goToInside('/admin/kit/edit-kit', body.id)"></button>
+          <button pButton class="m-1 p-button-danger" icon="pi pi-trash" (click)="confirmDelete(body.id)"></button>
         </td>
       </tr>
     </ng-template>
@@ -42,4 +42,4 @@
 </ngx-spinner>
 
 <!-- Dialog delete album-->
-<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+<p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import {
+  ConfirmEventType,
+  ConfirmationService,
+  MessageService,
+} from 'primeng/api';
 import { Kit } from 'src/app/models/kit';
 import { KitService } from 'src/app/services/kit.service';
 
@@ -47,7 +51,49 @@ export class KitAdminComponent implements OnInit {
     });
   }
 
-  confirmDelete(id: string) {}
+  confirmDelete(id: string) {
+    this._confirmationService.confirm({
+      message: 'Tem certeza que deseja excluir esse kit?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this._kitService.deleteKit(id).subscribe((response) => {
+          let status = response.status;
+          if (status == 200) {
+            this._messageService.clear();
+            this._messageService.add({
+              severity: 'info',
+              summary: 'Deletado',
+              detail: 'Você aceitou deletar este kit.',
+            });
+            setTimeout(() => {
+              location.reload();
+            }, 2000);
+          }
+        });
+      },
+      reject: (type: any) => {
+        switch (type) {
+          case ConfirmEventType.REJECT:
+            this._messageService.clear();
+            this._messageService.add({
+              severity: 'error',
+              summary: 'Rejeitado',
+              detail: 'Você não aceitou deletar este kit.',
+            });
+            break;
+          case ConfirmEventType.CANCEL:
+            this._messageService.clear();
+            this._messageService.add({
+              severity: 'warn',
+              summary: 'Cancelado',
+              detail: 'Você desistiu de deletar este kit.',
+            });
+            break;
+        }
+      },
+    });
+  }
 
   goToInside(route: string, id: string = '') {
     if (id != '') {

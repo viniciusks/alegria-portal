@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { User } from 'src/app/models/User';
+import { Kit } from 'src/app/models/kit';
+import { KitService } from 'src/app/services/kit.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-space-joy',
   templateUrl: './space-joy.component.html',
   styleUrls: ['./space-joy.component.css'],
-  providers: [UserService],
+  providers: [UserService, KitService],
 })
 export class SpaceJoyComponent implements OnInit {
   currentContent: any;
@@ -15,9 +17,11 @@ export class SpaceJoyComponent implements OnInit {
   flagContentView: boolean;
   user: User;
   urlAdmin: String;
+  kits: Kit[];
 
   constructor(
     private _userService: UserService,
+    private _kitService: KitService,
     private _spinner: NgxSpinnerService
   ) {
     this.currentContent = {};
@@ -61,11 +65,16 @@ export class SpaceJoyComponent implements OnInit {
       []
     );
     this.urlAdmin = '';
+    this.kits = [];
   }
 
   ngOnInit(): void {
     this._spinner.show();
     console.log('[OK] Component: space-joy.');
+    this.getUserAndSetIdentity();
+  }
+
+  getUserAndSetIdentity() {
     this._userService.getUser().subscribe({
       next: (response: any) => {
         let data = response.body.data;
@@ -73,11 +82,20 @@ export class SpaceJoyComponent implements OnInit {
         this.user = data;
         identity.roles = this.user.roles;
         localStorage.setItem('identity', JSON.stringify(identity));
-        this._spinner.hide();
+        this.getKits();
       },
       error: (error: any) => {
         console.log(error);
       },
+    });
+  }
+
+  getKits() {
+    this._kitService.getKits().subscribe((response: any) => {
+      response.data.forEach((responseData: any) => {
+        this.kits.push(responseData.kit);
+      });
+      this._spinner.hide();
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MessageService, TreeNode } from 'primeng/api';
 import storage from 'src/app/services/firebase/firebase-storage.service';
@@ -11,9 +11,9 @@ import storage from 'src/app/services/firebase/firebase-storage.service';
 })
 export class UploadFilesComponent implements OnInit {
   @Output() onDownloadUrlEmitter = new EventEmitter();
+  @Input() enableUploadArchives: boolean;
   baseUrl: string;
   typeContent: string;
-  enableUploadArchives: boolean;
   files: TreeNode[];
   selectedFile: TreeNode;
 

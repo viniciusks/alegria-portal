@@ -1,37 +1,30 @@
 <div class="container text-center pt-5">
-  <span class="title-text">O <b>espaço da Alegria</b> ainda está em construção.</span>
+  <span class="title-text">O <b>canto da Alegria</b> ainda está em construção.</span>
   <p>Mas você já pode acessar o <b>kit treinamento da CONCAFRAS</b>!!!</p>
+  <hr>
+  <div class="row">
+    <h4>Kits de treinamento da CONCAFRAS</h4>
+  </div>
   <div id="kits">
-    <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
+    <div *ngIf="kits.length == 0">
+      <h5>Sem kits cadastrados.</h5>
+    </div>
+    <div *ngFor="let kit of kits" class="card" style="width: 18rem">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">{{ kit.name }}</h5>
+        <p class="card-text">
+          {{ kit.description }}
+        </p>
+        <a [href]="kit.archive.url" class="btn btn-primary text-white">Acessar o kit</a>
       </div>
     </div>
-    <button class="btn-kit" disabled>2022</button>
-    <button class="btn-kit" (click)="this.chooseKit('2023')">2023</button>
+    <!-- <button class="btn-kit" disabled>2022</button>
+    <button class="btn-kit" (click)="this.chooseKit('2023')">2023</button> -->
     <!-- <button class="btn-kit">
       <a style="text-decoration: none;" href="https://drive.google.com/drive/folders/1WxOoJoEFHPwu4eNdJgL_dPpzwuoQwXFa" target="_blank">2024</a>
     </button> -->
   </div>
-  <div id="content-kits" *ngIf="this.flagContentView">
-    <div class="row-content-kits">
-      <span>Hinário em PDF</span>
-      <a [(href)]="this.currentContent.pdf" target="_blank" class="btn btn-content">Acessar</a>
-    </div>
-    <div class="row-content-kits">
-      <span>Hinário em Word</span>
-      <a [(href)]="this.currentContent.word" target="_blank" class="btn btn-content">Acessar</a>
-    </div>
-    <div class="row-content-kits">
-      <span>Hinário em áudio (MP3)</span>
-      <a [(href)]="this.currentContent.audios" target="_blank" class="btn btn-content">Acessar</a>
-    </div>
-  </div>
-  <hr>
+  <hr />
   <div id="content-kits" class="mt-4">
     <h4>Materias para a reunião Allan Kardec</h4>
     <div class="row-content-kits">
@@ -58,7 +51,7 @@
       <a href="download/rak/2023/VÍDEO 2 - O PODER DA MÚSICA.mp4" target="_blank" class="btn btn-content">Acessar</a>
     </div>
   </div>
-  <hr>
+  <hr />
   <section *ngIf="this.user.roles.includes('ALEGRIA_ADMIN')" class="mt-4">
     <div class="mt-2">
       <h4>Painel Administrativo</h4>

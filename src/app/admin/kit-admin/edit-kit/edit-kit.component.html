@@ -1,0 +1,102 @@
+<div class="mb-1 header">
+  <span class="title-font">Editando kit</span>
+  <button
+    pButton
+    icon="pi pi-arrow"
+    class="p-button-secondary"
+    (click)="goToInside('/admin/kit')"
+  >
+    <i class="material-icons left">arrow_back</i>Voltar
+  </button>
+</div>
+<hr class="mb-1" />
+<div class="mb-2">
+  <p-messages></p-messages>
+</div>
+<div class="mt-4">
+  <div class="row mb-4">
+    <div class="col-6">
+      <div class="form-floating">
+        <input
+          type="text"
+          id="nameKit"
+          name="nameKit"
+          class="form-control"
+          placeholder="Digite o nome..."
+          [(ngModel)]="kit.name"
+        />
+        <label for="nameKit">Nome</label>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-floating">
+        <input
+          type="number"
+          id="yearKit"
+          name="yearKit"
+          class="form-control"
+          placeholder="Digite o ano..."
+          [(ngModel)]="kit.year"
+        />
+        <label for="yearKit">Ano</label>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="form-floating">
+        <textarea
+          id="descriptionKit"
+          name="descriptionKit"
+          class="form-control"
+          placeholder="Digite uma descrição..."
+          [(ngModel)]="kit.description"
+          [rows]="5"
+          [cols]="30"
+        ></textarea>
+        <label for="descriptionKit">Descrição</label>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          id="nameArchiveKit"
+          name="nameArchiveKit"
+          class="form-control"
+          placeholder="Digite o nome do arquivo..."
+          [(ngModel)]="kit.archive.name"
+        />
+        <label for="nameArchiveKit">Nome do arquivo</label>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-floating mb-3">
+        <app-upload-files
+          [enableUploadArchives]="true"
+          (onDownloadUrlEmitter)="setFileDownloadUrl($event)"
+        ></app-upload-files>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="d-flex justify-content-end">
+        <button
+          pButton
+          icon="pi pi-check"
+          class="p-button-success"
+          label="Atualizar"
+          (click)="onSubmit()"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Spinner -->
+<ngx-spinner type="ball-scale-multiple">
+  <span class="white-font">Carregando...</span>
+</ngx-spinner>

@@ -79,12 +79,6 @@ export class CoursesAdminComponent implements OnInit {
             }, 2000);
           }
         });
-        this._messageService.clear();
-        this._messageService.add({
-          severity: 'info',
-          summary: 'Deletado',
-          detail: 'Você aceitou deletar este curso.',
-        });
       },
       reject: (type: any) => {
         switch (type) {

@@ -74,8 +74,8 @@
 
   jQuery(document).ready(function () {
     joyScript.init();
-    $(document).scroll(function () {
-      joyScript.Basic.animeScroll();
-    });
+    // $(document).scroll(function () {
+    //   joyScript.Basic.animeScroll();
+    // });
   });
 })();
