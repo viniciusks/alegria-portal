@@ -39,6 +39,10 @@ header nav {
   font-weight: 700;
 }
 
+nav #navbarNav > div {
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+}
+
 @media screen and (min-width: 992px) {
   .logo-img {
     width: 9rem;
@@ -63,6 +67,17 @@ header nav {
 
   .nav-link.fromLeft:after {
     transform-origin: 0% 50%;
+  }
+
+  nav #navbarNav > div {
+    padding-right: var(--bs-navbar-nav-link-padding-x);
+    padding-left: var(--bs-navbar-nav-link-padding-x);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  nav #navbarNav > div {
+    padding: 0.25rem 0;
   }
 }
 

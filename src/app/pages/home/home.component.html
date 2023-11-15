@@ -64,6 +64,9 @@
           </a>
         </div>
         <div *ngIf="verifyIdentity()">
+          <a class="nav-link" routerLink="/my-profile">Meu perfil</a>
+        </div>
+        <div *ngIf="verifyIdentity()">
           <button id="btn-sair" class="my-btn-logout" (click)="logout()">Sair</button>
         </div>
       </div>
