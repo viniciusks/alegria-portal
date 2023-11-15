@@ -6,43 +6,43 @@ import {
   ConfirmationService,
   MessageService,
 } from 'primeng/api';
-import { Course } from 'src/app/models/course/course';
-import { CourseService } from 'src/app/services/course.service';
+import { Kit } from 'src/app/models/kit';
+import { KitService } from 'src/app/services/kit.service';
 
 @Component({
-  selector: 'app-courses-admin',
-  templateUrl: './courses-admin.component.html',
-  styleUrls: ['./courses-admin.component.css'],
-  providers: [CourseService, ConfirmationService, MessageService],
+  selector: 'app-kit-admin',
+  templateUrl: './kit-admin.component.html',
+  styleUrls: ['./kit-admin.component.css'],
+  providers: [ConfirmationService, MessageService, KitService],
 })
-export class CoursesAdminComponent implements OnInit {
-  private courses: Course[];
+export class KitAdminComponent implements OnInit {
+  private kits: Kit[];
 
   constructor(
-    private _spinner: NgxSpinnerService,
-    private _courseService: CourseService,
     private _confirmationService: ConfirmationService,
     private _messageService: MessageService,
-    private _router: Router
+    private _router: Router,
+    private _kitService: KitService,
+    private _spinner: NgxSpinnerService
   ) {
-    this.courses = [];
+    this.kits = [];
   }
 
   ngOnInit(): void {
-    console.log('[OK] CoursesAdminComponent');
+    console.log('[OK] KitAdminComponent');
     this._spinner.show();
-    this.getCourses();
+    this.getKits();
   }
 
-  getCourse() {
-    return this.courses;
+  getKit() {
+    return this.kits;
   }
 
-  getCourses() {
-    this._courseService.getCourses().subscribe({
-      next: (courses: any) => {
+  getKits() {
+    this._kitService.getKits().subscribe({
+      next: (kits: any) => {
         this._spinner.hide();
-        this.courses = courses.data;
+        this.kits = kits.data;
       },
       error: (error) => {
         this._spinner.hide();
@@ -51,28 +51,20 @@ export class CoursesAdminComponent implements OnInit {
     });
   }
 
-  goToInside(route: string, id: string = '') {
-    if (id != '') {
-      this._router.navigate([`${route}/${id}`]);
-    } else {
-      this._router.navigate([route]);
-    }
-  }
-
   confirmDelete(id: string) {
     this._confirmationService.confirm({
-      message: 'Tem certeza que deseja excluir esse curso?',
+      message: 'Tem certeza que deseja excluir esse kit?',
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this._courseService.deleteCourse(id).subscribe((response) => {
+        this._kitService.deleteKit(id).subscribe((response) => {
           let status = response.status;
           if (status == 200) {
             this._messageService.clear();
             this._messageService.add({
               severity: 'info',
               summary: 'Deletado',
-              detail: 'Você aceitou deletar este curso.',
+              detail: 'Você aceitou deletar este kit.',
             });
             setTimeout(() => {
               location.reload();
@@ -87,7 +79,7 @@ export class CoursesAdminComponent implements OnInit {
             this._messageService.add({
               severity: 'error',
               summary: 'Rejeitado',
-              detail: 'Você não aceitou deletar este curso.',
+              detail: 'Você não aceitou deletar este kit.',
             });
             break;
           case ConfirmEventType.CANCEL:
@@ -95,11 +87,23 @@ export class CoursesAdminComponent implements OnInit {
             this._messageService.add({
               severity: 'warn',
               summary: 'Cancelado',
-              detail: 'Você desistiu de deletar este curso.',
+              detail: 'Você desistiu de deletar este kit.',
             });
             break;
         }
       },
     });
+  }
+
+  goToInside(route: string, id: string = '') {
+    if (id != '') {
+      this._router.navigate([`${route}/${id}`]);
+    } else {
+      this._router.navigate([route]);
+    }
+  }
+
+  goTo(route: string) {
+    window.open(route, '_blank');
   }
 }

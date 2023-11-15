@@ -15,7 +15,6 @@ export class AddCourseComponent implements OnInit {
   course: Course;
   categories: any[];
   subcategories: any[];
-  enableUploadArchives: boolean;
 
   constructor(
     private _router: Router,
@@ -48,7 +47,6 @@ export class AddCourseComponent implements OnInit {
       { name: 'Tema livre', code: 'livre' },
       { name: 'Tema especial', code: 'especial' },
     ];
-    this.enableUploadArchives = false;
   }
 
   ngOnInit(): void {
@@ -126,5 +124,10 @@ export class AddCourseComponent implements OnInit {
     } else {
       this._router.navigate([route]);
     }
+  }
+
+  setFileDownloadUrl(info: any, index: any) {
+    this.course.archives[index].name = info.name;
+    this.course.archives[index].url = info.url;
   }
 }

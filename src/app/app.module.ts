@@ -20,6 +20,7 @@ import { CardModule } from 'primeng/card';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { TreeTableModule } from 'primeng/treetable';
+import { TreeModule } from 'primeng/tree';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -45,6 +46,9 @@ import { CoursesAdminComponent } from './admin/courses-admin/courses-admin.compo
 import { AddCourseComponent } from './admin/courses-admin/add-course/add-course.component';
 import { HeaderUploadFilesComponent } from './admin/upload-files/header-upload-files/header-upload-files.component';
 import { EditCourseComponent } from './admin/courses-admin/edit-course/edit-course.component';
+import { KitAdminComponent } from './admin/kit-admin/kit-admin.component';
+import { AddKitComponent } from './admin/kit-admin/add-kit/add-kit.component';
+import { EditKitComponent } from './admin/kit-admin/edit-kit/edit-kit.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +69,9 @@ import { EditCourseComponent } from './admin/courses-admin/edit-course/edit-cour
     AddCourseComponent,
     HeaderUploadFilesComponent,
     EditCourseComponent,
+    KitAdminComponent,
+    AddKitComponent,
+    EditKitComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +95,7 @@ import { EditCourseComponent } from './admin/courses-admin/edit-course/edit-cour
     InputTextareaModule,
     DropdownModule,
     TreeTableModule,
+    TreeModule,
   ],
   providers: [AdminGuard],
   bootstrap: [AppComponent],

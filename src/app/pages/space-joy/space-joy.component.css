@@ -7,14 +7,10 @@ button[disabled] {
 }
 
 #kits {
-  margin-top: 4rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   gap: 2rem;
-}
-
-#content-kits {
-  margin: 4rem 10% 0 10%;
 }
 
 .space-joy-content {

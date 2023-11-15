@@ -16,22 +16,32 @@ export class HomeAdminComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
-        label: 'Início',
+        label: 'Produtos',
         items: [
           {
-            label: 'Acessar',
+            label: 'Início',
             icon: 'pi pi-fw pi-home',
             routerLink: '/admin',
           },
-        ],
-      },
-      {
-        label: 'Usuários',
-        items: [
           {
-            label: 'Acessar',
+            label: 'Usuários',
             icon: 'pi pi-pw pi-user',
             routerLink: '/admin',
+          },
+          {
+            label: 'Cursos',
+            icon: 'pi pi-fw pi-book',
+            routerLink: '/admin/courses',
+          },
+          {
+            label: 'Kit Treinamento',
+            icon: 'pi pi-fw pi-briefcase',
+            routerLink: '/admin/kit',
+          },
+          {
+            label: 'Audio Player',
+            icon: 'pi pi-fw pi-volume-up',
+            routerLink: '/admin/player',
           },
         ],
       },
@@ -48,27 +58,6 @@ export class HomeAdminComponent implements OnInit {
             label: 'Editor - In build',
             icon: 'pi pi-fw pi-file-edit',
             // TODO: Colocar routerLink
-          },
-        ],
-      },
-      {
-        label: 'Cursos',
-        icon: 'pi pi-fw pi-play',
-        items: [
-          {
-            label: 'Acessar',
-            icon: 'pi pi-fw pi-book',
-            routerLink: '/admin/courses',
-          },
-        ],
-      },
-      {
-        label: 'Player',
-        items: [
-          {
-            label: 'Acessar',
-            icon: 'pi pi-fw pi-volume-up',
-            routerLink: '/admin/player',
           },
         ],
       },
