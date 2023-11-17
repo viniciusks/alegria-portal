@@ -1,0 +1,235 @@
+<div class="container">
+  <div class="mb-1 header">
+    <span class="title-font">Perfil: {{ user.name }}</span>
+    <button pButton icon="pi pi-pencil" label="Editar" class="p-button-warning" (click)="enableEdit()"></button>
+  </div>
+  <hr>
+  <div class="mb-2">
+    <p-messages></p-messages>
+  </div>
+  <div>
+    <div class="row mb-4">
+      <div class="col-6">
+        <div class="form-floating">
+          <input type="text" name="nameUser" id="nameUser" class="form-control" [(ngModel)]="user.name"
+            [disabled]="isDisabled">
+          <label for="nameUser">Nome Completo</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating">
+          <input type="date" name="birthdayUser" id="birthdayUser" class="form-control" [(ngModel)]="user.birthday"
+            [disabled]="isDisabled">
+          <label for="birthdayUser">Data de Aniversário</label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6">
+        <div class="form-floating">
+          <input type="email" name="emailUser" id="emailUser" class="form-control" [(ngModel)]="user.email"
+            [disabled]="isDisabled">
+          <label for="emailUser">E-mail</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating">
+          <input type="text" name="countryUser" id="countryUser" class="form-control" [(ngModel)]="user.country"
+            [disabled]="isDisabled">
+          <label for="countryUser">País</label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6">
+        <div class="form-floating">
+          <select class="form-control" name="stateUser" id="stateUser" [disabled]="isDisabled"
+            (change)="onChange($event.target)" [(ngModel)]="user.state">
+            <option value="" disabled>- Escolha seu estado -</option>
+            <option *ngFor="let state of infos.states" [value]="state">{{ state }}</option>
+          </select>
+          <label for="stateUser">Estado</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating">
+          <select class="form-control" name="cityUser" id="cityUser" [(ngModel)]="user.city" [disabled]="isDisabled">
+            <option value="" disabled>- Escolha sua cidade -</option>
+            <option *ngFor="let city of infos.cities" [value]="city">{{ city }}</option>
+          </select>
+          <label for="cityUser">Cidade</label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6">
+        <div class="form-floating">
+          <select class="form-control" name="actionUser" id="actionUser" [(ngModel)]="user.action"
+            [disabled]="isDisabled">
+            <option value="" disabled>- Escolha sua opção -</option>
+            <option value="toco">Só toco violão</option>
+            <option value="canto">Só canto</option>
+            <option value="toco_e_canto">Toco e canto</option>
+            <option value="not">Não, desenvolvo outras atividades dentro da comissão</option>
+          </select>
+          <label for="actionUser">Toca e canta?</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating">
+          <input type="text" name="artisticFormationUser" id="artisticFormationUser" class="form-control"
+            [(ngModel)]="user.artisticFormation" [disabled]="isDisabled">
+          <label for="artisticFormationUser">Formação artística</label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6">
+        <div class="form-floating">
+          <input type="text" name="professionalArtUser" id="professionalArtUser" class="form-control"
+            [(ngModel)]="user.professionalArt" [disabled]="isDisabled">
+          <label for="professionalArtUser">Profissão artística</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating">
+          <select class="form-control" name="englishLevelUser" id="englishLevelUser" [(ngModel)]="user.englishLevel"
+            [disabled]="isDisabled">
+            <option value="" disabled>- Escolha sua opção -</option>
+            <option value="iniciante">Iniciante</option>
+            <option value="basico">Básico</option>
+            <option value="fluente">Fluente</option>
+            <option value="not_english">Não falo inglês</option>
+          </select>
+          <label for="englishLevelUser">Nível do inglês</label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6">
+        <div class="form-floating">
+          <select class="form-control" name="spanishLevelUser" id="spanishLevelUser" [(ngModel)]="user.spanishLevel"
+            [disabled]="isDisabled">
+            <option value="" disabled>- Escolha sua opção -</option>
+            <option value="iniciante">Iniciante</option>
+            <option value="basico">Básico</option>
+            <option value="fluente">Fluente</option>
+            <option value="not_spanish">Não falo espanhol</option>
+          </select>
+          <label for="spanishLevelUser">Nível do espanhol</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating">
+          <input type="text" name="spiritCenterUser" id="spiritCenterUser" class="form-control"
+            [(ngModel)]="user.spiritCenter" [disabled]="isDisabled">
+          <label for="spiritCenterUser">Centro Espírita</label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" name="whatsappUser" id="whatsappUser" class="form-control" [(ngModel)]="user.whatsapp"
+            [disabled]="isDisabled">
+          <label for="whatsappUser">whatsapp</label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4 align-center-vertical">
+      <div class="col-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="isWorkerUser" [(ngModel)]="user.isWorker"
+            [disabled]="isDisabled">
+          <label class="form-check-label" for="isWorkerUser">
+            É trabalhador?
+          </label>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="isPlayerUser" [(ngModel)]="user.isPlayer"
+            [disabled]="isDisabled">
+          <label class="form-check-label" for="isPlayerUser">
+            Atua com música?
+          </label>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="isTheaterUser" [(ngModel)]="user.isTheater"
+            [disabled]="isDisabled">
+          <label class="form-check-label" for="isTheaterUser">
+            Atua com teatro?
+          </label>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="isLiteratureUser" [(ngModel)]="user.isLiterature"
+            [disabled]="isDisabled">
+          <label class="form-check-label" for="isLiteratureUser">
+            Atua com poesias?
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4 align-center-vertical">
+      <div class="col-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="isDancerUser" [(ngModel)]="user.isDancer"
+            [disabled]="isDisabled">
+          <label class="form-check-label" for="isDancerUser">
+            Atua com dança?
+          </label>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="isEFASCoordinatorUser"
+            [(ngModel)]="user.isEFASCoordinator" [disabled]="isDisabled">
+          <label class="form-check-label" for="isEFASCoordinatorUser">
+            É/foi coordenador da AC em EFAS?
+          </label>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="isCONCAFRASCoordinatorUser"
+            [(ngModel)]="user.isCONCAFRASCoordinator" [disabled]="isDisabled">
+          <label class="form-check-label" for="isCONCAFRASCoordinatorUser">
+            É/foi coordenador da AC em CONCAFRAS?
+          </label>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="isVisualArtUser" [(ngModel)]="user.isVisualArt"
+            [disabled]="isDisabled">
+          <label class="form-check-label" for="isVisualArtUser">
+            Atua com artes virtuais?
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" name="instrumentsUser" id="instrumentsUser" class="form-control" [(ngModel)]="instruments"
+            [disabled]="isDisabled">
+          <label for="instrumentsUser">Instrumentos</label>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!isDisabled" class="row mb-4">
+      <div class="col-12">
+        <button pButton icon="pi pi-check" label="Salvar" class="p-button-success w-100" (click)="onSubmit()"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Spinner -->
+<ngx-spinner type="ball-scale-multiple">
+  <span class="white-font">Carregando...</span>
+</ngx-spinner>

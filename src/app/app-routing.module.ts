@@ -21,6 +21,7 @@ import { EditCourseComponent } from './admin/courses-admin/edit-course/edit-cour
 import { KitAdminComponent } from './admin/kit-admin/kit-admin.component';
 import { AddKitComponent } from './admin/kit-admin/add-kit/add-kit.component';
 import { EditKitComponent } from './admin/kit-admin/edit-kit/edit-kit.component';
+import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,11 @@ const routes: Routes = [
       {
         path: 'courses',
         component: CoursesComponent,
+      },
+      {
+        path: 'my-profile',
+        canActivate: [UserGuard],
+        component: MyProfileComponent,
       },
     ],
   },

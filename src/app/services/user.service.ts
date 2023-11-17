@@ -45,4 +45,14 @@ export class UserService {
       observe: 'response',
     });
   }
+
+  updateUser(id: string, user: any): Observable<any> {
+    let params = JSON.stringify(user);
+
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this._http.put(`${this.apiFunction}/users/${id}`, params, {
+      headers: headers,
+    });
+  }
 }
