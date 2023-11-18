@@ -49,9 +49,7 @@ export class AddCourseComponent implements OnInit {
     ];
   }
 
-  ngOnInit(): void {
-    console.log('[OK] AddCourseComponent');
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     this._spinner.show();

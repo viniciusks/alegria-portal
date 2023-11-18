@@ -33,7 +33,6 @@ export class EditPlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this._spinner.show();
-    console.log('[OK] EditPlayerComponent');
     this._route.params.subscribe((params) => {
       this.id = params['id'];
       this.getOneAlbum(this.id);

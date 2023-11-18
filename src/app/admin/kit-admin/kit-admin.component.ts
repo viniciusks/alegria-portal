@@ -29,7 +29,6 @@ export class KitAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('[OK] KitAdminComponent');
     this._spinner.show();
     this.getKits();
   }

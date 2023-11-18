@@ -31,9 +31,7 @@ export class AddKitComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
-    console.log('[OK] AddKitComponent');
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     this._spinner.show();

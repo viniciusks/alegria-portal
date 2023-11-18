@@ -35,7 +35,6 @@ export class EditKitComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('[OK] EditKitComponent');
     this._spinner.show();
     this._route.params.subscribe((params) => {
       this.id = params['id'];

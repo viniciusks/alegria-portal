@@ -56,7 +56,6 @@ export class EditCourseComponent implements OnInit {
 
   ngOnInit(): void {
     this._spinner.show();
-    console.log('[OK] EditCourseComponent');
     this._route.params.subscribe((params) => {
       this.id = params['id'];
       this.getOneCourse(this.id);

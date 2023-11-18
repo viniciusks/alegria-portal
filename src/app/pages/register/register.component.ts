@@ -74,7 +74,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('[OK] Component: register.');
     // Inicia o spinner
     this._spinner.show();
 

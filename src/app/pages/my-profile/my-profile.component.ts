@@ -64,7 +64,6 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this._spinner.show();
-    console.log('[OK] MyProfileComponent');
     this.getUser();
   }
 
