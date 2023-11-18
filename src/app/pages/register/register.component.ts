@@ -201,6 +201,12 @@ export class RegisterComponent implements OnInit {
               this._router.navigate(['/']);
             },
           });
+        })
+        .catch((error: any) => {
+          console.log(`[ERROR] ${error}`);
+          this.validateForm.flag = true;
+          this.validateForm.message = 'O e-mail já utilizado por outra conta.';
+          this._spinner.hide();
         });
     } else {
       this.validateForm.flag = true;
