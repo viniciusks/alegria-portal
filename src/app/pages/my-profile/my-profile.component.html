@@ -9,30 +9,30 @@
   </div>
   <div>
     <div class="row mb-4">
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
           <input type="text" name="nameUser" id="nameUser" class="form-control" [(ngModel)]="user.name"
             [disabled]="isDisabled">
           <label for="nameUser">Nome Completo</label>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
-          <input type="date" name="birthdayUser" id="birthdayUser" class="form-control" [(ngModel)]="user.birthday"
+          <input type="date" name="birthdayUser" id="birthdayUser" class="form-control" [(ngModel)]="birthday"
             [disabled]="isDisabled">
           <label for="birthdayUser">Data de Aniversário</label>
         </div>
       </div>
     </div>
     <div class="row mb-4">
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
           <input type="email" name="emailUser" id="emailUser" class="form-control" [(ngModel)]="user.email"
             [disabled]="isDisabled">
           <label for="emailUser">E-mail</label>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
           <input type="text" name="countryUser" id="countryUser" class="form-control" [(ngModel)]="user.country"
             [disabled]="isDisabled">
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="row mb-4">
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
           <select class="form-control" name="stateUser" id="stateUser" [disabled]="isDisabled"
             (change)="onChange($event.target)" [(ngModel)]="user.state">
@@ -51,7 +51,7 @@
           <label for="stateUser">Estado</label>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
           <select class="form-control" name="cityUser" id="cityUser" [(ngModel)]="user.city" [disabled]="isDisabled">
             <option value="" disabled>- Escolha sua cidade -</option>
@@ -62,7 +62,7 @@
       </div>
     </div>
     <div class="row mb-4">
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
           <select class="form-control" name="actionUser" id="actionUser" [(ngModel)]="user.action"
             [disabled]="isDisabled">
@@ -75,7 +75,7 @@
           <label for="actionUser">Toca e canta?</label>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
           <input type="text" name="artisticFormationUser" id="artisticFormationUser" class="form-control"
             [(ngModel)]="user.artisticFormation" [disabled]="isDisabled">
@@ -84,14 +84,14 @@
       </div>
     </div>
     <div class="row mb-4">
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
           <input type="text" name="professionalArtUser" id="professionalArtUser" class="form-control"
             [(ngModel)]="user.professionalArt" [disabled]="isDisabled">
           <label for="professionalArtUser">Profissão artística</label>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
           <select class="form-control" name="englishLevelUser" id="englishLevelUser" [(ngModel)]="user.englishLevel"
             [disabled]="isDisabled">
@@ -106,7 +106,7 @@
       </div>
     </div>
     <div class="row mb-4">
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
           <select class="form-control" name="spanishLevelUser" id="spanishLevelUser" [(ngModel)]="user.spanishLevel"
             [disabled]="isDisabled">
@@ -119,7 +119,7 @@
           <label for="spanishLevelUser">Nível do espanhol</label>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <div class="form-floating">
           <input type="text" name="spiritCenterUser" id="spiritCenterUser" class="form-control"
             [(ngModel)]="user.spiritCenter" [disabled]="isDisabled">
