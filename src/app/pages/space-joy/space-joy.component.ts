@@ -70,7 +70,6 @@ export class SpaceJoyComponent implements OnInit {
 
   ngOnInit(): void {
     this._spinner.show();
-    console.log('[OK] Component: space-joy.');
     this.getUserAndSetIdentity();
   }
 
@@ -85,7 +84,7 @@ export class SpaceJoyComponent implements OnInit {
         this.getKits();
       },
       error: (error: any) => {
-        console.log(error);
+        console.log(`[ERROR] ${error}`);
       },
     });
   }

@@ -28,10 +28,8 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('[OK] CoursesComponent');
     this._spinner.show();
     this.getCourses();
-    console.log(this.coursesConcafras);
   }
 
   downloadArchive(url: string) {

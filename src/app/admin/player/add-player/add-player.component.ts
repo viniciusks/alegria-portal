@@ -26,9 +26,7 @@ export class AddPlayerComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
-    console.log('[OK] AddPlayerComponent');
-  }
+  ngOnInit(): void {}
 
   addMusic() {
     this.album.musics.push({

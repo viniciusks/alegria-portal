@@ -31,9 +31,7 @@ export class LoginComponent implements OnInit {
     this.password = '';
   }
 
-  ngOnInit(): void {
-    console.log('[OK] LoginComponent');
-  }
+  ngOnInit(): void {}
 
   showModalDialog() {
     this.displayModal = true;

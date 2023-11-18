@@ -28,7 +28,6 @@ export class PlayerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('[OK] PlayerComponent');
     this._spinner.show();
     this.getAlbums();
   }
