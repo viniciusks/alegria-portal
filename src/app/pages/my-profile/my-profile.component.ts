@@ -16,6 +16,7 @@ export class MyProfileComponent implements OnInit {
   isDisabled: boolean;
   infos: any;
   instruments: string;
+  birthday: string;
 
   constructor(
     private _userService: UserService,
@@ -58,6 +59,7 @@ export class MyProfileComponent implements OnInit {
       cities: [],
     };
     this.instruments = '';
+    this.birthday = '';
   }
 
   ngOnInit(): void {
@@ -80,15 +82,11 @@ export class MyProfileComponent implements OnInit {
   getStates() {
     this._utilsService.getStates().subscribe((res: any) => {
       let states: any[] = [];
-      let targetState = '';
       res.forEach((state: any) => {
-        states.push(state.nome);
-        if (this.user.state == state.nome) {
-          targetState = state.sigla;
-        }
+        states.push(state.sigla);
       });
       this.infos.states = states;
-      this.getCities(targetState);
+      this.getCities(this.user.state);
     });
   }
 
@@ -111,6 +109,11 @@ export class MyProfileComponent implements OnInit {
         this.instruments += `${instrument},`;
       }
     });
+    this.getDate();
+  }
+
+  getDate() {
+    this.birthday = new Date(this.user.birthday).toISOString().slice(0, 10);
     this._spinner.hide();
   }
 
@@ -154,6 +157,8 @@ export class MyProfileComponent implements OnInit {
         this.user.instruments.push(instrument);
       });
 
+    this.user.birthday = new Date(this.birthday);
+
     let identity = this._userService.getIdentity();
     this._userService.updateUser(identity.uid, this.user).subscribe(() => {
       this._spinner.hide();
@@ -161,8 +166,7 @@ export class MyProfileComponent implements OnInit {
       this._messageService.add({
         severity: 'success',
         summary: 'Sucesso',
-        detail:
-          'Usuários atualizado com sucesso!',
+        detail: 'Usuários atualizado com sucesso!',
       });
       this.isDisabled = true;
     });
