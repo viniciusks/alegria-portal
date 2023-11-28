@@ -63,3 +63,14 @@ span.eg-title-tag {
 .w100 {
   width: 100%;
 }
+
+/* PADDING */
+.pt-default {
+  padding-top: 8.5rem;
+}
+
+@media screen and (max-width: 992px) {
+  .pt-default {
+    padding-top: 8.85rem;
+  }
+}
