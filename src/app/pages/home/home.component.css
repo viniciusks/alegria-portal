@@ -30,9 +30,18 @@
 }
 
 /* Navbar */
-header nav {
-  background-color: rgba(250, 220, 91, 0.8);
+header {
+  position: fixed;
+  background-color: rgba(250, 220, 91, 1);
+  width: 100%;
+  z-index: 9999;
 }
+
+/* header nav {
+  background-color: rgba(250, 220, 91, 1);
+  width: 100%;
+  z-index: 9999;
+} */
 
 .nav-link {
   color: #000;
@@ -51,6 +60,7 @@ nav #navbarNav > div {
     position: relative;
     margin-bottom: -5rem;
     z-index: 1;
+    top: -1rem;
   }
 
   .nav-link:after {
