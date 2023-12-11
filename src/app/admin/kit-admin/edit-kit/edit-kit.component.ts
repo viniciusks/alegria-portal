@@ -27,10 +27,7 @@ export class EditKitComponent implements OnInit {
       name: '',
       year: 0,
       description: '',
-      archive: {
-        name: '',
-        url: '',
-      },
+      archives: [],
     };
   }
 
@@ -76,15 +73,15 @@ export class EditKitComponent implements OnInit {
       return;
     }
 
-    if (this.kit.archive.name == '' || this.kit.archive.url == '') {
-      this._spinner.hide();
-      this._messageService.add({
-        severity: 'error',
-        summary: 'Falta o arquivo',
-        detail: 'Escolha o arquivo para o kit.',
-      });
-      return;
-    }
+    // if (this.kit.archive.name == '' || this.kit.archive.url == '') {
+    //   this._spinner.hide();
+    //   this._messageService.add({
+    //     severity: 'error',
+    //     summary: 'Falta o arquivo',
+    //     detail: 'Escolha o arquivo para o kit.',
+    //   });
+    //   return;
+    // }
 
     this._kitService.updateKit(this.id, this.kit).subscribe({
       next: () => {
@@ -102,9 +99,9 @@ export class EditKitComponent implements OnInit {
     });
   }
 
-  setFileDownloadUrl(info: any) {
-    this.kit.archive.name = info.name;
-    this.kit.archive.url = info.url;
+  setFileDownloadUrl(info: any, index: any) {
+    this.kit.archives[index].name = info.name;
+    this.kit.archives[index].url = info.url;
   }
 
   goToInside(route: string, id: string = '') {
@@ -113,5 +110,16 @@ export class EditKitComponent implements OnInit {
     } else {
       this._router.navigate([route]);
     }
+  }
+
+  addArchive() {
+    this.kit.archives.push({
+      name: '',
+      url: '',
+    });
+  }
+
+  removeArchive(index: any) {
+    this.kit.archives.splice(index, 1);
   }
 }

@@ -9,11 +9,10 @@
   <p-table [value]="getKit()">
     <ng-template pTemplate="header">
       <tr>
-        <th>Nome</th>
-        <th>Ano</th>
-        <th>Descrição</th>
-        <th>Download</th>
-        <th>Ações</th>
+        <th id="name">Nome</th>
+        <th id="year">Ano</th>
+        <th id="description">Descrição</th>
+        <th id="actions">Ações</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-body>
@@ -21,11 +20,6 @@
         <td>{{ body.kit.name }}</td>
         <td>{{ body.kit.year }}</td>
         <td>{{ body.kit.description }}</td>
-        <td>
-          <button pButton type="button" class="p-button-secondary" (click)="goTo(body.kit.archive)">
-            Acessar
-          </button>
-        </td>
         <td>
           <button pButton class="m-1 p-button-warning" icon="pi pi-pencil"
             (click)="goToInside('/admin/kit/edit-kit', body.id)"></button>
