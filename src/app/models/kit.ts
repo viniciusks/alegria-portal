@@ -4,5 +4,5 @@ export interface Kit {
   name: string;
   year: number;
   description: string;
-  archive: Archive;
+  archives: Archive[];
 }

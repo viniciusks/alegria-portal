@@ -24,10 +24,7 @@ export class AddKitComponent implements OnInit {
       name: '',
       year: 0,
       description: '',
-      archive: {
-        name: '',
-        url: '',
-      },
+      archives: [],
     };
   }
 
@@ -58,15 +55,15 @@ export class AddKitComponent implements OnInit {
       return;
     }
 
-    if (this.kit.archive.name == '' || this.kit.archive.url == '') {
-      this._spinner.hide();
-      this._messageService.add({
-        severity: 'error',
-        summary: 'Falta o arquivo',
-        detail: 'Escolha o arquivo para o kit.',
-      });
-      return;
-    }
+    // if (this.kit.archive.name == '' || this.kit.archive.url == '') {
+    //   this._spinner.hide();
+    //   this._messageService.add({
+    //     severity: 'error',
+    //     summary: 'Falta o arquivo',
+    //     detail: 'Escolha o arquivo para o kit.',
+    //   });
+    //   return;
+    // }
 
     this._kitService.insertKit(this.kit).subscribe({
       next: (response) => {
@@ -92,8 +89,19 @@ export class AddKitComponent implements OnInit {
     }
   }
 
-  setFileDownloadUrl(info: any) {
-    this.kit.archive.name = info.name;
-    this.kit.archive.url = info.url;
+  setFileDownloadUrl(info: any, index: any) {
+    this.kit.archives[index].name = info.name;
+    this.kit.archives[index].url = info.url;
+  }
+
+  addArchive() {
+    this.kit.archives.push({
+      name: '',
+      url: '',
+    });
+  }
+
+  removeArchive(index: any) {
+    this.kit.archives.splice(index, 1);
   }
 }

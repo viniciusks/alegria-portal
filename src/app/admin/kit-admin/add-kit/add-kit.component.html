@@ -36,6 +36,32 @@
   </div>
   <div class="row mb-4">
     <div class="col-12">
+      <div class="align-center-vertical mb-2">
+        <label class="form-label me-4">Arquivos</label>
+        <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-success"
+          (click)="addArchive()"></button>
+      </div>
+      <ng-container *ngIf="kit.archives != []">
+        <div *ngFor="let archive of kit.archives; let i = index">
+          <div class="align-center-vertical mb-2">
+            <label class="me-2">Arquivo #{{ i + 1 }}</label>
+            <button pButton pRipple type="button" icon="pi pi-trash"
+              class="p-button-rounded p-button-danger p-button-text" (click)="removeArchive(i)"></button>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" id="nameArchive{{ i }}" name="nameArchive{{ i }}" class="form-control"
+              placeholder="Digite o nome do arquivo..." [(ngModel)]="archive.name" />
+            <label for="nameArchive{{ i }}">Nome do arquivo</label>
+          </div>
+          <div class="form-floating mb-3">
+            <app-upload-files (onDownloadUrlEmitter)="setFileDownloadUrl($event, i)"></app-upload-files>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <!-- <div class="row mb-4">
+    <div class="col-12">
       <div class="form-floating mb-3">
         <input type="text" id="nameArchiveKit" name="nameArchiveKit" class="form-control"
           placeholder="Digite o nome do arquivo..." [(ngModel)]="kit.archive.name" />
@@ -47,7 +73,7 @@
         <app-upload-files (onDownloadUrlEmitter)="setFileDownloadUrl($event)"></app-upload-files>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="row mb-4">
     <div class="col-12">
       <div class="d-flex justify-content-end">

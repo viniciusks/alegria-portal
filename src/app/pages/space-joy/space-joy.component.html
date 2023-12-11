@@ -16,7 +16,19 @@
             <p class="card-text">
               {{ kit.description }}
             </p>
-            <a [href]="kit.archive.url" class="btn btn-primary text-white">Acessar o kit</a>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Acessar o kit
+              </button>
+              <ul class="dropdown-menu">
+                <li *ngFor="let archive of kit.archives">
+                  <a class="dropdown-item" [href]="archive.url">
+                    {{ archive.name }}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
