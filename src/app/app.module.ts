@@ -50,6 +50,7 @@ import { KitAdminComponent } from './admin/kit-admin/kit-admin.component';
 import { AddKitComponent } from './admin/kit-admin/add-kit/add-kit.component';
 import { EditKitComponent } from './admin/kit-admin/edit-kit/edit-kit.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
+import { UsersComponent } from './admin/users/users.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { MyProfileComponent } from './pages/my-profile/my-profile.component';
     AddKitComponent,
     EditKitComponent,
     MyProfileComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

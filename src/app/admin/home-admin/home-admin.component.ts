@@ -26,7 +26,7 @@ export class HomeAdminComponent implements OnInit {
           {
             label: 'Usuários',
             icon: 'pi pi-pw pi-user',
-            routerLink: '/admin',
+            routerLink: '/admin/users',
           },
           {
             label: 'Cursos',
