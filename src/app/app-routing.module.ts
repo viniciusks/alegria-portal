@@ -23,6 +23,7 @@ import { AddKitComponent } from './admin/kit-admin/add-kit/add-kit.component';
 import { EditKitComponent } from './admin/kit-admin/edit-kit/edit-kit.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { UsersComponent } from './admin/users/users.component';
+import { EditUserComponent } from './admin/users/edit-user/edit-user.component';
 
 const routes: Routes = [
   {
@@ -68,7 +69,16 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        component: UsersComponent,
+        children: [
+          {
+            path: '',
+            component: UsersComponent,
+          },
+          {
+            path: 'edit-user/:id',
+            component: EditUserComponent,
+          },
+        ],
       },
       {
         path: 'player',

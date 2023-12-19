@@ -1,1 +1,51 @@
-<p>users works!</p>
+<p-messages></p-messages>
+<div class="mb-1 header">
+  <span class="title-font">Usuários</span>
+  <!-- TODO: Extrair usuários em tabela excel -->
+  <button
+    pButton
+    icon="pi pi-check"
+    label="Novo Usuário"
+    class="p-button-success"
+    (click)="goToInside('/admin/kit/add-kit')"
+  ></button>
+</div>
+<hr class="mb-1" />
+<div class="mb-1">
+  <p-table [value]="getUsers()">
+    <ng-template pTemplate="header">
+      <tr>
+        <th id="name">Nome</th>
+        <th id="email">E-mail</th>
+        <th id="actions">Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-body>
+      <tr>
+        <td>{{ body.name }}</td>
+        <td>{{ body.email }}</td>
+        <td>
+          <!-- TODO: Fazer a parte de edição de um usuário -->
+          <button
+            pButton
+            class="m-1 p-button-warning"
+            icon="pi pi-pencil"
+            (click)="goToInside('/admin/users/edit-user', body.email)"
+          ></button>
+          <!-- TODO: Fazer a parte de deleção de um usuário -->
+          <button
+            pButton
+            class="m-1 p-button-danger"
+            icon="pi pi-trash"
+            (click)="confirmDelete(body.id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<!-- Spinner -->
+<ngx-spinner type="ball-scale-multiple">
+  <span class="white-font">Carregando...</span>
+</ngx-spinner>

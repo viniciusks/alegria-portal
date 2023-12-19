@@ -15,6 +15,14 @@ export class UserService {
     this.apiFunction = GLOBAL.apiFunction;
   }
 
+  getUsers(): Observable<User[]> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this._http.get<User[]>(`${this.apiFunction}/users`, {
+      headers: headers,
+    });
+  }
+
   register(user: User) {
     let params = JSON.stringify(user);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
