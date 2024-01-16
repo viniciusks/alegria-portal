@@ -2,13 +2,8 @@
 <div class="mb-1 header">
   <span class="title-font">Usuários</span>
   <!-- TODO: Extrair usuários em tabela excel -->
-  <button
-    pButton
-    icon="pi pi-check"
-    label="Novo Usuário"
-    class="p-button-success"
-    (click)="goToInside('/admin/kit/add-kit')"
-  ></button>
+  <button pButton icon="pi pi-file-excel" label="Extrair usuários" class="p-button-success"
+    (click)="goToInside('/admin/kit/add-kit')"></button>
 </div>
 <hr class="mb-1" />
 <div class="mb-1">
@@ -22,23 +17,13 @@
     </ng-template>
     <ng-template pTemplate="body" let-body>
       <tr>
-        <td>{{ body.name }}</td>
-        <td>{{ body.email }}</td>
+        <td>{{ body.data.name }}</td>
+        <td>{{ body.data.email }}</td>
         <td>
           <!-- TODO: Fazer a parte de edição de um usuário -->
-          <button
-            pButton
-            class="m-1 p-button-warning"
-            icon="pi pi-pencil"
-            (click)="goToInside('/admin/users/edit-user', body.email)"
-          ></button>
-          <!-- TODO: Fazer a parte de deleção de um usuário -->
-          <button
-            pButton
-            class="m-1 p-button-danger"
-            icon="pi pi-trash"
-            (click)="confirmDelete(body.id)"
-          ></button>
+          <button pButton class="m-1 p-button-warning" icon="pi pi-pencil"
+            (click)="goToInside('/admin/users/edit-user', body.id)"></button>
+          <button pButton class="m-1 p-button-danger" icon="pi pi-trash" (click)="confirmDelete(body.id)"></button>
         </td>
       </tr>
     </ng-template>
@@ -49,3 +34,5 @@
 <ngx-spinner type="ball-scale-multiple">
   <span class="white-font">Carregando...</span>
 </ngx-spinner>
+
+<p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>

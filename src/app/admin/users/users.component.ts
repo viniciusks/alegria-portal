@@ -7,6 +7,7 @@ import {
   MessageService,
 } from 'primeng/api';
 import { User } from 'src/app/models/User';
+import auth from 'src/app/services/firebase/firebase-auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -42,7 +43,6 @@ export class UsersComponent implements OnInit {
     this._userService.getUsers().subscribe({
       next: (response: any) => {
         this.users = response.data;
-        console.log(this.users);
         this._spinner.hide();
       },
     });
@@ -58,20 +58,19 @@ export class UsersComponent implements OnInit {
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        // this._kitService.deleteKit(id).subscribe((response) => {
-        //   let status = response.status;
-        //   if (status == 200) {
-        //     this._messageService.clear();
-        //     this._messageService.add({
-        //       severity: 'info',
-        //       summary: 'Deletado',
-        //       detail: 'Você aceitou deletar este kit.',
-        //     });
-        //     setTimeout(() => {
-        //       location.reload();
-        //     }, 2000);
-        //   }
-        // });
+        this._userService.deleteUser(id).subscribe((response) => {
+          if (response.status == 200) {
+            this._messageService.clear();
+            this._messageService.add({
+              severity: 'info',
+              summary: 'Deletado',
+              detail: 'Você aceitou deletar este usuário.',
+            });
+            setTimeout(() => {
+              location.reload();
+            }, 2000);
+          }
+        });
       },
       reject: (type: any) => {
         switch (type) {
@@ -80,7 +79,7 @@ export class UsersComponent implements OnInit {
             this._messageService.add({
               severity: 'error',
               summary: 'Rejeitado',
-              detail: 'Você não aceitou deletar este kit.',
+              detail: 'Você não aceitou deletar este usuário.',
             });
             break;
           case ConfirmEventType.CANCEL:
@@ -88,7 +87,7 @@ export class UsersComponent implements OnInit {
             this._messageService.add({
               severity: 'warn',
               summary: 'Cancelado',
-              detail: 'Você desistiu de deletar este kit.',
+              detail: 'Você desistiu de deletar este usuário.',
             });
             break;
         }
