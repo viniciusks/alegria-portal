@@ -13,6 +13,11 @@
   --brown: #7e4e24;
   --color-background: #2f3c43;
   --black: #000;
+  --off-white: #efefef;
+  --primary-yellow: #ffd600;
+  --primary-orange: #f6a006;
+  --secondary-yellow: #deca06;
+  --secondary-brown: #7e4e25;
 }
 
 body {
@@ -64,9 +69,24 @@ span.eg-title-tag {
   width: 100%;
 }
 
+/* HEIGHT */
+.h-98 {
+  height: 98dvh;
+}
+
+/* MARGIN */
+.m-sm {
+  margin: 8px;
+}
+
 /* PADDING */
 .pt-default {
   padding-top: 8.5rem;
+}
+
+/* BG */
+.bg-grey {
+  background-color: var(--off-white);
 }
 
 @media screen and (max-width: 992px) {

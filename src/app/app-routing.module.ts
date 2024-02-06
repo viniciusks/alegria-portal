@@ -22,7 +22,7 @@ import { KitAdminComponent } from './admin/kit-admin/kit-admin.component';
 import { AddKitComponent } from './admin/kit-admin/add-kit/add-kit.component';
 import { EditKitComponent } from './admin/kit-admin/edit-kit/edit-kit.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
-import { PlayerPageComponent } from './pages/player-page/player-page.component';
+import { PlayerAppComponent } from './player-app/player-app.component';
 
 const routes: Routes = [
   {
@@ -125,7 +125,7 @@ const routes: Routes = [
   },
   {
     path: 'player',
-    component: PlayerPageComponent,
+    component: PlayerAppComponent,
   },
 ];
 
