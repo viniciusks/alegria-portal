@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-player-app',
@@ -7,23 +6,7 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./player-app.component.css'],
 })
 export class PlayerAppComponent implements OnInit {
-  items: MenuItem[];
+  constructor() {}
 
-  constructor() {
-    this.items = [];
-  }
-
-  ngOnInit(): void {
-    this.items = [
-      {
-        label: 'Alegria Player',
-        items: [
-          {
-            label: 'Álbuns',
-            icon: 'bi bi-music-note-list',
-          },
-        ],
-      },
-    ];
-  }
+  ngOnInit(): void {}
 }
