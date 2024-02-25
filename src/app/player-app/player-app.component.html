@@ -5,11 +5,13 @@
   <div id="player">
     <h4><i class="material-icons">equalizer</i> Alegria Cristã Player</h4>
     <div class="card">
-      <div class="card-image"></div>
+      <div class="card-image">
+        <img src="{{ this.music.cover }}" alt="Capa da música" />
+      </div>
       <div class="card-content">
-        <h5>Title</h5>
-        <p class="artist">Artist</p>
-        <audio controls></audio>
+        <h5>{{ this.music.title }}</h5>
+        <p class="artist">{{ this.music.artist }}</p>
+        <audio src="{{ this.music.file }}" controls></audio>
       </div>
     </div>
   </div>
