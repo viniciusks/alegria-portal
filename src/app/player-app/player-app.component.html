@@ -11,7 +11,12 @@
       <div class="card-content">
         <h5>{{ this.music.title }}</h5>
         <p class="artist">{{ this.music.artist }}</p>
-        <audio src="{{ this.music.file }}" controls></audio>
+        <audio
+          #audioPlayer
+          src="{{ this.music.file }}"
+          (ended)="next()"
+          controls
+        ></audio>
       </div>
     </div>
   </div>
