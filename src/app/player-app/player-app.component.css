@@ -1,6 +1,3 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css");
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
 #body {
   height: 100vh;
   background-color: #efefef;
@@ -56,4 +53,8 @@ h5 {
 img {
   width: 100%;
   height: 100%;
+}
+
+a.btn-floating {
+  background-color: var(--primary-orange);
 }

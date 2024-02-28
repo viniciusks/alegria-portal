@@ -7,16 +7,27 @@
     <div class="card">
       <div class="card-image">
         <img src="{{ this.music.cover }}" alt="Capa da música" />
+        <a class="btn-floating btn-large halfway-fab">
+          <i class="material-icons">play_arrow</i>
+        </a>
       </div>
       <div class="card-content">
         <h5>{{ this.music.title }}</h5>
         <p class="artist">{{ this.music.artist }}</p>
-        <audio
+        <div class="row valign-wrapper">
+          <div class="col s2" id="current-duration">00:00</div>
+          <div class="col s6 range-field valign-wrapper">
+            <input type="range" min="0" max="0" step="1" id="seekbar" />
+          </div>
+          <div class="col s2" id="total-duration">00:00</div>
+        </div>
+
+        <!-- <audio
           #audioPlayer
           src="{{ this.music.file }}"
           (ended)="next()"
           controls
-        ></audio>
+        ></audio> -->
       </div>
     </div>
   </div>

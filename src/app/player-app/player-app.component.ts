@@ -41,6 +41,7 @@ export class PlayerAppComponent implements OnInit {
   getAlbums() {
     this._albumService.getAlbums().subscribe((response: any) => {
       this.albums = response.data;
+      // TODO: Transformar em uma tela que lista todos os álbuns e se defini o currentAlbum
       this.currentAlbum = this.albums[0].album;
       this.start();
     });
@@ -52,19 +53,24 @@ export class PlayerAppComponent implements OnInit {
 
   next() {
     this.index++;
+
+    if (this.index == this.currentAlbum.musics.length) this.restart();
+
     this.start();
     this.play();
   }
 
   play() {
-    var playPromise = this.audioPlayerRef.nativeElement.play();
+    setTimeout(() => {
+      var playPromise = this.audioPlayerRef.nativeElement.play();
+      if (playPromise !== undefined) {
+        playPromise.then((response: any) => {}).catch((error: any) => {});
+      }
+    }, 2000);
+  }
 
-    if (playPromise !== undefined) {
-      playPromise
-        .then((response: any) => {})
-        .catch((error: any) => {
-          this.play();
-        });
-    }
+  restart() {
+    this.index = 0;
+    this.start();
   }
 }
