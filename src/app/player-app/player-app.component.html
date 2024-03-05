@@ -7,27 +7,50 @@
     <div class="card">
       <div class="card-image">
         <img src="{{ this.music.cover }}" alt="Capa da música" />
-        <a class="btn-floating btn-large halfway-fab">
-          <i class="material-icons">play_arrow</i>
-        </a>
       </div>
       <div class="card-content">
-        <h5>{{ this.music.title }}</h5>
-        <p class="artist">{{ this.music.artist }}</p>
-        <div class="row valign-wrapper">
-          <div class="col s2" id="current-duration">00:00</div>
-          <div class="col s6 range-field valign-wrapper">
-            <input type="range" min="0" max="0" step="1" id="seekbar" />
-          </div>
-          <div class="col s2" id="total-duration">00:00</div>
+        <div class="row">
+          <h5>{{ this.music.title }}</h5>
+          <p class="artist">{{ this.music.artist }}</p>
         </div>
-
-        <!-- <audio
-          #audioPlayer
-          src="{{ this.music.file }}"
-          (ended)="next()"
-          controls
-        ></audio> -->
+        <div class="row">
+          <div class="btn-group" role="group" aria-label="Controls">
+            <button type="button" class="btn btn-player-controls d-flex justify-content-center align-items-center">
+              <i class="material-icons">
+                skip_previous
+              </i>
+            </button>
+            <button type="button" class="btn btn-player-controls d-flex justify-content-center align-items-center"
+              (click)="play()">
+              <i class="material-icons">
+                {{ playOrPause }}
+              </i>
+            </button>
+            <button type="button" class="btn btn-player-controls d-flex justify-content-center align-items-center">
+              <i class="material-icons">
+                skip_next
+              </i>
+            </button>
+          </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+          <div class="col-3 d-flex justify-content-center align-items-center" id="current-duration">00:00</div>
+          <div class="col-6 range-field d-flex justify-content-center align-items-center">
+            <input class="w-100 form-range" type="range" min="0" max="0" step="1" id="seekbar" />
+          </div>
+          <div class="col-3 d-flex justify-content-center align-items-center" id="total-duration">00:00</div>
+        </div>
+        <div class="row">
+          <div class="col-6 d-flex justify-content-end align-items-center">
+            <button class="btn btn-player-controls btn-player-volume d-flex justify-content-center align-items-center">
+              <i class="material-icons">volume_up</i>
+            </button>
+          </div>
+          <div class="col-6 range-field d-flex justify-content-start align-items-center">
+            <input class="w-50 form-range" type="range" min="0" max="100" step="1" id="vol" />
+          </div>
+        </div>
+        <!-- <audio #audioPlayer src="{{ this.music.file }}" (ended)="next()" controls></audio> -->
       </div>
     </div>
   </div>

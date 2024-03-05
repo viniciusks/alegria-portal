@@ -32,7 +32,6 @@ h4 {
   padding: 12px;
 }
 
-
 .card-image {
   height: 200px;
 }
@@ -55,6 +54,40 @@ img {
   height: 100%;
 }
 
-a.btn-floating {
+.btn-player-controls {
   background-color: var(--primary-orange);
+  color: #fff;
+}
+
+.btn-player-controls:hover {
+  background-color: var(--secondary-brown);
+}
+
+.btn-player-volume {
+  width: 100%;
+  max-width: 2.5rem;
+}
+
+div.row:first-child {
+  margin-bottom: 0;
+}
+
+div.row:nth-child(2) {
+  margin-top: 0;
+}
+
+div.row {
+  margin: 1rem 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background-color: var(--secondary-brown);
+}
+
+input[type="range"]::-moz-range-thumb {
+  background-color: var(--secondary-brown);
+}
+
+input[type="range"]::-ms-thumb {
+  background-color: var(--secondary-brown);
 }

@@ -16,6 +16,7 @@ export class PlayerAppComponent implements OnInit {
   albums: any[];
   currentAlbum: Album;
   index: any;
+  playOrPause: string;
 
   constructor(private _albumService: AlbumService) {
     this.music = {
@@ -32,6 +33,7 @@ export class PlayerAppComponent implements OnInit {
       musics: [],
       link: '',
     };
+    this.playOrPause = 'play_arrow';
   }
 
   ngOnInit(): void {
@@ -64,7 +66,11 @@ export class PlayerAppComponent implements OnInit {
     setTimeout(() => {
       var playPromise = this.audioPlayerRef.nativeElement.play();
       if (playPromise !== undefined) {
-        playPromise.then((response: any) => {}).catch((error: any) => {});
+        playPromise
+          .then((response: any) => {
+            this.playOrPause = 'pause';
+          })
+          .catch((error: any) => {});
       }
     }, 2000);
   }
