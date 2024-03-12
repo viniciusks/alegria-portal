@@ -64,11 +64,14 @@ export class PlayerAppComponent implements OnInit {
 
   start() {
     this.update();
+    this.initEvents();
+  }
+
+  initEvents() {
     this.audioElement.addEventListener('timeupdate', () => {
       this.currentTimePattern = this.secondsToMinutes(
-        this.audioElement.currentTime
+        this.audioElement.currentTime,
       );
-      // TODO: Parei aqui em atualizar a seekbar
       this.currentTime = this.audioElement.currentTime;
     });
     this.audioElement.addEventListener('loadeddata', () => {
@@ -84,11 +87,11 @@ export class PlayerAppComponent implements OnInit {
     let playPromise = this.audioElement.play();
     if (playPromise !== undefined) {
       playPromise
-        .then((response: any) => {
+        .then(() => {
           this.isPlaying = true;
           this.playOrPauseIcon = 'pause';
         })
-        .catch((error: any) => {});
+        .catch(() => {});
     }
   }
 
@@ -120,8 +123,7 @@ export class PlayerAppComponent implements OnInit {
   }
 
   setCurrentTime(event: any) {
-    let value = event.target.value;
-    this.audioElement.currentTime = value;
+    this.audioElement.currentTime = event.target.value;
   }
 
   togglePlay() {

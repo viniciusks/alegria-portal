@@ -15,50 +15,81 @@
         </div>
         <div class="row">
           <div class="btn-group" role="group" aria-label="Controls">
-            <button type="button" class="btn btn-player-controls d-flex justify-content-center align-items-center">
-              <i class="material-icons">
-                skip_previous
-              </i>
+            <button
+              type="button"
+              class="btn btn-player-controls d-flex justify-content-center align-items-center"
+            >
+              <i class="material-icons"> skip_previous </i>
             </button>
-            <button type="button" class="btn btn-player-controls d-flex justify-content-center align-items-center"
-              (click)="togglePlay()">
+            <button
+              type="button"
+              class="btn btn-player-controls d-flex justify-content-center align-items-center"
+              (click)="togglePlay()"
+            >
               <i class="material-icons">
                 {{ playOrPauseIcon }}
               </i>
             </button>
-            <button type="button" class="btn btn-player-controls d-flex justify-content-center align-items-center"
-              (click)="next()">
-              <i class="material-icons">
-                skip_next
-              </i>
+            <button
+              type="button"
+              class="btn btn-player-controls d-flex justify-content-center align-items-center"
+              (click)="next()"
+            >
+              <i class="material-icons"> skip_next </i>
             </button>
           </div>
         </div>
         <div class="row justify-content-center align-items-center">
-          <div class="col-3 d-flex justify-content-center align-items-center" id="current-duration">
+          <div
+            class="col-3 d-flex justify-content-center align-items-center"
+            id="current-duration"
+          >
             {{ this.currentTimePattern }}
           </div>
-          <div class="col-6 range-field d-flex justify-content-center align-items-center">
-            <input class="w-100 form-range" type="range" min="0" [max]="this.duration" step="1" id="seekbar"
-              (input)="setCurrentTime($event)" (value)="this.currentTime" />
+          <div
+            class="col-6 range-field d-flex justify-content-center align-items-center"
+          >
+            <input
+              class="w-100 form-range"
+              type="range"
+              min="0"
+              [max]="this.duration"
+              step="1"
+              id="seekbar"
+              (input)="setCurrentTime($event)"
+              [(ngModel)]="this.currentTime"
+            />
           </div>
-          <div class="col-3 d-flex justify-content-center align-items-center" id="total-duration">
+          <div
+            class="col-3 d-flex justify-content-center align-items-center"
+            id="total-duration"
+          >
             {{ this.durationPattern }}
           </div>
         </div>
         <div class="row">
           <div class="col-6 d-flex justify-content-end align-items-center">
-            <button class="btn btn-player-controls btn-player-volume d-flex justify-content-center align-items-center"
-              (click)="toggleMute()">
+            <button
+              class="btn btn-player-controls btn-player-volume d-flex justify-content-center align-items-center"
+              (click)="toggleMute()"
+            >
               <i class="material-icons">{{ volumeIcon }}</i>
             </button>
           </div>
-          <div class="col-6 range-field d-flex justify-content-start align-items-center">
-            <input class="w-50 form-range" type="range" min="0" max="100" step="1" id="vol"
-              (input)="setVolume($event)" />
+          <div
+            class="col-6 range-field d-flex justify-content-start align-items-center"
+          >
+            <input
+              class="w-50 form-range"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              id="vol"
+              (input)="setVolume($event)"
+            />
           </div>
         </div>
-        <!-- <audio #audioPlayer src="{{ this.music.file }}" (ended)="next()" controls></audio> -->
       </div>
     </div>
   </div>
