@@ -1,5 +1,5 @@
 <!-- VIDEO GUIA
-  https://www.youtube.com/watch?v=vqrjFnq3-uo&t=937s
+  https://youtu.be/vqrjFnq3-uo?si=MG0XhOcG2WO5PNMU
 -->
 <div id="body">
   <div id="player">
@@ -21,12 +21,13 @@
               </i>
             </button>
             <button type="button" class="btn btn-player-controls d-flex justify-content-center align-items-center"
-              (click)="play()">
+              (click)="togglePlay()">
               <i class="material-icons">
-                {{ playOrPause }}
+                {{ playOrPauseIcon }}
               </i>
             </button>
-            <button type="button" class="btn btn-player-controls d-flex justify-content-center align-items-center">
+            <button type="button" class="btn btn-player-controls d-flex justify-content-center align-items-center"
+              (click)="next()">
               <i class="material-icons">
                 skip_next
               </i>
@@ -34,20 +35,27 @@
           </div>
         </div>
         <div class="row justify-content-center align-items-center">
-          <div class="col-3 d-flex justify-content-center align-items-center" id="current-duration">00:00</div>
-          <div class="col-6 range-field d-flex justify-content-center align-items-center">
-            <input class="w-100 form-range" type="range" min="0" max="0" step="1" id="seekbar" />
+          <div class="col-3 d-flex justify-content-center align-items-center" id="current-duration">
+            {{ this.currentTimePattern }}
           </div>
-          <div class="col-3 d-flex justify-content-center align-items-center" id="total-duration">00:00</div>
+          <div class="col-6 range-field d-flex justify-content-center align-items-center">
+            <input class="w-100 form-range" type="range" min="0" [max]="this.duration" step="1" id="seekbar"
+              (input)="setCurrentTime($event)" (value)="this.currentTime" />
+          </div>
+          <div class="col-3 d-flex justify-content-center align-items-center" id="total-duration">
+            {{ this.durationPattern }}
+          </div>
         </div>
         <div class="row">
           <div class="col-6 d-flex justify-content-end align-items-center">
-            <button class="btn btn-player-controls btn-player-volume d-flex justify-content-center align-items-center">
-              <i class="material-icons">volume_up</i>
+            <button class="btn btn-player-controls btn-player-volume d-flex justify-content-center align-items-center"
+              (click)="toggleMute()">
+              <i class="material-icons">{{ volumeIcon }}</i>
             </button>
           </div>
           <div class="col-6 range-field d-flex justify-content-start align-items-center">
-            <input class="w-50 form-range" type="range" min="0" max="100" step="1" id="vol" />
+            <input class="w-50 form-range" type="range" min="0" max="100" step="1" id="vol"
+              (input)="setVolume($event)" />
           </div>
         </div>
         <!-- <audio #audioPlayer src="{{ this.music.file }}" (ended)="next()" controls></audio> -->

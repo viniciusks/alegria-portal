@@ -16,7 +16,14 @@ export class PlayerAppComponent implements OnInit {
   albums: any[];
   currentAlbum: Album;
   index: any;
-  playOrPause: string;
+  playOrPauseIcon: string;
+  audioElement: HTMLAudioElement;
+  isPlaying: boolean;
+  volumeIcon: string;
+  duration: any;
+  durationPattern: any;
+  currentTime: any;
+  currentTimePattern: any;
 
   constructor(private _albumService: AlbumService) {
     this.music = {
@@ -33,7 +40,13 @@ export class PlayerAppComponent implements OnInit {
       musics: [],
       link: '',
     };
-    this.playOrPause = 'play_arrow';
+    this.playOrPauseIcon = 'play_arrow';
+    this.audioElement = new Audio();
+    this.isPlaying = false;
+    this.volumeIcon = 'volume_up';
+    this.duration = 0;
+    this.currentTime = 0;
+    this.currentTimePattern = '00:00';
   }
 
   ngOnInit(): void {
@@ -50,7 +63,33 @@ export class PlayerAppComponent implements OnInit {
   }
 
   start() {
-    this.music = this.currentAlbum.musics[this.index];
+    this.update();
+    this.audioElement.addEventListener('timeupdate', () => {
+      this.currentTimePattern = this.secondsToMinutes(
+        this.audioElement.currentTime
+      );
+      // TODO: Parei aqui em atualizar a seekbar
+      this.currentTime = this.audioElement.currentTime;
+    });
+    this.audioElement.addEventListener('loadeddata', () => {
+      this.duration = this.audioElement.duration;
+      this.durationPattern = this.secondsToMinutes(this.duration);
+    });
+    this.audioElement.addEventListener('ended', () => {
+      this.next();
+    });
+  }
+
+  play() {
+    let playPromise = this.audioElement.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then((response: any) => {
+          this.isPlaying = true;
+          this.playOrPauseIcon = 'pause';
+        })
+        .catch((error: any) => {});
+    }
   }
 
   next() {
@@ -58,25 +97,56 @@ export class PlayerAppComponent implements OnInit {
 
     if (this.index == this.currentAlbum.musics.length) this.restart();
 
-    this.start();
+    this.update();
     this.play();
   }
 
-  play() {
-    setTimeout(() => {
-      var playPromise = this.audioPlayerRef.nativeElement.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then((response: any) => {
-            this.playOrPause = 'pause';
-          })
-          .catch((error: any) => {});
-      }
-    }, 2000);
+  update() {
+    this.currentTime = 0;
+    this.music = this.currentAlbum.musics[this.index];
+    this.audioElement.src = this.music.file;
   }
 
   restart() {
     this.index = 0;
     this.start();
+  }
+
+  timeUpdate() {}
+
+  setVolume(event: any) {
+    let value = event.target.value;
+    this.audioElement.volume = value / 100;
+  }
+
+  setCurrentTime(event: any) {
+    let value = event.target.value;
+    this.audioElement.currentTime = value;
+  }
+
+  togglePlay() {
+    if (!this.isPlaying) {
+      this.play();
+    } else {
+      this.isPlaying = false;
+      this.playOrPauseIcon = 'play_arrow';
+      this.audioElement.pause();
+    }
+  }
+
+  toggleMute() {
+    if (this.audioElement.muted) {
+      this.audioElement.muted = false;
+      this.volumeIcon = 'volume_up';
+    } else {
+      this.audioElement.muted = true;
+      this.volumeIcon = 'volume_off';
+    }
+  }
+
+  secondsToMinutes(time: any) {
+    let minutes = Math.floor(time / 60);
+    let seconds = Math.floor(time % 60);
+    return `${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`;
   }
 }
