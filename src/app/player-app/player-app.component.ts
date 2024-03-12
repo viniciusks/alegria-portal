@@ -1,31 +1,34 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Music } from '../models/music';
 import { AlbumService } from '../services/album.service';
 import { Album } from '../models/album';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-player-app',
   templateUrl: './player-app.component.html',
   styleUrls: ['./player-app.component.css'],
-  providers: [AlbumService],
+  providers: [AlbumService, NgxSpinnerService],
 })
 export class PlayerAppComponent implements OnInit {
-  @ViewChild('audioPlayer')
-  audioPlayerRef!: ElementRef;
   music: Music;
   albums: any[];
   currentAlbum: Album;
   index: any;
   playOrPauseIcon: string;
   audioElement: HTMLAudioElement;
-  isPlaying: boolean;
   volumeIcon: string;
   duration: any;
   durationPattern: any;
   currentTime: any;
   currentTimePattern: any;
+  isPlaying: boolean;
+  isVisible: boolean;
 
-  constructor(private _albumService: AlbumService) {
+  constructor(
+    private _albumService: AlbumService,
+    private _spinner: NgxSpinnerService,
+  ) {
     this.music = {
       title: '',
       artist: '',
@@ -42,23 +45,29 @@ export class PlayerAppComponent implements OnInit {
     };
     this.playOrPauseIcon = 'play_arrow';
     this.audioElement = new Audio();
-    this.isPlaying = false;
     this.volumeIcon = 'volume_up';
     this.duration = 0;
     this.currentTime = 0;
     this.currentTimePattern = '00:00';
+    this.isPlaying = false;
+    this.isVisible = true;
   }
 
   ngOnInit(): void {
+    this._spinner.show();
     this.getAlbums();
+  }
+
+  choosenAlbum(index: any) {
+    this.currentAlbum = this.albums[index].album;
+    this.isVisible = false;
+    this.start();
   }
 
   getAlbums() {
     this._albumService.getAlbums().subscribe((response: any) => {
       this.albums = response.data;
-      // TODO: Transformar em uma tela que lista todos os álbuns e se defini o currentAlbum
-      this.currentAlbum = this.albums[0].album;
-      this.start();
+      this._spinner.hide();
     });
   }
 
@@ -104,6 +113,17 @@ export class PlayerAppComponent implements OnInit {
     this.play();
   }
 
+  previous() {
+    this.index--;
+
+    if (this.index < 0) {
+      this.index = this.currentAlbum.musics.length - 1;
+    }
+
+    this.update();
+    this.play();
+  }
+
   update() {
     this.currentTime = 0;
     this.music = this.currentAlbum.musics[this.index];
@@ -112,7 +132,7 @@ export class PlayerAppComponent implements OnInit {
 
   restart() {
     this.index = 0;
-    this.start();
+    this.update();
   }
 
   timeUpdate() {}
