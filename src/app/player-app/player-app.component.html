@@ -1,0 +1,130 @@
+<!-- VIDEO GUIA
+  https://youtu.be/vqrjFnq3-uo?si=MG0XhOcG2WO5PNMU
+-->
+<div id="body">
+  <div id="player">
+    <h4><i class="material-icons">equalizer</i> Alegria Cristã Player</h4>
+    <div class="card">
+      <div class="card-image">
+        <img src="{{ this.music.cover }}" alt="Capa da música" />
+      </div>
+      <div class="card-content">
+        <div class="row">
+          <h5>{{ this.music.title }}</h5>
+          <p class="artist">{{ this.music.artist }}</p>
+        </div>
+        <div class="row">
+          <div class="btn-group" role="group" aria-label="Controls">
+            <button
+              type="button"
+              class="btn btn-player-controls d-flex justify-content-center align-items-center"
+              (click)="previous()"
+            >
+              <i class="material-icons"> skip_previous </i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-player-controls d-flex justify-content-center align-items-center"
+              (click)="togglePlay()"
+            >
+              <i class="material-icons">
+                {{ playOrPauseIcon }}
+              </i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-player-controls d-flex justify-content-center align-items-center"
+              (click)="next()"
+            >
+              <i class="material-icons"> skip_next </i>
+            </button>
+          </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+          <div
+            class="col-3 d-flex justify-content-center align-items-center"
+            id="current-duration"
+          >
+            {{ this.currentTimePattern }}
+          </div>
+          <div
+            class="col-6 range-field d-flex justify-content-center align-items-center"
+          >
+            <input
+              class="w-100 form-range"
+              type="range"
+              min="0"
+              [max]="this.duration"
+              step="1"
+              id="seekbar"
+              (input)="setCurrentTime($event)"
+              [(ngModel)]="this.currentTime"
+            />
+          </div>
+          <div
+            class="col-3 d-flex justify-content-center align-items-center"
+            id="total-duration"
+          >
+            {{ this.durationPattern }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 d-flex justify-content-end align-items-center">
+            <button
+              class="btn btn-player-controls btn-player-volume d-flex justify-content-center align-items-center"
+              (click)="toggleMute()"
+            >
+              <i class="material-icons">{{ volumeIcon }}</i>
+            </button>
+          </div>
+          <div
+            class="col-6 range-field d-flex justify-content-start align-items-center"
+          >
+            <input
+              class="w-50 form-range"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              id="vol"
+              (input)="setVolume($event)"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card flex justify-content-center">
+  <p-dialog
+    header="Álbuns"
+    [(visible)]="isVisible"
+    [modal]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [breakpoints]="{ '960px': '75vw' }"
+    [style]="{ width: '50vw' }"
+  >
+    <div>
+      <ul class="list-group">
+        <li *ngFor="let data of albums; index as i" class="list-group-item">
+          <div class="d-flex align-items-center justify-content-between">
+            <span>{{ data.album.name }}</span>
+            <button
+              class="d-flex align-items-center btn btn-default"
+              (click)="choosenAlbum(i)"
+            >
+              <i class="material-icons">play_arrow</i> Tocar
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </p-dialog>
+</div>
+
+<!-- Spinner -->
+<ngx-spinner type="ball-scale-multiple">
+  <span class="white-font">Carregando...</span>
+</ngx-spinner>
